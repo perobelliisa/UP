@@ -1,0 +1,20 @@
+:root {
+    --claro-fundo: #FEFBF0;
+    --claro-texto: #2D2D2D;
+    --claro-botoes: #FF906E;
+    --claro-hover: #FF5C39;
+    --claro-cartoes: #FFFFFF;
+
+
+    --escuro-fundo: #1A1A1A;
+    --escuro-texto: #EDEDED;
+    --escuro-botoes: #FF906E;
+    --escuro-hover: #FF5C39;
+    --escuro-cartoes: #262626;
+
+    --geral-erro: #D9534F;
+    --geral-acerto: #5CB85C;
+
+    --botao-arredondamentod: 10px;
+    --botao-arredondamentom: 50px;
+}
