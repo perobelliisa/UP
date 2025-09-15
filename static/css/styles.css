@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
     --claro-fundo: #FEFBF0;
     --claro-texto: #2D2D2D;
     --claro-botoes: #FF906E;
     --claro-hover: #FF5C39;
     --claro-cartoes: #FFFFFF;
+    --claro-depoimentos: #6C6C6C;
 
 
     --escuro-fundo: #1A1A1A;
@@ -11,10 +13,422 @@
     --escuro-botoes: #FF906E;
     --escuro-hover: #FF5C39;
     --escuro-cartoes: #262626;
+    --escuro-depoimentos: #EDEDED;
 
     --geral-erro: #D9534F;
     --geral-acerto: #5CB85C;
 
+    --linha: #FEDFCD;
+    --escuro-linha: #4C2F26;
+
     --botao-arredondamentod: 10px;
     --botao-arredondamentom: 50px;
+    
+    --card-arredondamento: 20px;
+
+    --titulo-fonte: 'Lato', sans-serif;
+
+    --extra-bold: 800;
+    --bold: 700;
+    --semi-bold: 600;
+    --medium: 500;
+    --regular: 400;
+    --light: 300;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'roboto', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--claro-cartoes);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    height: 52px;
+}   
+
+header nav a {
+    margin: 0 15px;
+    color: var(--claro-texto);
+    font-weight: var(--semi-bold);
+    font-size: 20px;
+}
+
+main {
+    background-color: var(--claro-fundo);
+    color: var(--claro-texto);
+}
+
+.banner {
+    background: url('../img/fundoclaro.png') no-repeat center center/cover;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    color: var(--claro-texto);
+    padding: 160px 20px;
+}
+
+.banner h1 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+    font-weight: var(--extra-bold);        /*extra-bold = 800*/
+    margin-bottom: 30px;
+}
+
+.banner h3 {
+    font-size: 22px;
+    max-width: 680px;
+    font-weight: var(--semi-bold);        /*se colocar semi-bold ele nao funciona, tem que colocar em 600 --- o bold seria 700*/
+    margin-bottom: 94px;
+}
+
+.bnt-claroD {
+    background-color: var(--claro-botoes);
+    color: var(--claro-cartoes);
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--botao-arredondamentom);
+    font-size: 22px;
+    font-weight: var(--semi-bold);
+    cursor: pointer;
+}
+
+.bnt-claroD:hover {
+    background-color: var(--claro-hover);
+}
+
+.banner div {
+    display: flex;
+    gap: 150px;
+}
+
+
+
+.sobre {
+    padding: 80px 20px;
+    height: 700px;
+    text-align: center;
+}
+
+.sobre h2 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 20px;
+}
+
+.sobre h3 {
+    font-size: 22px;
+    max-width: 920px;
+    font-weight: var(--regular);
+    margin: 0 auto 60px auto;
+}
+
+.icones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 160px;
+    margin-bottom: 100px;
+}
+
+.icone-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 350px;
+    border-radius: var(--card-arredondamento);
+    box-shadow: var(--claro-hover) 0px 4px 7px;;
+    gap: 20px;
+    background-color: var(--claro-cartoes);
+    p {
+        font-size: 20px;
+        font-weight: var(--semi-bold);
+        max-width: 240px;
+    }
+    img {
+        width: 141px;
+        height: 141px;
+    }
+}
+
+hr {
+    border: 0;
+    height: 29px;
+    background-color: var(--linha);
+}
+
+.funcionalidades {
+    padding: 80px 20px;
+    text-align: center;
+    height: 650px;
+}
+
+.funcionalidades h2 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 20px;
+}
+.funcionalidades h3 {
+    font-size: 22px;
+    max-width: 920px;
+    font-weight: var(--regular);
+    margin: 0 auto 60px auto;
+}
+
+.icone-redondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 290px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: var(--claro-cartoes);
+    box-shadow: var(--claro-hover) 0px 4px 7px;;
+    margin: 0 auto 20px auto;
+    p {
+        font-size: 20px;
+        font-weight: var(--semi-bold);
+        max-width: 240px;
+        text-align: center;
+    }
+}
+
+
+
+.depoimentos {
+    padding: 80px 20px;
+    text-align: center;
+    height: 700px;
+    color: var(--claro-texto);
+}
+
+.depoimentos h2 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 20px;
+}
+
+.depoimentos h3 {
+    font-size: 22px;
+    font-weight: var(--regular);
+    margin: 0 auto 60px auto;
+}
+
+.icone-retangulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 130px;
+    box-shadow: var(--claro-hover) 0px 4px 7px;;
+    gap: 20px;
+    background-color: var(--claro-cartoes);
+    p {
+        font-size: 20px;
+        font-weight: var(--semi-bold);
+    }
+    .p-depoimento {
+        font-size: 17px;
+        font-weight: var(--bold);
+        color: var(--claro-depoimentos);
+        max-width: 350px;
+    }
+    img {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+.texto-depoimento {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+}
+
+
+.faq {
+     background: url('../img/fundoclaro.png') no-repeat center/cover;
+    padding: 80px 20px;
+    text-align: center;
+    height: 700px;
+}
+
+.faq h2 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 125px;
+}
+
+.box-faq {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 26px;
+    border-bottom: var(--claro-hover) 2px solid;
+    p {
+        font-size: 22px;
+        font-weight: var(--regular);
+        text-align: left;
+    }
+    img {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+
+.info {
+    display: flex;
+    gap: 10vw;
+    padding: 80px 20px;
+    height: 800px;
+} 
+
+.info img {
+    align-self: center;
+    justify-self: center;
+}
+
+.contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 650px;
+}
+
+.contato {
+    margin-left: 90px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    p {
+        font-size: 20px;
+        font-weight: var(--regular);
+    }
+}
+
+.mapa iframe {
+    margin-left: 90px;
+    width: 500px;
+    height: 300px;
+    border: none;
+    border-radius: var(--card-arredondamento);
+    box-shadow: var(--claro-hover) 0px 4px 7px;;
+}
+
+.FaleConosco {
+    background-color: var(--claro-cartoes);
+    padding: 80px 20px;
+    height: 530px;
+    width: 580px;
+    border-radius: var(--card-arredondamento);
+    box-shadow: var(--claro-hover) 0px 4px 7px;
+}
+
+.FaleConosco h2 {
+    justify-self: center;
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 25px;
+}
+
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 50px;
+    width: 530px;
+    margin: 0 auto 40px auto;
+    border: var(--escuro-hover) 2px solid;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 18px;
+    font-weight: var(--regular);
+    color: var(--claro-texto);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    label {
+        font-size: 20px;
+        font-weight: var(--semi-bold);
+        text-align: left;
+    }
+}
+.form button {
+    margin-top: 20px;
+}
+
+
+footer hr {
+    height: 1px;
+    background-color: var(--claro-texto);
+}
+
+.info-footer {
+    display: flex;
+    justify-content: column;
+    gap: 5vw;
+    padding: 40px 20px;
+    height: 60px
+}
+
+
+.info-footer nav a {
+    margin: 0 15px;
+    color: var(--claro-texto);
+    font-weight: var(--semi-bold);
+    font-size: 22px;
+}
+
+.logo-footer {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .contato p{
+    font-weight: var(--regular);
+    font-size: 20px;
+}
+
+.linha-vertical {
+  width: 1px;
+  height: 80px;
+  background-color: #000;  
+  border: none;    
+}
+
+.copy {
+    text-align: center;
+    padding-bottom: 5px
 }
