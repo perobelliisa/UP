@@ -432,3 +432,76 @@ footer .contato p {
     text-align: center;
     padding-bottom: 5px;
 }
+
+.login {
+    width: 600px;
+    height: 450px;
+    margin: 50px auto;
+    button {
+        padding: 10px 200px;
+    }
+}
+
+.opcoes-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 425px;
+    margin-left: 90px;
+}
+
+.opcoes-login div {
+    width: 200px;
+    p {
+        font-size: 14px;
+        font-weight: var(--regular);
+        color: var(--claro-texto);
+    }
+}
+
+.opcoes-login a {
+    font-size: 14px;
+    font-weight: var(--semi-bold);
+    color: var(--claro-hover);
+}
+
+
+.codigo-verificacao {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    text-align: center;
+    width: 550px;
+}
+
+.codigo-verificacao .descricao {
+    font-size: 20px;
+    font-weight: var(--semi-bold);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.codigo-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.codigo-inputs input {
+    width: 45px;
+    height: 55px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: var(--bold);
+    border: 2px solid var(--claro-hover);
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.codigo-inputs input:focus {
+    border-color: var(--claro-botoes);
+    box-shadow: 0 0 5px rgba(255, 144, 110, 0.6);
+}
+
+
