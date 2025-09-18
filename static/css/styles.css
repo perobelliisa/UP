@@ -66,6 +66,10 @@ html,body {
     scroll-behavior: smooth;
 }
 
+.align-center {
+    align-items: center;
+}
+
 /* =====================
    RESET BÁSICO
 ===================== */
@@ -570,13 +574,16 @@ nav a:hover {
     width: 84vw;
 }
 
+.gap250 {
+    gap: 250px;
+}
+
 .card-branco {
-    margin: 5vw auto;
+    margin: 4vw auto;
     background-color: var(--claro-cartoes);
     border-radius: var(--card-arredondamento);
     padding: 3vw 4vw;
     width: 1054px;
-    gap: 250px;    
 }
 
 .card-branco h1 {
@@ -592,6 +599,15 @@ nav a:hover {
 .card-branco p {
     font-size: 20px;
     font-weight: var(--semi-bold);
+}
+
+.img-card-branco {
+    width: 212px;
+    height: 212px;
+}
+
+.card-branco div p span {
+    font-weight: var(--regular);
 }
 
 .cards {
@@ -637,4 +653,85 @@ nav a:hover {
 
 .bnt-claroDQ:hover {
     background-color: var(--claro-hover);
+}
+
+.modo {
+    width: 150px;
+    text-align: center;
+}
+
+.espaco {
+    margin-bottom: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--claro-botoes);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--claro-menu);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--claro-menu);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--claro-menu);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: var(--claro-botoes);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.info-usuario {
+    gap: 15px;
+    width: 400px;
+}
+
+.relatorio {
+    width: 455px;
+    height: 410px;
+    margin-bottom: 4vw;
 }
