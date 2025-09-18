@@ -62,13 +62,12 @@
     flex-direction: column;
 }
 
-<<<<<<< Updated upstream
 html,body {
     scroll-behavior: smooth;
-=======
+}
+
 .align-center {
     align-items: center;
->>>>>>> Stashed changes
 }
 
 /* =====================
