@@ -7,6 +7,7 @@
     --claro-fundo: #FEFBF0;
     --claro-texto: #2D2D2D;
     --claro-botoes: #FF906E;
+    --claro-menu: #FEDFCD;
     --claro-hover: #FF5C39;
     --claro-cartoes: #FFFFFF;
     --claro-depoimentos: #6C6C6C;
@@ -36,6 +37,13 @@
     --medium: 500;
     --regular: 400;
     --light: 300;
+}
+
+/* =====================
+   CLASSES PADRÕES
+===================== */
+.d-flex {
+    display: flex;
 }
 
 /* =====================
@@ -133,7 +141,7 @@
 /* =====================
    HEADER
 ===================== */
-header {
+.header-home {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -141,10 +149,10 @@ header {
     background-color: var(--claro-cartoes);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-header img {
+.header-home img {
     height: 52px;
 }
-header nav a {
+.header-home nav a {
     margin: 0 15px;
     color: var(--claro-texto);
     font-weight: var(--semi-bold);
@@ -505,4 +513,14 @@ footer .contato p {
     border-radius: 8px;
     outline: none;
     margin-bottom: 20px;
+}
+
+/* =====================
+   PÁGINA USUÁRIO
+===================== */
+
+.header-usuario {
+    background-color: var(--claro-menu);
+    padding: 10px 20px;
+    flex-direction: column;
 }
