@@ -46,6 +46,22 @@
     display: flex;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
 /* =====================
    RESET BÁSICO
 ===================== */
@@ -521,6 +537,57 @@ footer .contato p {
 
 .header-usuario {
     background-color: var(--claro-menu);
-    padding: 10px 20px;
     flex-direction: column;
+    width: 16vw;
+}
+
+.header-usuario img {
+    width: 89px;
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+.header-usuario nav {
+    flex-direction: column;
+}
+
+.header-usuario nav a {
+    color: var(--claro-texto);
+    font-weight: var(--semi-bold);
+    font-size: 20px;
+    padding: 20px 30px;
+}
+
+.pagina-atual {
+    background-color: var(--claro-botoes);
+}
+
+.main-usuario {
+    width: 84vw;
+}
+
+.card-branco {
+    margin: 5vw 4vw;
+    background-color: var(--claro-cartoes);
+    border-radius: var(--card-arredondamento);
+    padding: 3vw 4vw;
+    width: 1054px;
+    gap: 250px;    
+}
+
+.card-branco h1 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+}
+
+.card-branco p {
+    font-size: 20px;
+    font-weight: var(--semi-bold);
+}
+
+.cards {
+    background-color: var(--claro-cartoes);
+    border-radius: var(--card-arredondamento);
+    padding: 3vw 4vw;
+    text-align: center;
 }
