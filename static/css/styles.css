@@ -409,11 +409,8 @@ hr {
 /* Cadastro Pessoal */
 .cadastro_pessoal {
     width: 715px;
-    height: 700px;
+    height: 750px;
     margin: 40px auto;
-}
-.cadastro_pessoal .form {
-    padding-bottom: 40px;
 }
 
 /* Main Cadastro */
@@ -531,6 +528,9 @@ footer .contato p {
     margin-bottom: 20px;
 }
 
+nav a:hover {
+    color: var(--claro-hover);
+}
 /* =====================
    PÁGINA USUÁRIO
 ===================== */
