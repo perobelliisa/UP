@@ -62,6 +62,10 @@
     flex-direction: column;
 }
 
+html,body {
+    scroll-behavior: smooth;
+}
+
 /* =====================
    RESET BÁSICO
 ===================== */
