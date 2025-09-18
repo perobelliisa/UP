@@ -579,7 +579,7 @@ nav a:hover {
 }
 
 .card-branco {
-    margin: 5vw auto;
+    margin: 4vw auto;
     background-color: var(--claro-cartoes);
     border-radius: var(--card-arredondamento);
     padding: 3vw 4vw;
@@ -684,7 +684,7 @@ nav a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--claro-botoes);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -696,23 +696,24 @@ nav a:hover {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--claro-menu);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--claro-menu);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--claro-menu);
 }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+  background-color: var(--claro-botoes);
 }
 
 /* Rounded sliders */
@@ -727,4 +728,10 @@ input:checked + .slider:before {
 .info-usuario {
     gap: 15px;
     width: 400px;
+}
+
+.relatorio {
+    width: 455px;
+    height: 410px;
+    margin-bottom: 4vw;
 }
