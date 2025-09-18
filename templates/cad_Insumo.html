@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Cadastro Insumo</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img class="titulo" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+        <nav>
+            <a href="#banner">Inicio</a> <!--Link da rota-->
+            <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
+            <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
+            <a href="/conta">Conta</a> <!--Link da rota-->
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="main-cadastro">
+        <section class="cadastro_pessoal card-form">
+            <h1 class="titulo-secao">Cadastro Insumo</h1>
+            <form class="form" action=""> <!--Link da rota-->
+                <div>
+                    <label>Nome do Insumo</label>
+                    <input class="input" type="text" id="nomeInsumo" name="nomeInsumo" required value="Chocolate em Barra Nestlé">
+                </div>
+                <div>
+                    <label>Descrição</label>
+                    <input class="input" type="text" id="descricao" name="descricao" required value="Cobertura de Chocolate Nestlé Blend Barra">
+                </div>
+                <div>
+                    <label for="categoria">Categoria</label>
+                    
+                    <select name="categoria" id="categoria'">
+                        <option value="chocolate">Chocolate</option>
+                        <option value="acucar">Açúcar</option>
+                        <option value="farinha">Farinha</option>
+                    </select>
+                    <a href="">Adicionar nova Categoria</a>
+                </div>
+                
+                <div class="form-duplo">
+                    <div>
+                        <label>Preço de Compra</label>
+                        <input class="input input-pequeno" type="text" id="preco" name="preco" required value="R$ 83,00">
+                    </div>
+                    <div>
+                        <label>Unidade de Medida </label>
+                        <input class="input input-pequeno" type="text" id="valor" name="valor" required value="Kg"> 
+                    </div>
+                </div>
+                <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="/">Inicio</a> <!--Link da rota-->
+                    <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
+                    <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
+                    <a href="/conta">Conta</a> <!--Link da rota-->
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" style="margin: 0;">
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp"> <!--imagem-->
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contato" style="margin: 0;">
+                    <img src="../static/img/E-mail Ícone.png" alt="Email"> <!--imagem-->
+                    <p>contato@upmais.com.br</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
