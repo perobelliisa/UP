@@ -528,6 +528,9 @@ footer .contato p {
     margin-bottom: 20px;
 }
 
+nav a:hover {
+    color: var(--claro-hover);
+}
 /* =====================
    PÁGINA USUÁRIO
 ===================== */
