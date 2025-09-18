@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="..static/owlcarousel/owl.theme.default.min.css">
     <title>Home - UP</title>
 </head>
 <body>
@@ -76,7 +78,7 @@
         <section class="depoimentos">
             <h2 class="titulo-secao">Depoimentos</h2>
             <h3>Veja o que nossos usuários dizem sobre a UP+</h3>
-            <div class="icones" style="gap: 30px; margin-right: 0px;">
+            <div class="icones owl-carousel" style="gap: 30px; margin-right: 0px;">
                 <div class="icone-retangulo">
                     <img src="../static/img/perfil.png" alt="perfil1">       <!--imagem-->
                     <div class="texto-depoimento">
@@ -99,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="icones" style="gap: 30px; margin-left: 0;">
+            <div class="icones owl-carousel" style="gap: 30px; margin-left: 0;">
                 <div class="icone-retangulo">
                     <img src="../static/img/perfil.png" alt="perfil4">       <!--imagem-->
                     <div class="texto-depoimento">
@@ -227,6 +229,14 @@
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+
+        <script src="jquery.min.js"></script>
+        <script src="owlcarousel/owl.carousel.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".owl-carousel").owlCarousel();
+            });
+        </script>
     </footer>
 </body>
 </html>
