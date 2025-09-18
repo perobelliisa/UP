@@ -50,12 +50,12 @@
     justify-content: space-between;
 }
 
-.justify-between {
-    justify-content: space-between;
-}
-
 .justify-center {
     justify-content: center;
+}
+
+.space-around {
+    justify-content: space-around;
 }
 
 .flex-column {
@@ -567,7 +567,7 @@ footer .contato p {
 }
 
 .card-branco {
-    margin: 5vw 4vw;
+    margin: 5vw auto;
     background-color: var(--claro-cartoes);
     border-radius: var(--card-arredondamento);
     padding: 3vw 4vw;
@@ -580,14 +580,57 @@ footer .contato p {
     font-size: 45px;
 }
 
+.card-branco h2 {
+    font-family: var(--titulo-fonte);
+    font-size: 45px;
+}
+
 .card-branco p {
     font-size: 20px;
     font-weight: var(--semi-bold);
 }
 
 .cards {
+    width: 1169px;
+    margin: 0 auto;
+}
+
+.card {
     background-color: var(--claro-cartoes);
     border-radius: var(--card-arredondamento);
     padding: 3vw 4vw;
     text-align: center;
+}
+
+.card h3 {
+    font-size: 40px;
+    font-weight: var(--bold);
+    font-family: var(--titulo-fonte);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: var(--semi-bold);
+}
+
+.botoes {
+    margin: 3vw auto 0;
+}
+
+.bnt-claroDQ {
+    background-color: var(--claro-botoes);
+    color: var(--claro-cartoes);
+    border: none;
+    padding: 20px 30px;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 22px;
+    font-weight: var(--semi-bold);
+    cursor: pointer;
+    width: 208px;
+    text-align: center;
+}
+
+.bnt-claroDQ:hover {
+    background-color: var(--claro-hover);
 }
