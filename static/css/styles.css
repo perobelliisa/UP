@@ -89,10 +89,18 @@
     font-size: 18px;
     font-weight: var(--regular);
     color: var(--claro-texto);
+    padding-left: 5px;
 }
 .input-pequeno {
     width: 250px;
 }
+
+.input:focus {
+    border-color: var(--claro-botoes);
+    box-shadow: 0 0 5px rgba(255, 144, 110, 0.6);
+    outline: none;
+}
+
 
 .form {
     display: flex;
@@ -498,10 +506,3 @@ footer .contato p {
     outline: none;
     margin-bottom: 20px;
 }
-
-.codigo-inputs input:focus {
-    border-color: var(--claro-botoes);
-    box-shadow: 0 0 5px rgba(255, 144, 110, 0.6);
-}
-
-
