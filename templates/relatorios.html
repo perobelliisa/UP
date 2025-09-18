@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <title>Configurações</title>
+    <title>Relatórios</title>
 </head>
 <body>
     <div class="d-flex">
@@ -14,36 +14,45 @@
                 <a href="">DashBoard</a>
                 <a href="">Insumos</a>
                 <a href="">Produtos</a>
-                <a href="">Relatórios</a>
-                <a href="" class="pagina-atual">Configurações</a>
+                <a href="" class="pagina-atual">Relatórios</a>
+                <a href="">Configurações</a>
                 <a href="">Sair</a>
             </nav>
         </header>
         <main class="main-usuario">
-            <section class="card-branco d-flex align-center space-between">
-                <h1>Olá, Maria</h1>
-                <div class="modo">
-                    <p class="espaco">Alterar Tema</p>
-                    <div class="d-flex align-center modo space-around">
-                        <p>Claro</p>
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
+            <section class="card-branco gap250 d-flex">
+                <div class="d-flex flex-column space-between">
+                    <h1>Dashboard</h1>
+                    <p>Bem-vindo de volta! Aqui está um resumo do seu negócio.</p>
+                </div>
+                <div class="d-flex">
+                    <img src="../static/img/imagem-perfil.png" alt="Foto do usuário">
+                    <div class="d-flex flex-column justify-center"">
+                        <p>Maria</p>
+                        <p>Doce Vita</p>
                     </div>
                 </div>
             </section>
-            <section class="card-branco d-flex align-center space-around">
-                <img src="../static/img/imagem-perfil.png" alt="Foto do usuário" class="img-card-branco">
-                <div class="d-flex flex-column info-usuario">
-                    <p>Nome: <span>Maria da Silva</span></p>
-                    <p>Email: <span>Mariadasilva@gmail.com</span></p>
-                    <p>Tipo de Negócio: <span>Confeitaria</span></p>
-                    <p>Nome do Negócio: <span>Doce Vita</span></p>
-                    <p>Telefone: <span>(18) 99234-2371</span></p>
+            <section class="d-flex space-between cards">
+                <div class="card d-flex flex-column justify-center">
+                    <h3>50</h3>
+                    <p>Insumos cadastrados</p>
                 </div>
-                <div>
-                    <a href="" class="bnt-claroDQ">Editar Perfil</a>
+                <div class="card d-flex flex-column justify-center">
+                    <h3>20</h3>
+                    <p>Produtos cadastrados</p>
+                </div>
+                <div class="card d-flex flex-column justify-center">
+                    <h3>R$ 10,00</h3>
+                    <p>Média de lucro por produto</p>
+                </div>
+            </section>
+            <section class="card-branco">
+                <h2>Ações Rápidas</h2>
+                <div class="d-flex botoes space-around">
+                    <a href="" class="bnt-claroDQ">+ Novo Insumo</a>
+                    <a href="" class="bnt-claroDQ">+ Novo Produto</a>
+                    <a href="" class="bnt-claroDQ">Relatórios</a>
                 </div>
             </section>
         </main>
