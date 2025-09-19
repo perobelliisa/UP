@@ -243,9 +243,8 @@ main {
 }
 .icones {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 160px;
     margin-bottom: 100px;
 }
 
@@ -293,17 +292,17 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 290px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background-color: var(--claro-cartoes);
     box-shadow: var(--claro-hover) 0px 4px 7px;
-    margin: 0 auto 20px auto;
+   
 }
 .icone-redondo p {
     font-size: 20px;
     font-weight: var(--semi-bold);
-    max-width: 240px;
+    max-width: 200px;
     text-align: center;
 }
 
@@ -959,3 +958,70 @@ select.input:focus {
   font-size: 14px;
   margin-top: 5px;
 }
+
+.add1{
+    gap: 0px;
+}
+
+.add2{
+    width: 285px; 
+    height: 167px;
+}
+
+.add3{
+    padding: 20px; 
+    height: 650px;
+}
+
+.add4{
+    height: 140px;
+}
+
+.add5{
+    width: 130px; 
+    height: 76px;
+}
+
+.add6{
+    margin: 0;
+}
+
+
+            .carrossel {
+                padding: 3vw 0;
+            }
+
+            .owl-carousel {
+                margin: 20px 0;
+            }
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                position: relative;
+            }
+
+            /* Estilo para o bloco de perfil + texto */
+            .icone-retangulo {
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .texto-depoimento {
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .nome-depoimento {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .p-depoimento {
+                font-size: 14px;
+            }
