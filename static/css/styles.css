@@ -70,6 +70,14 @@ html,body {
     align-items: center;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: start;
+}
+
 /* =====================
    RESET BÁSICO
 ===================== */
@@ -840,4 +848,77 @@ input:checked + .slider:before {
 
 .bnt-claroDQ:hover {
     background-color: var(--claro-hover);
+}
+
+/* =====================
+   PÁGINA INSUMOS
+===================== */
+.btn-adicionar {
+  background-color: var(--claro-botoes);
+  color: var(--claro-cartoes);
+  border: none;
+  padding: 12px 25px;
+  border-radius: var(--botao-arredondamentod);
+  font-size: 18px;
+  font-weight: var(--semi-bold);
+  cursor: pointer;
+}
+.btn-adicionar:hover {
+  background-color: var(--claro-hover);
+}
+
+.tabela-insumos {
+  margin-top: 40px;
+}
+.tabela-insumos h2 {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: start ;
+}
+.tabela-insumos table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.tabela-insumos th {
+  font-size: 18px;
+  font-weight: var(--semi-bold);
+  padding: 12px;
+  border-bottom: 2px solid var(--linha);
+  text-align: center;
+}
+.tabela-insumos td {
+  font-size: 16px;
+  padding: 12px;
+  border-bottom: 1px solid var(--linha);
+  text-align: center;
+}
+
+/* Botões da tabela */
+.btn-edit {
+  background-color: var(--geral-acerto);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--botao-arredondamentod);
+  font-size: 14px;
+  font-weight: var(--semi-bold);
+  margin-right: 8px;
+  cursor: pointer;
+}
+.btn-edit:hover {
+  background-color: #4cae4c;
+}
+.btn-del {
+  background-color: var(--geral-erro);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--botao-arredondamentod);
+  font-size: 14px;
+  font-weight: var(--semi-bold);
+  cursor: pointer;
+}
+.btn-del:hover {
+  background-color: #c9302c;
 }
