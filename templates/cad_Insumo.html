@@ -5,60 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <title>Cadastro Insumo</title>
+    <title>Cadastro de Insumo</title>
 </head>
 
 <body>
     <!-- Header -->
-    <header>
-        <img class="titulo" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
-        <nav>
-            <a href="#banner">Inicio</a> <!--Link da rota-->
-            <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
-            <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
-            <a href="/conta">Conta</a> <!--Link da rota-->
-        </nav>
-    </header>
+   <div class="d-flex">
+        <header class="header-usuario">
+            <img src="../static/img/logo2.png" alt="Logo da UP+">
+            <nav class="d-flex">
+                <a href="">DashBoard</a>
+                <a href="" class="pagina-atual">Insumos</a>
+                <a href="">Produtos</a>
+                <a href="">Relatórios</a>
+                <a href="">Configurações</a>
+                <a href="">Sair</a>
+            </nav>
+        </header>
 
-    <!-- Main -->
-    <main class="main-cadastro">
-        <section class="cadastro_pessoal card-form">
-            <h1 class="titulo-secao">Cadastro Insumo</h1>
-            <form class="form" action=""> <!--Link da rota-->
-                <div>
-                    <label>Nome do Insumo</label>
-                    <input class="input" type="text" id="nomeInsumo" name="nomeInsumo" required value="Chocolate em Barra Nestlé">
-                </div>
-                <div>
-                    <label>Descrição</label>
-                    <input class="input" type="text" id="descricao" name="descricao" required value="Cobertura de Chocolate Nestlé Blend Barra">
-                </div>
-                <div>
-                    <label for="categoria">Categoria</label>
+        <!-- Main -->
+        <main class="main-usuario">
+            <section class="card-branco" style="max-width: 50vw; padding: 20px;">
+                <h1 class="titulo-secao">Cadastro de Insumo</h1>
+                <form class="form" action=""> <!--Link da rota-->
+                    <div>
+                        <label>Nome do Insumo</label>
+                        <input class="input" type="text" id="nomeInsumo" name="nomeInsumo" required>
+                    </div>
+                    <div>
+                        <label>Descrição</label>
+                        <input class="input" type="text" id="descricao" name="descricao" required>
+                    </div>
+                    <div class="marginB-40">
+                        <label for="categoria">Categoria</label>
+                        
+                        <select name="categoria" id="categoria" class="input" style="margin-bottom: 0px;">
+                            <option value="bolo">Chocolate</option>
+                            <option value="torta">Açucar</option>
+                            <option value="docinho">Farinha</option>
+                        </select>
+                        <a style="color: var(--claro-texto)"; href="">Adicionar Insumo </a>
+
+                    </div>
                     
-                    <select name="categoria" id="categoria'">
-                        <option value="chocolate">Chocolate</option>
-                        <option value="acucar">Açúcar</option>
-                        <option value="farinha">Farinha</option>
-                    </select>
-                    <a href="">Adicionar nova Categoria</a>
-                </div>
-                
-                <div class="form-duplo">
-                    <div>
-                        <label>Preço de Compra</label>
-                        <input class="input input-pequeno" type="text" id="preco" name="preco" required value="R$ 83,00">
+                    <div class="form-duplo">
+                        <div>
+                            <label>Preço de Compra</label>
+                            <input class="input input-pequeno" type="text" id="preco" name="preco" required value="R$">
+                        </div>
+                        <div>
+                        <label for="categoria">Unidade de medida</label>
+                        
+                        <select name="categoria" id="categoria" class="input" style="width: 250px;">
+                            <option value="quilo">Quilograma</option>
+                            <option value="grama">Grama</option>
+                            <option value="litro">Litro</option>
+                            <option value="ml">Mililitro</option>
+                        </select>
                     </div>
-                    <div>
-                        <label>Unidade de Medida </label>
-                        <input class="input input-pequeno" type="text" id="valor" name="valor" required value="Kg"> 
                     </div>
-                </div>
-                <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
-            </form>
-        </section>
-    </main>
-
+                    <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
+                </form>
+            </section>
+        </main>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="info-footer">
@@ -87,5 +97,12 @@
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
     </footer>
 </body>
+    <script>
+    const range = document.getElementById("lucro");
+    const valor = document.getElementById("valor");
 
+    range.addEventListener("input", () => {
+    valor.textContent = range.value + "%";
+    });
+</script>
 </html>
