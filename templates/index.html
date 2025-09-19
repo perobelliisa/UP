@@ -76,58 +76,115 @@
             <button class="bnt-claroD">Quero me Cadastrar</button>
         </section>
 
+
         <!-- Depoimentos -->
         <section class="depoimentos">
             <h2 class="titulo-secao">Depoimentos</h2>
             <h3>Veja o que nossos usuários dizem sobre a UP+</h3>
-            <div class="carrossel owl-carousel owl-theme carrossel-esquerda">
-                <div class="icone-retangulo">
-                    <img src="../static/img/perfil.png" alt="perfil1">       <!--imagem-->
-                    <div class="texto-depoimento">
-                        <p>Felipe Lima</p>
-                        <p class="p-depoimento">Eu me perdia nos custos dos meus bolos, mas com o UP+ consegui organizar tudo.</p>
+
+            <!-- Carrossel Esquerda -->
+            <div class="carrossel owl-carousel owl-theme carrossel">
+                <div class="item">
+                    <div class="icone-retangulo">
+                        <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
+                        <div class="texto-depoimento">
+                            <p class="nome-depoimento">Felipe Lima</p>
+                            <p class="p-depoimento">Eu me perdia nos custos dos meus bolos, mas com o UP+ consegui organizar tudo.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="icone-retangulo">
-                    <img src="../static/img/perfil.png" alt="perfil2">       <!--imagem-->
-                    <div class="texto-depoimento">
-                        <p>Juliana Martins</p>
-                        <p class="p-depoimento">Esse curso superou todas as minhas expectativas. Recomendo demais!</p>
+                <div class="item">
+                    <div class="icone-retangulo">
+                        <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
+                        <div class="texto-depoimento">
+                            <p class="nome-depoimento">Juliana Martins</p>
+                            <p class="p-depoimento">Esse curso superou todas as minhas expectativas. Recomendo demais!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="icone-retangulo"> 
-                    <img src="../static/img/perfil.png" alt="perfil3">       <!--imagem-->
-                    <div class="texto-depoimento">
-                        <p>Ana Souza</p>
-                        <p class="p-depoimento">Meu lucro aumentou e minha rotina ficou muito mais leve!</p>
+                <div class="item">
+                    <div class="icone-retangulo">
+                        <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
+                        <div class="texto-depoimento">
+                            <p class="nome-depoimento">Ana Souza</p>
+                            <p class="p-depoimento">Meu lucro aumentou e minha rotina ficou muito mais leve!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icone-retangulo">
+                        <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
+                        <div class="texto-depoimento">
+                            <p class="nome-depoimento">Bernardo Silva</p>
+                            <p class="p-depoimento">Consegui dar mais atenção para os meus clientes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icone-retangulo">
+                        <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
+                        <div class="texto-depoimento">
+                            <p class="nome-depoimento">Pedro Albuquerque</p>
+                            <p class="p-depoimento">O sistema é simples e direto, perfeito para quem não entende de gestão.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icone-retangulo">
+                        <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
+                        <div class="texto-depoimento">
+                            <p class="nome-depoimento">Mariana Costa</p>
+                            <p class="p-depoimento">O UP+ mudou o jeito como administro meu negócio.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="carrossel owl-carousel owl-theme carrossel-direita" style="gap: 30px; margin-left: 0;">
-                <div class="icone-retangulo">
-                    <img src="../static/img/perfil.png" alt="perfil4">       <!--imagem-->
-                    <div class="texto-depoimento">
-                        <p>Bernardo Silva</p>
-                        <p class="p-depoimento">Consegui dar mais atenção para os meus clientes.</p>
-                    </div>
-                </div>
-                <div class="icone-retangulo">
-                    <img src="../static/img/perfil.png" alt="perfil5">        <!--imagem-->
-                    <div class="texto-depoimento">
-                        <p>Pedro Albuquerque</p>
-                        <p class="p-depoimento">O sistema é simples e direto, perfeito para quem não entende de gestão.</p>
-                    </div>
-                </div>
-                <div class="icone-retangulo">
-                    <img src="../static/img/perfil.png" alt="perfil6">         <!--imagem-->
-                    <div class="texto-depoimento">
-                        <p>Mariana Costa</p>
-                        <p class="p-depoimento">O UP+ mudou o jeito como administro meu negócio.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="bnt-claroD">Quero ser UP+</button>
+            <a class="bnt-claroD">Quero ser UP+</a>
+
         </section>
+
+        <!-- CSS -->
+        <style>
+            /* Estilo do carrossel */
+            .carrossel {
+                padding: 3vw 0;
+            }
+
+            .owl-carousel {
+                margin: 20px 0;
+            }
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                position: relative;
+            }
+
+            /* Estilo para o bloco de perfil + texto */
+            .icone-retangulo {
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .texto-depoimento {
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .nome-depoimento {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .p-depoimento {
+                font-size: 14px;
+            }
+        </style>
         <hr>
 
         <!-- FAQ -->
@@ -231,7 +288,7 @@
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
-        <script src="../static/js/owl-carousel/jquery-1.9.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="../static/js/owl-carousel/owl.carousel.js"></script>
         <script src="../static/js/script.js"></script>
     </footer>
