@@ -782,29 +782,6 @@ input:checked + .slider:before {
     width: 84vw;
 }
 
-.card-branco {
-    margin: 5vw auto;
-    background-color: var(--claro-cartoes);
-    border-radius: var(--card-arredondamento);
-    padding: 3vw 4vw;
-    width: 1054px;
-    gap: 250px;    
-}
-
-.card-branco h1 {
-    font-family: var(--titulo-fonte);
-    font-size: 45px;
-}
-
-.card-branco h2 {
-    font-family: var(--titulo-fonte);
-    font-size: 45px;
-}
-
-.card-branco p {
-    font-size: 20px;
-    font-weight: var(--semi-bold);
-}
 
 .cards {
     width: 1169px;
@@ -843,7 +820,7 @@ input:checked + .slider:before {
     font-size: 22px;
     font-weight: var(--semi-bold);
     cursor: pointer;
-    width: 208px;
+    min-width: 208px;
     text-align: center;
 }
 
