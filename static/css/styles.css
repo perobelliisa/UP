@@ -239,6 +239,7 @@ main {
     gap: 160px;
     margin-bottom: 100px;
 }
+
 .icone-texto {
     display: flex;
     flex-direction: column;
@@ -312,11 +313,12 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px;
+    width: 600px;
     height: 130px;
     box-shadow: var(--claro-hover) 0px 4px 7px;
     gap: 20px;
     background-color: var(--claro-cartoes);
+    margin: 0 100px;
 }
 .icone-retangulo p {
     font-size: 20px;
