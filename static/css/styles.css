@@ -78,6 +78,10 @@ html,body {
     text-align: start;
 }
 
+.marginB-40 {
+    margin-bottom: 40px;
+}
+
 
 /* =====================
    RESET BÁSICO
@@ -950,6 +954,7 @@ select.input:focus {
 
 .range-box input[type="range"] {
   width: 100%;
+<<<<<<< Updated upstream
 }
 
 #valor {
@@ -1025,3 +1030,6 @@ select.input:focus {
             .p-depoimento {
                 font-size: 14px;
             }
+=======
+}
+>>>>>>> Stashed changes
