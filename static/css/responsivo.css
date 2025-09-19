@@ -1,0 +1,206 @@
+@media (min-width: 2559px) {
+    .header-home {
+        padding: 40px;
+    }
+    .header-home img {
+    height: 72px;
+}
+.header-home nav a {
+    font-size: 40px;
+}
+.banner h1 {
+    font-size: 70px;
+
+}
+.banner h3 {
+    font-size: 35px;
+}
+.bnt-claroD {
+    font-size: 35px;
+}
+
+.sobre {
+    padding: 150px 60px;
+    height: 950px;
+}
+.sobre h3 {
+    font-size: 35px;
+}
+.icones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 160px;
+    margin-bottom: 100px;
+}
+.icone-texto {
+    width: 560px;
+    height: 580px;
+}
+.icone-texto p {
+    font-size: 30px;
+}
+.icone-texto img {
+    width: 221px;
+    height: 221px;
+}
+
+hr {
+    height: 39px;
+}
+
+.funcionalidades {
+    padding: 330px 20px;
+    text-align: center;
+    height: 650px;
+}
+.funcionalidades h3 {
+    font-size: 45px;
+}
+.icone-redondo {
+    width: 400px;
+    height: 410px;
+}
+.icone-redondo p {
+    font-size: 32px;
+}
+
+.depoimentos {
+    padding: 350px 20px;
+}
+.depoimentos h3 {
+    font-size: 45px;
+}
+.icone-retangulo {
+    width: 800px;
+    height: 230px;
+}
+.icone-retangulo p {
+    font-size: 32px;
+}
+.icone-retangulo .p-depoimento {
+    font-size: 27px;
+}
+.icone-retangulo img {
+    width: 150px;
+    height: 150px;
+}
+-------------------------------------------------------------------------------------------------------------------------
+
+.faq {
+    padding: 80px 20px;
+}
+
+.box-faq {
+    width: 1300px;
+    margin: 0 auto 22px auto;
+    gap: 50px;
+    padding-bottom: 14px;
+    border-bottom: var(--claro-hover) 8px solid;
+}
+.box-faq p {
+    font-size:35px;
+}
+.box-faq img {
+    width: 30px;
+    height: 30px;
+}
+
+.box-faq p {
+    font-size: 30px;
+}
+---------------------------------------------------------------------------------------------------------------------------
+main .info {
+    padding: 120px 40px;
+}
+
+.contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 1200px;
+    margin-left: 140px;
+}
+.contato {
+    margin-left:40px;
+    gap: 25px;
+}
+.contato p {
+    font-size: 45px;
+}
+.mapa iframe {
+    margin-left:40px;
+    width: 900px;
+    height: 500px;
+}
+----------------------------------------------------------------------------------------------------------------------------------
+.FaleConosco {
+    width: 728px;
+    height: 862px;
+}
+.FaleConosco h2 {
+    margin-bottom: 25px;
+}
+
+/* Cadastro Pessoal */
+.cadastro_pessoal {
+    width: 715px;
+    height: 750px;
+    margin: 40px auto;
+}
+
+.formnovo{
+    padding: 20px;
+    height: 650px;
+}
+
+.formnovo input{
+    width: 65px;
+    height: 75px;
+}
+
+.formnovo label{
+    font-size: 50px;
+}
+---------------------------------------------------------------------------------------------------------------------------
+
+footer{
+    margin-top:1222px;
+}
+
+footer hr {
+    height: 1px;
+    background-color: var(--claro-texto);
+}
+.info-footer {
+    display: flex;
+    gap: 5vw;
+    padding: 40px 20px;
+    height: 60px;
+}
+.info-footer nav a {
+    margin: 0 15px;
+    color: var(--claro-texto);
+    font-weight: var(--semi-bold);
+    font-size: 22px;
+}
+.logo-footer {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer .contato p {
+    font-weight: var(--regular);
+    font-size: 20px;
+}
+.linha-vertical {
+    width: 1px;
+    height: 80px;
+    background-color: #000;  
+    border: none;    
+}
+.copy {
+    text-align: center;
+    padding-bottom: 5px;
+}}

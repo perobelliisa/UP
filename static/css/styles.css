@@ -384,7 +384,7 @@ hr {
     display: flex;
     gap: 10vw;
     padding: 80px 20px;
-    height: 800px;
+    height: auto;
 }
 .info img {
     align-self: center;
