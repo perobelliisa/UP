@@ -62,7 +62,8 @@
     flex-direction: column;
 }
 
-html,body {
+html,
+body {
     scroll-behavior: smooth;
 }
 
@@ -114,6 +115,7 @@ html,body {
     font-weight: var(--semi-bold);
     cursor: pointer;
 }
+
 .bnt-claroD:hover {
     background-color: var(--claro-hover);
 }
@@ -122,20 +124,24 @@ html,body {
     padding: 10px 140px;
 }
 
-.input {
-    display: flex;
+.campo {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.input {
     height: 50px;
-    width: 530px;   
-    margin: 0 auto 40px auto;
+    width: 530px;
     border: var(--escuro-hover) 2px solid;
     border-radius: var(--botao-arredondamentod);
     font-size: 18px;
     font-weight: var(--regular);
     color: var(--claro-texto);
-    padding-left: 5px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
+
 .input-pequeno {
     width: 250px;
 }
@@ -152,12 +158,15 @@ html,body {
     flex-direction: column;
     align-items: center;
     margin-top: 60px;
+    gap: 40px;
 }
+
 .form label {
     font-size: 20px;
     font-weight: var(--semi-bold);
     text-align: left;
 }
+
 .form button {
     margin-top: 20px;
 }
@@ -186,9 +195,11 @@ html,body {
     background-color: var(--claro-cartoes);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .header-home img {
     height: 52px;
 }
+
 .header-home nav a {
     margin: 0 15px;
     color: var(--claro-texto);
@@ -216,18 +227,21 @@ main {
     gap: 20px;
     padding: 160px 20px;
 }
+
 .banner h1 {
     font-family: var(--titulo-fonte);
     font-size: 45px;
     font-weight: var(--extra-bold);
     margin-bottom: 30px;
 }
+
 .banner h3 {
     font-size: 22px;
     max-width: 680px;
     font-weight: var(--semi-bold);
     margin-bottom: 94px;
 }
+
 .banner div {
     display: flex;
     gap: 150px;
@@ -239,12 +253,14 @@ main {
     height: 700px;
     text-align: center;
 }
+
 .sobre h3 {
     font-size: 22px;
     max-width: 920px;
     font-weight: var(--regular);
     margin: 0 auto 60px auto;
 }
+
 .icones {
     display: flex;
     justify-content: space-around;
@@ -264,11 +280,13 @@ main {
     gap: 20px;
     background-color: var(--claro-cartoes);
 }
+
 .icone-texto p {
     font-size: 20px;
     font-weight: var(--semi-bold);
     max-width: 240px;
 }
+
 .icone-texto img {
     width: 141px;
     height: 141px;
@@ -286,12 +304,14 @@ hr {
     text-align: center;
     height: 650px;
 }
+
 .funcionalidades h3 {
     font-size: 22px;
     max-width: 920px;
     font-weight: var(--regular);
     margin: 0 auto 60px auto;
 }
+
 .icone-redondo {
     display: flex;
     justify-content: center;
@@ -301,8 +321,9 @@ hr {
     border-radius: 50%;
     background-color: var(--claro-cartoes);
     box-shadow: var(--claro-hover) 0px 4px 7px;
-   
+
 }
+
 .icone-redondo p {
     font-size: 20px;
     font-weight: var(--semi-bold);
@@ -316,11 +337,13 @@ hr {
     text-align: center;
     height: 700px;
 }
+
 .depoimentos h3 {
     font-size: 22px;
     font-weight: var(--regular);
     margin: 0 auto 60px auto;
 }
+
 .icone-retangulo {
     display: flex;
     align-items: center;
@@ -332,20 +355,24 @@ hr {
     background-color: var(--claro-cartoes);
     margin: 0 100px;
 }
+
 .icone-retangulo p {
     font-size: 20px;
     font-weight: var(--semi-bold);
 }
+
 .icone-retangulo .p-depoimento {
     font-size: 17px;
     font-weight: var(--bold);
     color: var(--claro-depoimentos);
     max-width: 350px;
 }
+
 .icone-retangulo img {
     width: 90px;
     height: 90px;
 }
+
 .texto-depoimento {
     display: flex;
     flex-direction: column;
@@ -361,26 +388,52 @@ hr {
     text-align: center;
     height: 700px;
 }
+
 .faq h2 {
     margin-bottom: 125px;
 }
+
 .box-faq {
-    display: flex;
-    justify-content: space-between;
-    width: 1200px;
-    margin: 0 auto 26px auto;
-    gap: 20px;
     padding-bottom: 10px;
     border-bottom: var(--claro-hover) 2px solid;
+    width: 1200px;
+    margin: 0 auto 26px auto;
 }
+
+.box-faq div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
 .box-faq p {
     font-size: 22px;
     font-weight: var(--regular);
     text-align: left;
 }
+
 .box-faq img {
     width: 15px;
     height: 15px;
+}
+
+.box-faq button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.resposta {
+    margin-top: 15px;
+    margin-left: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: var(--light);
+    text-align: left;
+    background-color: var(--claro-menu);
+    border-radius: var(--card-arredondamento);
 }
 
 /* Info + Contatos */
@@ -390,28 +443,33 @@ hr {
     padding: 80px 20px;
     height: auto;
 }
+
 .info img {
     align-self: center;
     justify-self: center;
 }
+
 .contatos {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 650px;
 }
+
 .contato {
-    margin-left:10px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
+
 .contato p {
     font-size: 20px;
     font-weight: var(--regular);
 }
+
 .mapa iframe {
-    margin-left:10px;
+    margin-left: 10px;
     width: 500px;
     height: 300px;
     border: none;
@@ -424,6 +482,7 @@ hr {
     width: 580px;
     height: 530px;
 }
+
 .FaleConosco h2 {
     margin-bottom: 25px;
 }
@@ -451,34 +510,40 @@ footer hr {
     height: 1px;
     background-color: var(--claro-texto);
 }
+
 .info-footer {
     display: flex;
     gap: 5vw;
     padding: 40px 20px;
     height: 60px;
 }
+
 .info-footer nav a {
     margin: 0 15px;
     color: var(--claro-texto);
     font-weight: var(--semi-bold);
     font-size: 22px;
 }
+
 .logo-footer {
     gap: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 footer .contato p {
     font-weight: var(--regular);
     font-size: 20px;
 }
+
 .linha-vertical {
     width: 1px;
     height: 80px;
-    background-color: #000;  
-    border: none;    
+    background-color: #000;
+    border: none;
 }
+
 .copy {
     text-align: center;
     padding-bottom: 5px;
@@ -488,6 +553,7 @@ footer .contato p {
     width: 600px;
     height: 450px;
     margin: 50px auto;
+
     button {
         padding: 10px 200px;
     }
@@ -503,6 +569,7 @@ footer .contato p {
 
 .opcoes-login div {
     width: 200px;
+
     p {
         font-size: 14px;
         font-weight: var(--regular);
@@ -553,6 +620,7 @@ footer .contato p {
 nav a:hover {
     color: var(--claro-hover);
 }
+
 /* =====================
    PÁGINA USUÁRIO
 ===================== */
@@ -679,64 +747,64 @@ nav a:hover {
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--claro-botoes);
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--claro-botoes);
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: var(--claro-menu);
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--claro-menu);
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: var(--claro-menu);
+input:checked+.slider {
+    background-color: var(--claro-menu);
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--claro-menu);
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--claro-menu);
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-  background-color: var(--claro-botoes);
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: var(--claro-botoes);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 .info-usuario {
@@ -835,201 +903,306 @@ input:checked + .slider:before {
    PÁGINA INSUMOS
 ===================== */
 .btn-adicionar {
-  background-color: var(--claro-botoes);
-  color: var(--claro-cartoes);
-  border: none;
-  padding: 12px 25px;
-  border-radius: var(--botao-arredondamentod);
-  font-size: 18px;
-  font-weight: var(--semi-bold);
-  cursor: pointer;
+    background-color: var(--claro-botoes);
+    color: var(--claro-cartoes);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 18px;
+    font-weight: var(--semi-bold);
+    cursor: pointer;
 }
+
 .btn-adicionar:hover {
-  background-color: var(--claro-hover);
+    background-color: var(--claro-hover);
 }
 
 .tabela-insumos {
-  margin-top: 40px;
+    margin-top: 40px;
 }
+
 .tabela-insumos h2 {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  text-align: start ;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: start;
 }
+
 .tabela-insumos table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
 }
+
 .tabela-insumos th {
-  font-size: 18px;
-  font-weight: var(--semi-bold);
-  padding: 12px;
-  border-bottom: 2px solid var(--linha);
-  text-align: center;
+    font-size: 18px;
+    font-weight: var(--semi-bold);
+    padding: 12px;
+    border-bottom: 2px solid var(--linha);
+    text-align: center;
 }
+
 .tabela-insumos td {
-  font-size: 16px;
-  padding: 12px;
-  border-bottom: 1px solid var(--linha);
-  text-align: center;
+    font-size: 16px;
+    padding: 12px;
+    border-bottom: 1px solid var(--linha);
+    text-align: center;
 }
 
 /* Botões da tabela */
 .btn-edit {
-  background-color: var(--geral-acerto);
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: var(--botao-arredondamentod);
-  font-size: 14px;
-  font-weight: var(--semi-bold);
-  margin-right: 8px;
-  cursor: pointer;
+    background-color: var(--geral-acerto);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 14px;
+    font-weight: var(--semi-bold);
+    margin-right: 8px;
+    cursor: pointer;
 }
+
 .btn-edit:hover {
-  background-color: #4cae4c;
+    background-color: #4cae4c;
 }
+
 .btn-del {
-  background-color: var(--geral-erro);
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: var(--botao-arredondamentod);
-  font-size: 14px;
-  font-weight: var(--semi-bold);
-  cursor: pointer;
+    background-color: var(--geral-erro);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 14px;
+    font-weight: var(--semi-bold);
+    cursor: pointer;
 }
+
 .btn-del:hover {
-  background-color: #c9302c;
+    background-color: #c9302c;
 }
 
 /* =====================
    PÁGINA PRODUTOS
 ===================== */
-select.input {
-  width: 530px;
-  height: 50px;
-  border: 2px solid var(--escuro-hover);
-  border-radius: var(--botao-arredondamentod);
-  font-size: 18px;
-  padding-left: 12px 5px;
-  padding-top: 12px;
+.card-produto {
+    max-width: 50vw;
+    padding: 40px  20px;
+}
+
+.card-produto a {
+    color: var(--claro-hover);
+    font-size: 16px;
+    font-weight: var(--semi-bold);
+}
+
+.fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.absolute {
+    position: absolute;
+    top: 10%;
+    left: 31%;
+    box-shadow: var(--claro-hover) 0px 4px 7px;
+}
+.absolute img {
+    padding-left: 20px;
+    position: absolute;
+}
+
+.lista-ingredientes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ingrediente {
+    margin: 0 auto;
+    width: 530px;
+    gap: 20px;
+    height: 35px;
+    align-items: center;
+    
+}
+
+.ingrediente input[type="number"] {
+    width: 150px;
+    height: 30px;
+    border: var(--escuro-hover) 2px solid;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 16px;
+    font-weight: var(--regular);
+    color: var(--claro-texto);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.ingrediente select {
+    width: 150px;
+    height: 30px;
+    border: var(--escuro-hover) 2px solid;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 16px;
+    font-weight: var(--regular);
+    color: var(--claro-texto);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.checkbox {
+    width: 200px;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: var(--regular);
+    color: var(--claro-texto);
+    padding-left: 50px;
+    align-items: center;
+}
+
+.checkbox input {
+    width: 20px;
+    height: 20px;
+    /* Perguntar para o Igor como mudar a cor */
+}
+
+.bnt-pequeno {
+    width: 300px;
+    margin: 0 auto
+}
+
+.card-categoria {
+    position: absolute;
+    top: 30.5vw;
+    left: 78vw;
+}
+
+.titulo-categoria {
+    margin-bottom: 40px;
 }
 
 select option {
-  background-color: #fff;    
-  color: var(--claro-texto); 
+    background-color: #fff;
+    color: var(--claro-texto);
 }
 
 select option:checked {
-  background-color: var(--claro-botoes  ); 
-  color: var(--escuro-texto);            
+    background-color: var(--claro-botoes);
+    color: var(--escuro-texto);
 }
 
 select option:hover {
-  background-color: var(--claro-botoes); 
-  color: var(--escuro-texto);
+    background-color: var(--claro-botoes);
+    color: var(--escuro-texto);
 }
 
 select.input:focus {
-  border-color: var(--claro-botoes);
-  outline: none;
+    border-color: var(--claro-botoes);
+    outline: none;
 }
 
 .range-box {
-  border: 2px solid var(--claro-hover);
-  border-radius: 8px;
-  padding: 10px;
-  width: 530px;
-  margin: 20px auto;
+    width: 530px;
 }
 
 .range-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 5px;
+    display: flex;
+    width: 530px;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .range-box input[type="range"] {
-  width: 100%;
-<<<<<<< Updated upstream
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
 }
+
 
 #valor {
-  display: block;
-  text-align: right;
-  font-size: 14px;
-  margin-top: 5px;
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.add1{
+.add1 {
     gap: 0px;
 }
 
-.add2{
-    width: 285px; 
+.add2 {
+    width: 285px;
     height: 167px;
 }
 
-.add3{
-    padding: 20px; 
+.add3 {
+    padding: 20px;
     height: 650px;
 }
 
-.add4{
+.add4 {
     height: 140px;
 }
 
-.add5{
-    width: 130px; 
+.add5 {
+    width: 130px;
     height: 76px;
 }
 
-.add6{
+.add6 {
     margin: 0;
 }
 
 
-            .carrossel {
-                padding: 3vw 0;
-            }
-
-            .owl-carousel {
-                margin: 20px 0;
-            }
-
-            .item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
-            /* Estilo para o bloco de perfil + texto */
-            .icone-retangulo {
-                padding: 10px 0;
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-
-            .texto-depoimento {
-                padding: 20px;
-                border-radius: 8px;
-            }
-
-            .nome-depoimento {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 10px;
-            }
-
-            .p-depoimento {
-                font-size: 14px;
-            }
-=======
+.carrossel {
+    padding: 3vw 0;
 }
->>>>>>> Stashed changes
+
+.owl-carousel {
+    margin: 20px 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Estilo para o bloco de perfil + texto */
+.icone-retangulo {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.texto-depoimento {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.nome-depoimento {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.p-depoimento {
+    font-size: 14px;
+}
+
+.none {
+    display: none;
+}

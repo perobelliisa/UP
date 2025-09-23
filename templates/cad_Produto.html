@@ -10,7 +10,7 @@
 
 <body>
     <!-- Header -->
-   <div class="d-flex">
+    <div class="d-flex">
         <header class="header-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+">
             <nav class="d-flex">
@@ -24,66 +24,155 @@
         </header>
         <!-- Main -->
         <main class="main-usuario">
-            <section class="card-branco" style="max-width: 50vw; padding: 20px;">
+            <section class="card-branco card-produto">
                 <h1 class="titulo-secao">Cadastro de Produto</h1>
                 <form class="form" action=""> <!--Link da rota-->
-                    <div>
+                    <div class="d-flex campo">
                         <label>Nome do Produto</label>
                         <input class="input" type="text" id="nomeProduto" name="nomeProduto" required>
                     </div>
-                    <div>
+                    <div class="d-flex campo">
                         <label>Descrição</label>
                         <input class="input" type="text" id="descricao" name="descricao" required>
                     </div>
-                    <div class="marginB-40">
+                    <div class="d-flex campo">
                         <label for="categoria">Categoria</label>
-                        
-                        <select name="categoria" id="categoria" class="input" style="margin-bottom: 0px;">
+                        <select name="categoria" id="categoria" class="input">
                             <option value="bolo">Bolo</option>
                             <option value="torta">Torta</option>
                             <option value="docinho">Docinho</option>
                         </select>
-                        <a style="color: var(--claro-texto)"; href="">Adicionar Produto</a>
-
+                        <a href="">Adicionar Categoria</a>
                     </div>
 
                     <div class="form-duplo">
-                        <div>
+                        <div class="d-flex campo">
                             <label>Insumos</label>
                             <input class="input input-pequeno" type="text" id="insumo" name="insumo" required>
+                            <a href="#" onclick="adicionarInsumo()">Adicionar Insumo</a>
+                            <!-- Perguntar para o Igor qual a melhor forma de fazer esse a/botão -->
                         </div>
-                        <div>
+                        <div class="d-flex campo">
                             <label>Quantidade </label>
                             <input class="input input-pequeno" type="number" id="quantidade" name="quantidade" required>
                         </div>
                     </div>
 
                     <div class="form-duplo">
-                        <div>
+                        <div class="d-flex campo">
                             <label>Rendimento de 1 receita</label>
                             <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required>
                         </div>
-                        <div>
+                        <div class="d-flex campo">
                             <label>Unidade de Venda </label>
                             <input class="input input-pequeno" type="text" id="unidade" name="unidade" required>
                         </div>
                     </div>
-                        <div>
-                            <label>Tempo de Produção</label>
-                            <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
-                        </div>
+                    <div class="d-flex campo">
+                        <label>Tempo de Produção</label>
+                        <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
+                    </div>
 
-                        <div class="range-box">
-                            <div class="range-header">
-                                <label for="lucro">Lucro %</label>
-                                <span>Não definido</span>
-                            </div>
-                            <input type="range" id="lucro" name="lucro" min="0" max="100" value="60">
-                            <span id="valor">60%</span>
+                    <div class="d-flex campo range-box">
+                        <div class="range-header">
+                            <label for="lucro">Lucro %</label>
+                            <span>Não definido</span>
                         </div>
+                        <input type="range" id="lucro" name="lucro" min="0" max="50" value="20">
+                        <span id="valor">20%</span>
+                    </div>
 
                     <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
                 </form>
+            </section>
+            <section class="none fundo" id="adicionarInsumo">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarInsumo()"><img src="../static/img/voltar.png" alt="Voltar"></a>
+                    <h1 class="titulo-secao">Adição de Insumo</h1>
+                    <form class="lista-ingredientes">
+                        <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="farinha" onclick="mostrarQuantidade('ingrediente1')">
+                                <label>Farinha</label>
+                            </div>
+                            <div class="d-flex ingrediente none" id="ingrediente1">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="açúcar" onclick="mostrarQuantidade('ingrediente2')">
+                                <label>Açúcar</label>
+                            </div>
+                            <div class="d-flex ingrediente none" id="ingrediente2">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="ovos" onclick="mostrarQuantidade('ingrediente3')">
+                                <label>Ovos</label>
+                            </div>
+                            <div class="d-flex ingrediente none" id="ingrediente3">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="manteiga" onclick="mostrarQuantidade('ingrediente4')">
+                                <label>Manteiga</label>
+                            </div>
+                            <div class="d-flex ingrediente none" id="ingrediente4">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="bnt-claroD bnt-pequeno" type="submit">Adicionar</button>
+                    </form>
+                </div>
+            </section>
+            <section class="" id="adicionarCategoriaProduto">
+                <div class="card-branco card-produto card-categoria">
+                    <a href="#" onclick="adicionarCategoriaProduto()"><img src="../static/img/voltar.png" alt="Voltar"></a>
+                    <h1 class="titulo-secao titulo-categoria">Adição de Categoria</h1>
+                    <form class="lista-ingredientes">
+                        <div class="d-flex ingrediente">
+                            <input type="text" placeholder="Nome da Categoria" class="input"> 
+                            <button class="bnt-claroD bnt-pequeno" type="submit">Adicionar</button>
+                        </div>
+                    </form>
+                </div>
             </section>
         </main>
     </div>
@@ -114,14 +203,8 @@
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="../static/js/script.js"></script>
     </footer>
 </body>
-    <script>
-    const range = document.getElementById("lucro");
-    const valor = document.getElementById("valor");
 
-    range.addEventListener("input", () => {
-    valor.textContent = range.value + "%";
-    });
-</script>
 </html>
