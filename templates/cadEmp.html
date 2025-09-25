@@ -4,47 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <title>Cadastro Pessoal</title>
+    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <title>Cadastro Empresa</title>
 </head>
 <body>
     <!-- Header -->
-    <header class="header-home">
-        <img class="titulo" src="../static/img/logo2.png" alt="Logo da UP">   <!--imagem-->
+    <header class="header-home" id="menu-mobile-home">
+        <img class="desktop" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
         <nav>
-            <a href="#banner">Inicio</a>                                                <!--Link da rota-->
-            <a href="#sobre">Sobre Nós</a>                                              <!--Link da rota-->
-            <a href="#funcionalidades">Funcionalidade</a>                               <!--Link da rota-->
-            <a href="/conta">Conta</a>                                                  <!--Link da rota-->
+            <a href="#banner">Inicio</a> <!--Link da rota-->
+            <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
+            <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
+            <a href="/conta">Conta</a> <!--Link da rota-->
         </nav>
     </header>
 
     <!-- Main -->
-    <main class="main-cadastro">
+    <main>
+        <section class="space-between topo-usuario mobile">
+            <img src="../static/img/logo2.png" alt="Logo da UP+">
+            <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-home')">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </section>
         <section class="cadastro_pessoal card-form">
             <h1 class="titulo-secao">Cadastro Empresa</h1>
                 <form class="form" action="">                                                                            <!--Link da rota-->                           
-                <div>
+                <div class="d-flex campo">
                     <label>Nome da Empresa</label>
                     <input class="input" type="text" id="nomeEmp" name="nomeEmp" required>
                 </div>
-                <div>
+                <div class="d-flex campo">
                     <label>Endereço</label>
                     <input class="input" type="text" id="endereco" name="endereco" required>
                 </div>
-                <div>
+                <div class="d-flex campo">
                     <label>CNPJ</label>
                     <input class="input" type="text" id="cnpj" name="cnpj" required pattern="\d{14}" maxlength="14">
                 </div>
-                <div>
+                <div class="d-flex campo">
                     <label>Tipo</label>
                     <input class="input" type="text" id="tipo" name="tipo" required>
                 </div>
                 <div class="form-duplo">
-                    <div>
+                    <div class="d-flex campo">
                         <label>Porte da Empresa</label>
                         <input class="input input-pequeno" type="text" id="porte" name="porte" required>
                     </div>
-                    <div>
+                    <div class="d-flex campo">
                         <label>Valor da Mão de Obra</label>
                         <input class="input input-pequeno" type="number" id="valor" name="valor" required>
                     </div>
@@ -80,6 +89,7 @@
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="../static/js/script.js"></script>
     </footer>
 </body>
 </html>

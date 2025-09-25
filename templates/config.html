@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
     <title>Configurações</title>
 </head>
+
 <body>
     <div class="d-flex">
-        <header class="header-usuario">
-            <img src="../static/img/logo2.png" alt="Logo da UP+">
+        <header class="header-usuario" id="menu-mobile-usuario">
+            <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
             <nav class="d-flex">
                 <a href="">DashBoard</a>
                 <a href="">Insumos</a>
@@ -19,8 +22,24 @@
                 <a href="">Sair</a>
             </nav>
         </header>
+
+        <!-- Main -->
         <main class="main-usuario">
-            <section class="card-branco d-flex align-center space-between">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>Maria</p>
+                        <p>Doce Vita</p>
+                    </div>
+                </div>
+            </section>
+            <section class="card-branco-sem-fundo d-flex align-center space-between">
                 <h1>Olá, Maria</h1>
                 <div class="modo">
                     <p class="espaco">Alterar Tema</p>
@@ -33,46 +52,69 @@
                     </div>
                 </div>
             </section>
-            <section class="card-branco d-flex align-center space-around">
-                <img src="../static/img/imagem-perfil.png" alt="Foto do usuário" class="img-card-branco">
-                <div class="d-flex flex-column info-usuario">
-                    <p>Nome: <span>Maria da Silva</span></p>
-                    <p>Email: <span>Mariadasilva@gmail.com</span></p>
-                    <p>Tipo de Negócio: <span>Confeitaria</span></p>
-                    <p>Nome do Negócio: <span>Doce Vita</span></p>
-                    <p>Telefone: <span>(18) 99234-2371</span></p>
+            <section class="card-edicao card-branco-sem-fundo d-flex align-center space-around">
+                <div class="d-flex align-center space-around imagem-info">
+                    <img src="../static/img/imagem-perfil.png" alt="Foto do usuário" class="img-card-branco">
+                    <div class="d-flex flex-column info-usuario">
+                        <div class="d-flex info-linha">
+                            <p class="bold">Nome:</p>
+                            <p>Maria da Silva</p>
+                        </div>
+
+                        <div class="d-flex info-linha">
+                            <p class="bold">Email:</p>
+                            <p>Mariadasilva@gmail.com</p>
+                        </div>
+
+                        <div class="d-flex info-linha">
+                            <p class="bold">Tipo de Negócio:</p>
+                            <p>Confeitaria</p>
+                        </div>
+
+                        <div class="d-flex info-linha">
+                            <p class="bold">Nome do Negócio:</p>
+                            <p>Doce Vita</p>
+                        </div>
+
+                        <div class="d-flex info-linha">
+                            <p class="bold">Telefone:</p>
+                            <p>(18) 99234-2371</p>
+                        </div>
+                    </div>
                 </div>
                 <a href="" class="bnt-claroDQ">Editar Perfil</a>
             </section>
         </main>
     </div>
-    
+
     <!-- Footer -->
     <footer>
         <div class="info-footer">
             <div class="logo-footer">
-                <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP">          <!--imagem-->
+                <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
                 <nav>
-                    <a href="/">Inicio</a>                                                    <!-- Link da rota -->
-                    <a href="#sobre">Sobre Nós</a>                                            <!-- Link da rota -->
-                    <a href="#funcionalidades">Funcionalidade</a>                             <!-- Link da rota -->
-                    <a href="/conta">Conta</a>                                                <!--Link da rota-->                               
+                    <a href="/">Inicio</a> <!-- Link da rota -->
+                    <a href="#sobre">Sobre Nós</a> <!-- Link da rota -->
+                    <a href="#funcionalidades">Funcionalidade</a> <!-- Link da rota -->
+                    <a href="/conta">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">
             <div>
                 <div class="contato" style="margin: 0;">
-                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp">        <!--imagem-->
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp"> <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>
                 <div class="contato" style="margin: 0;">
-                    <img src="../static/img/E-mail Ícone.png" alt="Email">           <!--imagem-->
+                    <img src="../static/img/E-mail Ícone.png" alt="Email"> <!--imagem-->
                     <p>contato@upmais.com.br</p>
                 </div>
             </div>
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="../static/js/script.js"></script>
     </footer>
 </body>
+
 </html>

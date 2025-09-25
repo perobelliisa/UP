@@ -42,6 +42,10 @@
 /* =====================
    CLASSES PADRÕES
 ===================== */
+.mobile {
+    display: none;
+}
+
 .d-flex {
     display: flex;
 }
@@ -60,6 +64,10 @@
 
 .flex-column {
     flex-direction: column;
+}
+
+.bold {
+    font-weight: var(--bold);
 }
 
 html,
@@ -173,7 +181,8 @@ body {
 
 .form-duplo {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    width: 530px;
 }
 
 /* Card genérico para formulários */
@@ -490,8 +499,9 @@ hr {
 /* Cadastro Pessoal */
 .cadastro_pessoal {
     width: 715px;
-    height: 750px;
+    height: auto;
     margin: 40px auto;
+    padding: 3vw 4vw;
 }
 
 /* Main Cadastro */
@@ -517,6 +527,7 @@ footer hr {
     padding: 40px 20px;
     height: 60px;
 }
+
 
 .info-footer nav a {
     margin: 0 15px;
@@ -583,6 +594,32 @@ footer .contato p {
     color: var(--claro-hover);
 }
 
+.input-senha {
+    align-items: center;
+    height: 46px;
+}
+
+.input-senha input {
+    position: relative;
+    left: -9%;
+    top: -1%;
+    height: 40px;
+    width: 161px;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 18px;
+    font-weight: var(--regular);
+    color: var(--claro-texto);
+    padding: 0 20px;
+    border: none;
+}
+
+/*Perguntar para o Igor como esconder o input quando clica e se tem como a borda da div ficar tipo os outros inputs*/
+
+.input-senha img {
+    height: 25px;
+    margin-left: -1vw;
+}
+
 
 .codigo-verificacao {
     margin-top: 150px;
@@ -625,10 +662,43 @@ nav a:hover {
    PÁGINA USUÁRIO
 ===================== */
 
+.menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+.menu-toggle div {
+      width: 10vw;
+      height: 1.7vw;
+      background: var(--claro-botoes);
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+.topo-usuario {
+    padding: 4vw 8vw;
+    align-items: center;
+    background-color: var(--claro-cartoes);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topo-usuario img {
+    width: 57px;
+}
+
+.perfil-usuario {
+    gap: 15px;
+    align-items: center;
+    font-weight: var(--semi-bold);
+    font-size: 16px;
+}
+
 .header-usuario {
     background-color: var(--claro-menu);
     flex-direction: column;
     width: 16vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-usuario img {
@@ -666,9 +736,10 @@ nav a:hover {
     border-radius: var(--card-arredondamento);
     padding: 3vw 4vw;
     width: 1054px;
+    box-shadow: 0px 4px 4px var(--geral-erro);
 }
 
-.card-branco h1 {
+.titulo-secao {
     font-family: var(--titulo-fonte);
     font-size: 45px;
 }
@@ -693,22 +764,23 @@ nav a:hover {
 }
 
 .cards {
-    width: 1169px;
+    width: 60vw;
     margin: 0 auto;
 }
 
 .card {
     background-color: var(--claro-cartoes);
     border-radius: var(--card-arredondamento);
-    padding: 3vw 4vw;
+    padding: 2vw;
     text-align: center;
 }
 
 .card h3 {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: var(--bold);
     font-family: var(--titulo-fonte);
     margin-bottom: 10px;
+    max-width: 40vw;
 }
 
 .card p {
@@ -749,8 +821,8 @@ nav a:hover {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 4vw;  
+    height: 2vw;
 }
 
 .switch input {
@@ -767,44 +839,33 @@ nav a:hover {
     right: 0;
     bottom: 0;
     background-color: var(--claro-botoes);
-    -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 2vw;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 1.5vw;     
+    width: 1.5vw;
+    left: 0.25vw;      
+    bottom: 0.25vw;
     background-color: var(--claro-menu);
-    -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 50%;
 }
 
-input:checked+.slider {
+input:checked + .slider {
     background-color: var(--claro-menu);
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px var(--claro-menu);
+input:focus + .slider {
+    box-shadow: 0 0 0.5vw var(--claro-menu);
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked + .slider:before {
+    transform: translateX(2vw);
     background-color: var(--claro-botoes);
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
 }
 
 .info-usuario {
@@ -855,19 +916,19 @@ input:checked+.slider:before {
 
 
 .cards {
-    width: 1169px;
+    width: 70vw;
     margin: 0 auto;
 }
 
 .card {
     background-color: var(--claro-cartoes);
     border-radius: var(--card-arredondamento);
-    padding: 3vw 4vw;
+    padding: 2vw;
     text-align: center;
 }
 
 .card h3 {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: var(--bold);
     font-family: var(--titulo-fonte);
     margin-bottom: 10px;
@@ -891,12 +952,27 @@ input:checked+.slider:before {
     font-size: 22px;
     font-weight: var(--semi-bold);
     cursor: pointer;
-    min-width: 208px;
     text-align: center;
 }
 
 .bnt-claroDQ:hover {
     background-color: var(--claro-hover);
+}
+
+.card-branco-sem-fundo {
+    margin: 4vw auto;
+    background-color: var(--claro-cartoes);
+    border-radius: var(--card-arredondamento);
+    padding: 3vw 4vw;
+    width: 60vw;
+}
+
+.info-linha {
+    gap: 1vw;
+}
+
+.info-linha p {
+    font-size: 20px;
 }
 
 /* =====================
@@ -985,7 +1061,7 @@ input:checked+.slider:before {
 ===================== */
 .card-produto {
     max-width: 50vw;
-    padding: 40px  20px;
+    padding: 40px 20px;
 }
 
 .card-produto a {
@@ -995,17 +1071,17 @@ input:checked+.slider:before {
 }
 
 .fundo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .absolute {
@@ -1014,6 +1090,7 @@ input:checked+.slider:before {
     left: 31%;
     box-shadow: var(--claro-hover) 0px 4px 7px;
 }
+
 .absolute img {
     padding-left: 20px;
     position: absolute;
@@ -1031,7 +1108,7 @@ input:checked+.slider:before {
     gap: 20px;
     height: 35px;
     align-items: center;
-    
+
 }
 
 .ingrediente input[type="number"] {
@@ -1206,3 +1283,4 @@ select.input:focus {
 .none {
     display: none;
 }
+

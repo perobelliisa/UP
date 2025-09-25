@@ -1,206 +1,797 @@
+/* 4K */
 @media (min-width: 2559px) {
     .header-home {
         padding: 40px;
     }
+
     .header-home img {
-    height: 72px;
+        height: 72px;
+    }
+
+    .header-home nav a {
+        font-size: 40px;
+    }
+
+    .banner h1 {
+        font-size: 70px;
+
+    }
+
+    .banner h3 {
+        font-size: 35px;
+    }
+
+    .bnt-claroD {
+        font-size: 35px;
+    }
+
+    .sobre {
+        padding: 150px 60px;
+        height: 950px;
+    }
+
+    .sobre h3 {
+        font-size: 35px;
+    }
+
+    .icones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 160px;
+        margin-bottom: 100px;
+    }
+
+    .icone-texto {
+        width: 560px;
+        height: 580px;
+    }
+
+    .icone-texto p {
+        font-size: 30px;
+    }
+
+    .icone-texto img {
+        width: 221px;
+        height: 221px;
+    }
+
+    hr {
+        height: 39px;
+    }
+
+    .funcionalidades {
+        padding: 330px 20px;
+        text-align: center;
+        height: 650px;
+    }
+
+    .funcionalidades h3 {
+        font-size: 45px;
+    }
+
+    .icone-redondo {
+        width: 400px;
+        height: 410px;
+    }
+
+    .icone-redondo p {
+        font-size: 32px;
+    }
+
+    .depoimentos {
+        padding: 350px 20px;
+    }
+
+    .depoimentos h3 {
+        font-size: 45px;
+    }
+
+    .icone-retangulo {
+        width: 800px;
+        height: 230px;
+    }
+
+    .icone-retangulo p {
+        font-size: 32px;
+    }
+
+    .icone-retangulo .p-depoimento {
+        font-size: 27px;
+    }
+
+    .icone-retangulo img {
+        width: 150px;
+        height: 150px;
+        padding: 80px 20px;
+    }
+
+    .box-faq {
+        width: 1300px;
+        margin: 0 auto 22px auto;
+        gap: 50px;
+        padding-bottom: 14px;
+        border-bottom: var(--claro-hover) 8px solid;
+    }
+
+    .box-faq p {
+        font-size: 35px;
+    }
+
+    .box-faq img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .box-faq p {
+        font-size: 30px;
+        padding: 120px 40px;
+    }
+
+    .contatos {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 1200px;
+        margin-left: 140px;
+    }
+
+    .contato {
+        margin-left: 40px;
+        gap: 25px;
+    }
+
+    .contato p {
+        font-size: 45px;
+    }
+
+    .mapa iframe {
+        margin-left: 40px;
+        width: 900px;
+        height: 500px;
+    }
+
+    .FaleConosco h2 {
+        margin-bottom: 25px;
+    }
+
+    /* Cadastro Pessoal */
+    .cadastro_pessoal {
+        width: 715px;
+        height: 750px;
+        margin: 40px auto;
+    }
+
+    .formnovo {
+        padding: 20px;
+        height: 650px;
+    }
+
+    .formnovo input {
+        width: 65px;
+        height: 75px;
+    }
+
+    .formnovo label {
+        font-size: 50px;
+    }
+
+    footer hr {
+        height: 1px;
+        background-color: var(--claro-texto);
+    }
+
+    .info-footer {
+        display: flex;
+        gap: 5vw;
+        padding: 40px 20px;
+        height: 60px;
+    }
+
+    .info-footer nav a {
+        margin: 0 15px;
+        color: var(--claro-texto);
+        font-weight: var(--semi-bold);
+        font-size: 22px;
+    }
+
+    .logo-footer {
+        gap: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 20px;
+    }
+
+    .linha-vertical {
+        width: 1px;
+        height: 80px;
+        background-color: #000;
+        border: none;
+    }
+
+    .copy {
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .header-usuario nav {
+        gap: 1vw;
+        padding-bottom: 2vw;
+    }
+
+    .header-usuario img {
+        width: 10vw;
+        padding: 2vw;
+    }
+
+    .header-usuario nav a {
+        font-size: 40px;
+        padding-left: 2vw;
+    }
+
+    .titulo-secao{
+        font-size: 70px;
+    }
+
+    .main-usuario label {
+        font-size: 35px;
+    }
+
+    .input {
+        height: 3vw;
+        width: 35vw;
+        font-size: 35px;
+    }
+
+    .input-pequeno {
+        width: 16vw;
+    }
+
+    .form-duplo {
+        width: 35vw;
+    }
+
+    .campo a {
+        font-size: 35px;
+    }
+
+    .range-box {
+        width: 35vw;
+    }
+
+    .range-header {
+        font-size: 35px;
+        width: 35vw;
+    }
+
+    .range-box span {
+        font-size: 35px;
+    }
+
+    #valor {
+        font-size: 35px;
+    }
+
+    /*Perguntar para o Igor como aumenta essa barra da range*/
+
+    .cadastro_pessoal {
+        width: 50vw;
+        height: 70vh;
+        margin: 40px auto;
+    }
+
+    .form label {
+        font-size: 35px;
+    }
+
+    .input-senha img {
+        height: 40px;
+    }
+
+    .input-senha input {
+        font-size: 35px;
+        height: 2.6vw;
+        width: 12vw;
+        top: 4%;
+        left: -5%;
+
+    }
+
+    .card-branco-sem-fundo h1 {
+        font-size: 50px;
+    }
+
+    .card-branco-sem-fundo p {
+        font-size: 30px;
+    }
+
+    .modo {
+        width: 15vw;
+    }
+
+    .switch {
+        width: 4.5vw;
+        height: 2.1vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(2.5vw);
+    }
+
+    .imagem-info {
+        gap: 5vw;
+    }
+
+    .info-usuario {
+        width: 25vw;
+    }
+
+    .info-linha p {
+        font-size: 35px;
+    }
+
+    .bnt-claroDQ {
+        font-size: 32px;
+        padding: 30px 100px;
+    }
 }
-.header-home nav a {
-    font-size: 40px;
-}
-.banner h1 {
-    font-size: 70px;
+
+/* Laptop */
+@media (max-width: 1025px) {
+    .header-home {
+        padding-left: 20px;
+    }
+
+    .header-usuario {
+        width: 18vw;
+    }
+
+    .card-produto {
+        max-width: 60vw;
+    }
+
+    .campo {
+        width: 50vw;
+    }
+
+    .input {
+        width: 50vw;
+    }
+
+    .input-pequeno {
+        width: 23vw;
+    }
+
+    .form-duplo {
+        width: 50vw;
+        gap: 4vw;
+    }
+
+    .range-header {
+        width: 100%;
+    }
+
+    .input-senha input {
+        font-size: 35px;
+        width: 14.2vw;
+    }
+
+    .card-branco-sem-fundo {
+        width: 70vw;
+        padding: 3vw 2vw;
+    }
+
+    .card-branco-sem-fundo img {
+        width: 16vw;
+        height: 16vw;
+    }
+
+    .bnt-claroDQ {
+        padding: 2vw 1vw;
+        margin: 0 auto;
+    }
+
+    .info-usuario {
+        width: 30vw;
+    }
+
+    .card-edicao {
+        align-items: center;
+        gap: 5vw;
+    }
+
+    .imagem-info {
+        gap: 2vw;
+    }
+    
+
+    footer {
+        display: none;
+    }
+
 
 }
-.banner h3 {
-    font-size: 35px;
-}
-.bnt-claroD {
-    font-size: 35px;
+
+/* Tablet */
+@media (max-width: 769px) {
+    .header-usuario {
+        width: 22vw;
+    }
+
+    .header-usuario img {
+        width: 11vw;
+        padding: 3vw 2vw;
+    }
+
+    .header-usuario nav a {
+        font-size: 18px;
+        padding-left: 2vw;
+    }
+
+    .titulo-secao {
+        font-size: 30px;
+    }
+
+    .main-usuario label {
+        font-size: 18px;
+    }
+
+    .campo {
+        width: 54vw;
+    }
+
+    .input {
+        height: 5vw;
+        width: 54vw;
+        font-size: 18px;
+    }
+
+    .input-pequeno {
+        width: 26vw;
+    }
+
+    .form-duplo {
+        width: 54vw;
+        gap: 2vw;
+    }
+
+    .bnt-claroD {
+        font-size: 18px;
+        padding: 15px 100px;
+    }
+
+
+    .info-footer {
+        height: auto;
+
+    }
+
+    .info-footer nav {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .info-footer nav a {
+        font-size: 18px;
+    }
+
+    .info-footer hr {
+        height: 140px;
+    }
+
+    .contato {
+        margin-top: 20px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .cadastro_pessoal {
+        width: 60vw;
+        height: auto;
+    }
+
+    .input-senha input {
+        font-size: 18px;
+        top: 1%;
+        height: 4.5vw;
+    }
+
+    .input-senha img {
+        height: 22px;
+    }
+
+    .card-branco-sem-fundo {
+        width: 65vw;
+        padding: 4vw 3vw;
+    }
+
+    .card-edicao {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-usuario {
+        width: 40vw;
+    }
+
+    .bnt-claroDQ {
+        display: block;
+    }
+
+    .switch {
+        width: 6vw;
+        height: 3vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(3vw);
+    }
+
+    .slider:before {
+        height: 2.3vw;     
+        width: 2.3vw;
+        left: 0.25vw;      
+        bottom: 0.40vw;
+    }
+
 }
 
-.sobre {
-    padding: 150px 60px;
-    height: 950px;
-}
-.sobre h3 {
-    font-size: 35px;
-}
-.icones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 160px;
-    margin-bottom: 100px;
-}
-.icone-texto {
-    width: 560px;
-    height: 580px;
-}
-.icone-texto p {
-    font-size: 30px;
-}
-.icone-texto img {
-    width: 221px;
-    height: 221px;
+/* Mobile */
+@media (max-width: 426px) {
+    .mobile {
+        display: flex;
+    }
+    
+    .header-usuario {
+        display: none;
+        background-color: var(--claro-cartoes);
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-toggle {
+        display: flex
+    }
+
+    .main-usuario {
+        width: 100vw;
+    }
+
+    .card-produto {
+        max-width: 70vw;
+    }
+
+    .titulo-secao {
+        font-size: 27px;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .form {
+        margin-top: 10vw;
+    }
+
+    .campo {
+        width: 60vw;
+    }
+
+    .campo label {
+        font-size: 16px;
+    }
+
+    .input {
+        height: 10vw;
+        width: 60vw;
+        font-size: 16px;
+    }
+
+    .form-duplo {
+        width: 60vw;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .bnt-claroD {
+        font-size: 18px;
+        padding: 12px 80px;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .header-usuario {
+        position: absolute;
+        height: 100%;
+        /*Perguntar para o Igor se temos que ajustar a altura para cada página ou se tem um jeito mais fácil*/
+        width: 50vw;
+        top: 17%;
+        background-color: var(--claro-cartoes);
+    }
+
+    .header-usuario nav a {
+        font-size: 27px;
+        padding-left: 5vw;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .header-home {
+        display: none;
+        position: absolute;
+        top: 13%;
+        left: 43%;
+        width: 50vw;
+        justify-content: start;
+        box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-home nav {
+        display: flex;
+        gap: 10vw;
+        flex-direction: column;
+        padding-bottom: 10vw;
+    }
+
+    .header-home nav a {
+        font-size: 27px;
+    }
+
+    .input-senha input {
+        font-size: 16px;
+        width: 35vw;
+        height: 9vw;
+        top: 0%;
+        left: -9%;
+    }
+
+    .cadastro_pessoal {
+        padding: 8vw 4vw;
+    }
+
+    .form button {
+        margin-top: 0vw;
+        padding: 12px 60px;
+    }
+
+    .card-branco-sem-fundo {
+        width: 80vw;
+        padding: 6vw 4vw;
+    }
+
+    .card-branco-sem-fundo p {
+        font-size: 20px;
+    }
+
+    .switch {
+        width: 14vw;
+        height: 7vw;
+    }
+
+    .slider {
+        border-radius: 7vw;
+    }
+
+    .slider:before {
+        height: 5vw;     
+        width: 5vw;
+        left: 0.60vw;      
+        bottom: 0.70vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(7.5vw);
+    }
+
+    .info-usuario {
+        font-size: 20px;
+        flex-direction: column;
+        gap: 5vw;
+        width: 70vw;
+        align-items: start;
+    }
+
+    .card-edicao {
+        flex-direction: column;
+        align-items: center;
+        gap: 10vw;
+    }
+
+    .card-edicao img {
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .imagem-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 5vw;
+    }
+
+    .info-linha {
+        flex-direction: column;
+        gap: 1vw;
+    }
+
+
 }
 
-hr {
-    height: 39px;
+/* Mobile M */
+@media (max-width: 376px) {
+    .cadastro_pessoal {
+        width: 80vw;
+    }
+
+    .campo {
+        width: 70vw;
+    }
+
+    .input {
+        width: 70vw;
+    }
+
+    .form-duplo {
+        width: 70vw;
+    }
+
+    .input-senha input {
+        width: 43vw;
+    }
+
+    .header-home {
+        width: 60vw;
+        top: 12%;
+        left: 32%;
+    }
+
+    .header-usuario {
+        width: 60vw;
+        top: 16%;
+    }
+
+    .modo {
+        width: 32vw;
+    }
 }
 
-.funcionalidades {
-    padding: 330px 20px;
-    text-align: center;
-    height: 650px;
-}
-.funcionalidades h3 {
-    font-size: 45px;
-}
-.icone-redondo {
-    width: 400px;
-    height: 410px;
-}
-.icone-redondo p {
-    font-size: 32px;
-}
+/* Mobile S */
+@media (max-width: 321px) {
+    .input-senha input {
+        width: 40vw;
+        height: 8vw;
+    }
 
-.depoimentos {
-    padding: 350px 20px;
-}
-.depoimentos h3 {
-    font-size: 45px;
-}
-.icone-retangulo {
-    width: 800px;
-    height: 230px;
-}
-.icone-retangulo p {
-    font-size: 32px;
-}
-.icone-retangulo .p-depoimento {
-    font-size: 27px;
-}
-.icone-retangulo img {
-    width: 150px;
-    height: 150px;
-}
--------------------------------------------------------------------------------------------------------------------------
+    .header-home {
+        width: 65vw;
+        top: 11%;
+        left: 25%;
+    }
 
-.faq {
-    padding: 80px 20px;
-}
+    .header-usuario {
+        width: 65vw;
+        top: 16%;
+    }
 
-.box-faq {
-    width: 1300px;
-    margin: 0 auto 22px auto;
-    gap: 50px;
-    padding-bottom: 14px;
-    border-bottom: var(--claro-hover) 8px solid;
-}
-.box-faq p {
-    font-size:35px;
-}
-.box-faq img {
-    width: 30px;
-    height: 30px;
-}
+    .card-branco-sem-fundo h1 {
+        font-size: 40px;
+    }
 
-.box-faq p {
-    font-size: 30px;
-}
----------------------------------------------------------------------------------------------------------------------------
-main .info {
-    padding: 120px 40px;
-}
+    .slider:before {
+        bottom: 0.80vw;
+    }
 
-.contatos {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 1200px;
-    margin-left: 140px;
-}
-.contato {
-    margin-left:40px;
-    gap: 25px;
-}
-.contato p {
-    font-size: 45px;
-}
-.mapa iframe {
-    margin-left:40px;
-    width: 900px;
-    height: 500px;
-}
-----------------------------------------------------------------------------------------------------------------------------------
-.FaleConosco {
-    width: 728px;
-    height: 862px;
-}
-.FaleConosco h2 {
-    margin-bottom: 25px;
-}
+    .modo div {
+        flex-direction: column-reverse;
+        gap: 2vw;
+    }
 
-/* Cadastro Pessoal */
-.cadastro_pessoal {
-    width: 715px;
-    height: 750px;
-    margin: 40px auto;
-}
+    /* Perguntar para o Igor o que ele acha desse switch*/
 
-.formnovo{
-    padding: 20px;
-    height: 650px;
-}
 
-.formnovo input{
-    width: 65px;
-    height: 75px;
 }
-
-.formnovo label{
-    font-size: 50px;
-}
----------------------------------------------------------------------------------------------------------------------------
-
-footer{
-    margin-top:1222px;
-}
-
-footer hr {
-    height: 1px;
-    background-color: var(--claro-texto);
-}
-.info-footer {
-    display: flex;
-    gap: 5vw;
-    padding: 40px 20px;
-    height: 60px;
-}
-.info-footer nav a {
-    margin: 0 15px;
-    color: var(--claro-texto);
-    font-weight: var(--semi-bold);
-    font-size: 22px;
-}
-.logo-footer {
-    gap: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-footer .contato p {
-    font-weight: var(--regular);
-    font-size: 20px;
-}
-.linha-vertical {
-    width: 1px;
-    height: 80px;
-    background-color: #000;  
-    border: none;    
-}
-.copy {
-    text-align: center;
-    padding-bottom: 5px;
-}}

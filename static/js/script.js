@@ -36,4 +36,23 @@ function mostrarQuantidade(id) {
     }
 }
 
+// Script para mostrar/ocultar menu mobile
+function mostrarMenu(id) {
+    if (document.getElementById(id).style.display === 'flex') {
+        document.getElementById(id).style.display = 'none';
+    }
+    else {
+        document.getElementById(id).style.display = 'flex';
+    }
+}
+
+// Script para mostrar/ocultar senha
+function mostrarSenha(id) {
+    if (document.getElementById(id).type === 'password') {
+        document.getElementById(id).type = 'text';
+    }
+    else {
+        document.getElementById(id).type = 'password';
+    }
+}
 
