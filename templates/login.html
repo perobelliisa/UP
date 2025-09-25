@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <title>Cadastro Pessoal</title>
+    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <title>Login</title>
 </head>
 
 <body>
-    <!-- Header -->
+        <!-- Header -->
     <header class="header-home" id="menu-mobile-home">
         <img class="desktop" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
         <nav>
@@ -21,29 +22,41 @@
     </header>
 
     <!-- Main -->
-    <main class="main-cadastro">
-        <section class="login card-form">
-            <h1 class="titulo-secao">Login</h1>
-            <form class="form" action=""> <!--Link da rota-->
-                <div>
-                    <label>Email</label>
-                    <input class="input" type="text" id="login" name="login" required>
-                </div>
-                <div>
-                    <label>Senha</label>
-                    <input class="input" type="password" id="senha" name="senha" required>
-                </div>
-                <button class="bnt-claroD btn-largo" type="submit">Entrar</button>
-            </form>
-            <div class="opcoes-login">
-                <div>
-                    <p>Não possui uma conta?
-                        <a href="">Cadastre-se</a>
-                    </p>
-                </div> <!--Link da rota-->
-                <a href="">Esqueci minha senha</a> <!--Link da rota-->
+    <main>
+        <section class="space-between topo-usuario mobile">
+            <img src="../static/img/logo2.png" alt="Logo da UP+">
+            <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-home')">
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </section>
+        <div class="main-cadastro">
+            <section class="login card-form">
+                <h1 class="titulo-secao">Login</h1>
+                <form class="form" action=""> <!--Link da rota-->
+                    <div class="d-flex campo">
+                        <label>Email</label>
+                        <input class="input" type="text" id="login" name="login" required>
+                    </div>
+                    <div class="d-flex campo">
+                            <label>Senha</label>
+                            <div class="input d-flex input-senha-grande">
+                                <input type="password" id="senha" name="senha" required>
+                                <img src="../static/img/olho.png" alt="Mostrar Senha" onclick="mostrarSenha('senha')">
+                                <!--imagem-->
+                            </div>
+                    </div>
+                    <button class="bnt-claroD btn-largo" type="submit"><a href="../templates/index.html">Entrar</a></button>
+                </form>
+                <div class="opcoes-login">
+                    <div>
+                        <p>Não possui uma conta?</p>
+                        <a href="../templates/cadastro_pessoal.html">Cadastre-se</a>
+                    </div> <!--Link da rota-->
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->

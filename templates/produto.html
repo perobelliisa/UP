@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto</title>
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
 </head>
 
 <body>
@@ -24,21 +25,35 @@
             </nav>
         </header>
 
-        <!-- MAIN -->
+        <!-- Main -->
         <main class="main-usuario">
-            <section class="card-branco" style="max-width: 70vw;">
-                <div class="d-flex space-between">
-                    <h1>Produto</h1>
-                    <button class="btn-adicionar">+ Adicionar Novo Produto</button>
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>Maria</p>
+                        <p>Doce Vita</p>
+                    </div>
                 </div>
             </section>
-            <section class="card-branco" style="max-width: 70vw; padding-top: 10px;">
+            <section class="card-branco-sem-fundo">
+                <div class="d-flex space-between insumo">
+                    <h1>Produto</h1>
+                    <button class="btn-adicionar"><a href="../templates/cad_Produto.html">+ Adicionar Novo Produto</a></button>
+                </div>
+            </section>
+            <section class="card-branco-sem-fundo desktop">
                 <div class="tabela-insumos d-flex flex-column">
                     <h2>Lista de Produtos Cadastrados</h2>
                     <table>
                         <thead>
                             <tr>
-                                <th style="text-align: left;">Nome</th>
+                                <th>Nome</th>
                                 <th>Categoria</th>
                                 <th>Custo</th>
                                 <th>Preço</th>
@@ -48,103 +63,127 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="text-align: left;">Brownie Tradicional</td>
+                                <td>Brownie Tradicional</td>
                                 <td>Doces</td>
                                 <td>R$2,00</td>
                                 <td>R$5,00</td>
                                 <td>R$3,00</td>
-                                <td>
-                                    <button class="btn-edit">Edit</button>
-                                    <button class="btn-del">Del</button>
+                                <td class="d-flex space-around botao">
+                                    <a href="../templates/editar_Produto.html" class="btn-edit">Edit</a>
+                                    <form action="" method="">
+                                        <button type="submit" class="btn-del">Del</button>
+                                    </form>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">Brownie com Ninho</td>
+                                <td>Brownie com Ninho</td>
                                 <td>Doces</td>
                                 <td>R$2,50</td>
                                 <td>R$7,00</td>
                                 <td>R$4,50</td>
-                                <td>
-                                    <button class="btn-edit">Edit</button>
-                                    <button class="btn-del">Del</button>
+                                <td class="d-flex space-around botao">
+                                    <a href="../templates/editar_Produto.html" class="btn-edit">Edit</a>
+                                    <form action="" method="">
+                                        <button type="submit" class="btn-del">Del</button>
+                                    </form>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">Pão de Mel</td>
+                                <td>Pão de Mel</td>
                                 <td>Doces</td>
                                 <td>R$1,80</td>
                                 <td>R$6,00</td>
                                 <td>R$4,20</td>
-                                <td>
-                                    <button class="btn-edit">Edit</button>
-                                    <button class="btn-del">Del</button>
+                                <td class="d-flex space-around botao">
+                                    <a href="../templates/editar_Produto.html" class="btn-edit">Edit</a>
+                                    <form action="" method="">
+                                        <button type="submit" class="btn-del">Del</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
-            <section>
-                <h2>Lista de Produtos Cadastrados</h2>
-                <div>
-                    <div>
-                        <div>
-                            <p>Brownie Tradicional</p>
+            <section class="mobile insumos">
+                <h2 class="h2">Lista de Produtos Cadastrados</h2>
+                <div class="d-flex cards-mobile">
+                    <div class="card-insumo">
+                        <div class="d-flex space-between align-center">
+                            <p class="card-insumo-titulo">Brownie Tradicional</p>
                             <p>R$5,00</p>
                         </div>
-                        <div>
+                        <div class="d-flex card-insumo-imagem">
                             <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
                             <p>Doces</p>
                         </div>
-                        <div>
-                            <div>
+                        <div class="d-flex card-insumo-imagem">
+                            <div class="d-flex card-insumo-imagem">
                                 <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
                                 <p>R$3,00</p>
                             </div>
-                            <div>
+                            <div class="d-flex card-insumo-imagem">
                                 <img src="../static/img/icone-custo.png" alt="Ícone custo">
                                 <p>R$2,00</p>
                             </div>
                         </div>
+                        <div class="d-flex botao-mobile">
+                            <a href="../templates/editar_Produto.html" class="btn-edit">Editar</a>
+                            <form action="" method="">
+                                <button type="submit" class="btn-del">Deletar</button>
+                            </form>
+                        </div>
                     </div>
-                    <div>
-                        <div>
-                            <p>Brownie com Ninho</p>
+                    <div class="card-insumo">
+                        <div class="d-flex space-between align-center">
+                            <p class="card-insumo-titulo">Brownie com Ninho</p>
                             <p>R$7,00</p>
                         </div>
-                        <div>
+                        <div class="d-flex card-insumo-imagem">
                             <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
                             <p>Doces</p>
                         </div>
-                        <div>
-                            <div>
+                        <div class="d-flex card-insumo-imagem">
+                            <div class="d-flex card-insumo-imagem">
                                 <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
                                 <p>R$2,50</p>
                             </div>
-                            <div>
+                            <div class="d-flex card-insumo-imagem">
                                 <img src="../static/img/icone-custo.png" alt="Ícone custo">
                                 <p>R$4,50</p>
                             </div>
                         </div>
+                        <div class="d-flex botao-mobile">
+                            <a href="../templates/editar_Produto.html" class="btn-edit">Editar</a>
+                            <form action="" method="">
+                                <button type="submit" class="btn-del">Deletar</button>
+                            </form>
+                        </div>
                     </div>
-                    <div>
-                        <div>
-                            <p>Pão de Mel</p>
+                    <div class="card-insumo">
+                        <div class="d-flex space-between align-center">
+                            <p class="card-insumo-titulo">Pão de Mel</p>
                             <p>R$6,00</p>
                         </div>
-                        <div>
+                        <div class="d-flex card-insumo-imagem">
                             <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
                             <p>Doces</p>
                         </div>
-                        <div>
-                            <div>
+                        <div class="d-flex card-insumo-imagem">
+                            <div class="d-flex card-insumo-imagem">
                                 <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
                                 <p>R$1,80</p>
                             </div>
-                            <div>
+                            <div class="d-flex card-insumo-imagem">
                                 <img src="../static/img/icone-custo.png" alt="Ícone custo">
                                 <p>R$4,20</p>
                             </div>
+                        </div>
+                        <div class="d-flex botao-mobile">
+                            <a href="../templates/editar_Produto.html" class="btn-edit">Editar</a>
+                            <form action="" method="">
+                                <button type="submit" class="btn-del">Deletar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

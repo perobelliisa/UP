@@ -31,38 +31,48 @@
                 <div></div>
             </div>
         </section>
-        <section class="cadastro_pessoal card-form">
-            <h1 class="titulo-secao">Cadastro Empresa</h1>
-            <form class="form" action=""> <!--Link da rota-->
-                <div class="d-flex campo">
-                    <label>Nome da Empresa</label>
-                    <input class="input" type="text" id="nomeEmp" name="nomeEmp" required>
+        <div class="main-cadastro">
+            <section class="space-between topo-usuario mobile">
+                <img src="../static/img/logo2.png" alt="Logo da UP+">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-home')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
-                <div class="d-flex campo">
-                    <label>Endereço</label>
-                    <input class="input" type="text" id="endereco" name="endereco" required>
-                </div>
-                <div class="d-flex campo">
-                    <label>CNPJ</label>
-                    <input class="input" type="text" id="cnpj" name="cnpj" required pattern="\d{14}" maxlength="14">
-                </div>
-                <div class="d-flex campo">
-                    <label>Tipo</label>
-                    <input class="input" type="text" id="tipo" name="tipo" required>
-                </div>
-                <div class="form-duplo">
+            </section>
+            <section class="cadastro_pessoal card-form">
+                <h1 class="titulo-secao">Cadastro Empresa</h1>
+                <form class="form" action=""> <!--Link da rota-->
                     <div class="d-flex campo">
-                        <label>Porte da Empresa</label>
-                        <input class="input input-pequeno" type="text" id="porte" name="porte" required>
+                        <label>Nome da Empresa</label>
+                        <input class="input" type="text" id="nomeEmp" name="nomeEmp" required>
                     </div>
                     <div class="d-flex campo">
-                        <label>Valor da Mão de Obra</label>
-                        <input class="input input-pequeno" type="number" id="valor" name="valor" required>
+                        <label>Endereço</label>
+                        <input class="input" type="text" id="endereco" name="endereco" required>
                     </div>
-                </div>
-                <button class="bnt-claroD btn-largo" type="submit"><a href="../templates/login.html">Cadastrar</a></button>
-            </form>
-        </section>
+                    <div class="d-flex campo">
+                        <label>CNPJ</label>
+                        <input class="input" type="text" id="cnpj" name="cnpj" required pattern="\d{14}" maxlength="14">
+                    </div>
+                    <div class="d-flex campo">
+                        <label>Tipo</label>
+                        <input class="input" type="text" id="tipo" name="tipo" required>
+                    </div>
+                    <div class="form-duplo">
+                        <div class="d-flex campo">
+                            <label>Porte da Empresa</label>
+                            <input class="input input-pequeno" type="text" id="porte" name="porte" required>
+                        </div>
+                        <div class="d-flex campo">
+                            <label>Valor da Mão de Obra</label>
+                            <input class="input input-pequeno" type="number" id="valor" name="valor" required>
+                        </div>
+                    </div>
+                    <button class="bnt-claroD btn-largo" type="submit"><a href="../templates/login.html">Cadastrar</a></button>
+                </form>
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->

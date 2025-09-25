@@ -21,6 +21,7 @@
 
     --geral-erro: #D9534F;
     --geral-acerto: #5CB85C;
+    --hover-acerto: #4cae4c;
 
     --linha: #FEDFCD;
     --escuro-linha: #4C2F26;
@@ -159,8 +160,6 @@ body {
 }
 
 .input:focus {
-    border-color: var(--claro-botoes);
-    box-shadow: 0 0 5px rgba(255, 144, 110, 0.6);
     outline: none;
 }
 
@@ -566,7 +565,6 @@ footer .contato p {
 
 .login {
     width: 600px;
-    height: 450px;
     margin: 50px auto;
 
     button {
@@ -577,25 +575,28 @@ footer .contato p {
 .opcoes-login {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-    width: 425px;
-    margin-left: 90px;
+    margin-top: 2vw;
 }
 
 .opcoes-login div {
-    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
 
     p {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: var(--regular);
         color: var(--claro-texto);
+        margin: 0 auto;
     }
 }
 
 .opcoes-login a {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: var(--semi-bold);
     color: var(--claro-hover);
+    margin: 0 auto;
 }
 
 .input-senha {
@@ -607,7 +608,7 @@ footer .contato p {
     position: relative;
     left: -9%;
     top: -1%;
-    height: 40px;
+    height: 46px;
     width: 161px;
     border-radius: var(--botao-arredondamentod);
     font-size: 18px;
@@ -615,6 +616,7 @@ footer .contato p {
     color: var(--claro-texto);
     padding: 0 20px;
     border: none;
+    outline: none;
 }
 
 /*Perguntar para o Igor como esconder o input quando clica e se tem como a borda da div ficar tipo os outros inputs*/
@@ -782,6 +784,10 @@ nav a:hover {
     text-align: center;
 }
 
+.cards-relatorio {
+    margin: 4vw auto;
+}
+
 .card h3 {
     font-size: 30px;
     font-weight: var(--bold);
@@ -881,8 +887,8 @@ input:checked+.slider:before {
 }
 
 .relatorio {
-    width: 455px;
-    height: 410px;
+    width: 30vw;
+    height: 25vw;
     margin-bottom: 4vw;
 }
 
@@ -1023,14 +1029,14 @@ input:checked+.slider:before {
     font-weight: var(--semi-bold);
     padding: 12px;
     border-bottom: 2px solid var(--linha);
-    text-align: center;
+    text-align: left;
 }
 
 .tabela-insumos td {
     font-size: 16px;
     padding: 12px;
     border-bottom: 1px solid var(--linha);
-    text-align: center;
+    text-align: left;
 }
 
 /* Botões da tabela */
@@ -1120,6 +1126,15 @@ input:checked+.slider:before {
 
 }
 
+.ingrediente-un {
+    margin: 0 auto;
+    width: 530px;
+    gap: 20px;
+    height: 35px;
+    align-items: center;
+
+}
+
 .ingrediente input[type="number"] {
     width: 150px;
     height: 30px;
@@ -1192,7 +1207,6 @@ select option:hover {
 }
 
 select.input:focus {
-    border-color: var(--claro-botoes);
     outline: none;
 }
 
@@ -1324,11 +1338,13 @@ select.input:focus {
 
 .card-insumo-imagem {
     gap: 2vw;
+    align-items: center;
+    width: 73vw;
 }
 
 .cards-mobile {
     flex-direction: column;
-    gap: 5vw;
+    gap: 1vw;
     flex-wrap: wrap;
 }
 
@@ -1340,4 +1356,42 @@ select.input:focus {
 .bnt-claroD a {
     color: var(--claro-cartoes);
     font-size: 22px;
+}
+
+.btn-adicionar a {
+    color: var(--claro-cartoes);
+    font-size: 18px;
+}
+
+.btn-edit:hover {
+    background-color: #4cae4c;
+}
+
+.input-senha {
+    align-items: center;
+    height: 46px;
+}
+
+.input-senha-grande {
+    align-items: center;
+}
+
+.input-senha-grande input {
+    position: relative;
+    left: -4%;
+    top: -1%;
+    height: 46px;
+    width: 430px;
+    border-radius: var(--botao-arredondamentod);
+    font-size: 18px;
+    font-weight: var(--regular);
+    color: var(--claro-texto);
+    padding: 0 20px;
+    border: none;
+    outline: none;
+}
+
+.input-senha-grande img {
+    height: 25px;
+    margin-left: -1vw;
 }

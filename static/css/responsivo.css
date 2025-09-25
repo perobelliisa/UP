@@ -458,7 +458,7 @@
     }
 
     .input {
-        height: 4.5vw;
+        height: 5vw;
         width: 52vw;
         font-size: 16px;
     }
@@ -578,7 +578,7 @@
 
     .login.card-form {
         width: 500px;
-        height: 350px;
+        padding: 50px 20px;
     }
 
     .form-button {
@@ -692,9 +692,45 @@
     }
 
     .range-box{
-        width: 385px;
+        width: 54vw;
     }
 
+    .checkbox{
+        width: 20vw;
+        height: 20px;
+    }
+
+    .ingrediente input[type="number"] {
+        width: 15vw;
+        font-size: 14px;
+    }
+
+    .ingrediente select {
+        width: 15vw;
+        font-size: 14px;
+    }
+
+    .input-senha {
+        width: 26vw;
+    }
+
+    .input-senha-grande input {
+        height: 4vw;
+    }
+
+    .cards-relatorio {
+        width: 75vw;;
+    }
+
+    .relatorio {
+        width: 32vw;
+        height: 37vw;
+    }
+
+    .relatorio p {
+        font-size: 20px;
+        max-width: 25vw;
+    }
 
 
 } 
@@ -726,7 +762,7 @@
     }
 
     .titulo-secao {
-        font-size: 27px;
+        font-size: 28px;
         font-family: 'Lato', sans-serif;
     }
 
@@ -899,10 +935,12 @@
         text-align: center;
         width: 80vw;
         margin: 0 auto;
+        margin-bottom: 5vw;
     }
 
     .insumos {
         display: block;
+        margin-top: 10vw;
     }
 
     .card-branco {
@@ -915,7 +953,7 @@
     }
 
     .btn-adicionar {
-        width: 60vw;
+        width: 65vw;
     }
 
     .absolute {
@@ -1030,6 +1068,86 @@
     .add9{
         width: 27px;
         height: 27px;
+    }
+
+    .range-box {
+        width: 60vw;
+    }
+
+    .ingrediente {
+        flex-direction: column;
+        gap: 1vw;
+        width: 60vw;
+        align-items: start;
+    }
+
+    .checkbox {
+        padding: 0px;
+    }
+
+    .ingrediente-un {
+        position: static;
+        gap: 1vw;
+    }
+
+    .ingrediente input[type="number"] {
+        width: 30vw;
+        font-size: 16px;
+    }
+
+    .ingrediente select {
+        width: 30vw;
+        font-size: 16px;
+    }
+
+    .checkbox {
+        width: 50vw;
+    }
+
+    .checkbox input {
+        width: 15px;
+        height: 15px;
+    }
+
+    .login.card-form {
+        width: 80vw;
+    }
+
+    .input-senha-grande input {
+        width: 36vw;
+    }
+
+    .form .bnt-claroD {
+        padding: 12px 40px;
+    }
+
+    .form .bnt-claroD a {
+        font-size: 20px;
+    }
+
+    .opcoes-login {
+        margin-top: 7vw;
+    }
+
+    .cards-relatorio {
+        flex-direction: column;
+        gap: 5vw;
+        margin-bottom: 10vw;
+    }
+
+    .relatorio {
+        width: 55vw;
+        height: 60vw;
+    }
+
+    .relatorio p {
+        max-width: 45vw;
+    }
+
+    .relatorio .bnt-claroDQ {
+        width: 30vw;
+        padding: 3vw 3vw;
+        font-size: 18px;
     }
 }
 
@@ -1151,6 +1269,38 @@
         height: 22px;
     }
 
+    .ingrediente-un input[type="number"] {
+        width: 31vw;
+        font-size: 14px;
+    }
+
+    .ingrediente-un select {
+        width: 31vw;
+        font-size: 14px;
+    }
+
+    .range-box {
+        width: 70vw;
+    }
+
+    .btn-adicionar {
+        width: 70vw;
+    }
+
+    .relatorio {
+        width: 65vw;
+        height: 70vw;
+    }
+
+    .relatorio p {
+        max-width: 60vw;
+    }
+
+    .relatorio .bnt-claroDQ {
+        width: 40vw;
+    }
+
+
 }
 
 /* Mobile S */
@@ -1186,5 +1336,43 @@
 
     /* Perguntar para o Igor o que ele acha desse switch*/
 
+    .ingrediente-un {
+        margin-left: -4vw;
+    }
+
+    .ingrediente-un input[type="number"] {
+        width: 34vw;
+        font-size: 12px;
+    }
+
+    .ingrediente-un select {
+        width: 34vw;
+        font-size: 12px;
+
+    }
+
+    .btn-adicionar {
+        width: 70vw;
+    }
+
+    .btn-adicionar a {
+        font-size: 15px;
+    }
+
+    .campo .input {
+        height: 12vw;
+    }
+
+    .input-senha input {
+        height: 8vw;
+    }
+
+    .relatorio {
+        height: 75vw;
+    }
+
+    .relatorio h3 {
+        font-size: 28px;
+    }
 
 }

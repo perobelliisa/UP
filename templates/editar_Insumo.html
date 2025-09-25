@@ -25,7 +25,21 @@
 
         <!-- Main -->
         <main class="main-usuario">
-            <section class="card-branco" style="max-width: 50vw; padding: 20px;">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>Maria</p>
+                        <p>Doce Vita</p>
+                    </div>
+                </div>
+            </section>
+            <section class="card-branco card-produto">
                 <h1 class="titulo-secao">Edição de Insumo</h1>
                 <form class="form" action=""> <!--Link da rota-->
                     <div class="d-flex campo">
@@ -46,6 +60,7 @@
                             <option value="torta">Açucar</option>
                             <option value="docinho">Farinha</option>
                         </select>
+                        <a href="#" onclick="adicionarCategoria()">Adicionar Categoria</a>
 
                     </div>
 
@@ -67,8 +82,23 @@
 
                         </div>
                     </div>
-                    <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
+                    <button class="bnt-claroD btn-largo" type="submit"><a href="../templates/insumos.html">Editar</a></button>
                 </form>
+            </section>
+            <section class="none fundo" id="adicionarCategoria">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarCategoria()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Adição de Categoria</h1>
+                    <form class="lista-ingredientes">
+                        <div class="d-flex categoria campo">
+                            <label>Nome da Categoria</label>
+                            <input class="input" type="text" id="nomeCategoria" name="nomeCategoria" required>
+                        </div>
+                        <button onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno"
+                            type="submit"><a href="../templates/editar_Insumo.html">Adicionar</a></button>
+                    </form>
+                </div>
             </section>
         </main>
     </div>
