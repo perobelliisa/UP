@@ -1336,3 +1336,8 @@ select.input:focus {
     margin: 0 auto;
     width: 530px;
 }
+
+.bnt-claroD a {
+    color: var(--claro-cartoes);
+    font-size: 22px;
+}
