@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
     <title>Confirmação de Senha</title>
 </head>
 
@@ -25,11 +26,11 @@
         <section class="login card-form">
             <h1 class="titulo-secao">Informe sua Senha para Prosseguir</h1>
             <form class="form" action=""> <!--Link da rota-->
-                <div>
+                <div  class="d-flex campo">
                     <label>Senha</label>
                     <input class="input" type="password" id="novaSenha" name="novaSenha" required>
                 </div>
-                <div>
+                <div  class="d-flex campo">
                     <label>Confirmar Senha</label>
                     <input class="input" type="password" id="confSenha" name="confSenha" required>
                 </div>

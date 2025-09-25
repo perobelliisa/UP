@@ -176,49 +176,6 @@
         font-size: 50px;
     }
 
-    footer hr {
-        height: 1px;
-        background-color: var(--claro-texto);
-    }
-
-    .info-footer {
-        display: flex;
-        gap: 5vw;
-        padding: 40px 20px;
-        height: 60px;
-    }
-
-    .info-footer nav a {
-        margin: 0 15px;
-        color: var(--claro-texto);
-        font-weight: var(--semi-bold);
-        font-size: 22px;
-    }
-
-    .logo-footer {
-        gap: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    footer .contato p {
-        font-weight: var(--regular);
-        font-size: 20px;
-    }
-
-    .linha-vertical {
-        width: 1px;
-        height: 80px;
-        background-color: #000;
-        border: none;
-    }
-
-    .copy {
-        text-align: center;
-        padding-bottom: 5px;
-    }
-
     .header-usuario nav {
         gap: 1vw;
         padding-bottom: 2vw;
@@ -275,6 +232,11 @@
 
     #valor {
         font-size: 35px;
+    }
+
+    .login {
+        width: 1000px;
+        height: 750px;
     }
 
     /*Perguntar para o Igor como aumenta essa barra da range*/
@@ -339,6 +301,8 @@
         font-size: 32px;
         padding: 30px 100px;
     }
+
+    
 }
 
 /* Laptop */
@@ -386,7 +350,7 @@
         padding: 3vw 2vw;
     }
 
-    .card-branco-sem-fundo img {
+    .img-card-branco {
         width: 16vw;
         height: 16vw;
     }
@@ -409,16 +373,38 @@
         gap: 2vw;
     }
     
-
-    footer {
-        display: none;
+    .info-footer nav a {
+        font-size: 19px;
+    }
+    
+    .add5{
+        width: 110px;
+        height: 72px;
     }
 
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 15px;
+    }
+
+    .linha-vertical {
+        width: 1px;
+        height: 80px;
+        background-color: #000;
+        border: none;
+    }
+
+    .copy {
+        text-align: center;
+        padding-bottom: 5px;
+    }
 
 }
 
+
 /* Tablet */
 @media (max-width: 769px) {
+
     .header-usuario {
         width: 22vw;
     }
@@ -438,7 +424,7 @@
     }
 
     .main-usuario label {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .campo {
@@ -446,13 +432,13 @@
     }
 
     .input {
-        height: 5vw;
-        width: 54vw;
-        font-size: 18px;
+        height: 4.5vw;
+        width: 52vw;
+        font-size: 16px;
     }
 
     .input-pequeno {
-        width: 26vw;
+        width: 24vw;
     }
 
     .form-duplo {
@@ -463,26 +449,6 @@
     .bnt-claroD {
         font-size: 18px;
         padding: 15px 100px;
-    }
-
-
-    .info-footer {
-        height: auto;
-
-    }
-
-    .info-footer nav {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .info-footer nav a {
-        font-size: 18px;
-    }
-
-    .info-footer hr {
-        height: 140px;
     }
 
     .contato {
@@ -507,7 +473,7 @@
     }
 
     .card-branco-sem-fundo {
-        width: 65vw;
+        width: 70vw;
         padding: 4vw 3vw;
     }
 
@@ -540,7 +506,123 @@
         bottom: 0.40vw;
     }
 
-}
+
+    
+    .info-footer nav a {
+        font-size: 14px;
+    }
+    
+    .info-footer{
+        height: 25px;
+    }
+
+    .add5{
+        width: 75px;
+        height: 55px;
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 12px;
+    }
+
+    .linha-vertical {
+        margin-top: -13px;
+        width: 1px;
+        height: 60px;
+        background-color: #000;
+        border: none;
+    }
+
+    .copy {
+        font-size: 12px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .contato{
+        margin-top: -19px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .range-box{
+        width: 385px;
+    }
+
+    .login.card-form {
+        width: 500px;
+        height: 350px;
+    }
+
+    .form-button {
+        margin-top: 10px;
+       
+    }    
+
+    .bnt-confirmar{
+        width: 50px;
+        text-align: center;
+ 
+    }
+
+   .titulo-confirmar{
+        font-family: var(--titulo-fonte);
+        font-size: 45px;
+   } 
+
+   .card {
+        width: 18vw;
+    }
+
+    .card-branco-sem-fundo p {
+        font-size: 15px;
+    }
+
+    .bnt-claroDQ {
+        font-size: 15px;
+        width: 18vw;
+    }
+
+    .card-branco {
+        width: 65vw;
+    }
+
+    .card-branco h2 {
+        font-size: 35px;
+    }
+
+    .tabela-insumos {
+        margin-top: 20px;
+        width: 65vw;
+    }
+
+    .botao {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    th {
+        max-width: 7vw;
+        gap: 1vw;
+    }
+
+    td {
+        max-width: 7vw;
+        gap: 1vw;
+    }
+
+    .btn-del {
+        width: 7vw;
+    }
+
+    .btn-edit a {
+        width: 7vw;
+    }
+
+
+} 
+
 
 /* Mobile */
 @media (max-width: 426px) {
@@ -618,9 +700,7 @@
         padding-left: 5vw;
     }
 
-    footer {
-        display: none;
-    }
+    
 
     .header-home {
         display: none;
@@ -718,6 +798,46 @@
         flex-direction: column;
         gap: 1vw;
     }
+
+    .dashboard {
+        gap: 5vw;
+    }
+
+    /*Perguntar para o Igor como deixa o carrossel responsivo*/
+
+    .botoes {
+        margin-top: 6vw;
+        flex-direction: column;
+        gap: 6vw;
+    }
+
+    .botoes a {
+        width: 50vw;
+        font-size: 20px
+    }
+
+    .h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .insumos {
+        display: block;
+    }
+
+    .card-branco {
+        width: 80vw;
+    }
+
+    .insumo {
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .btn-adicionar {
+        width: 40vw;
+    }
+
 
 
 }

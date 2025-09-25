@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
     <title>Edição de Produto</title>
 </head>
 
@@ -24,18 +25,18 @@
         </header>
         <!-- Main -->
         <main class="main-usuario">
-            <section class="card-branco" style="max-width: 50vw; padding: 20px;">
+            <section class="card-branco card-produto">
                 <h1 class="titulo-secao">Edição de Produto</h1>
                 <form class="form" action=""> <!--Link da rota-->
-                    <div>
+                    <div class="d-flex campo">
                         <label>Nome do Produto</label>
                         <input class="input" type="text" id="nomeProduto" name="nomeProduto" required value="Brownie Tradicional">
                     </div>
-                    <div>
+                    <div class="d-flex campo">
                         <label>Descrição</label>
                         <input class="input" type="text" id="descricao" name="descricao" required value="Brownie de chocolate ao leite">
                     </div>
-                    <div>
+                    <div class="d-flex campo">
                         <label for="categoria">Categoria</label>
                         
                         <select name="categoria" id="categoria" class="input">
@@ -47,33 +48,33 @@
                     </div>
 
                     <div class="form-duplo">
-                        <div>
+                        <div class="d-flex campo">
                             <label>Insumos</label>
                             <input class="input input-pequeno" type="text" id="insumo" name="insumo" required value="Chocolate Nestlé">
                         </div>
-                        <div>
+                        <div class="d-flex campo">
                             <label>Quantidade </label>
                             <input class="input input-pequeno" type="number" id="quantidade" name="quantidade" required value="100g">
                         </div>
                     </div>
 
                     <div class="form-duplo">
-                        <div>
+                        <div class="d-flex campo">
                             <label>Rendimento de 1 receita</label>
                             <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required value="12 fatias">
                         </div>
-                        <div>
+                        <div class="d-flex campo">
                             <label>Unidade de Venda </label>
                             <input class="input input-pequeno" type="text" id="unidade" name="unidade" required value="Fatia">
                         </div>
                     </div>
-                        <div>
+                        <div class="d-flex campo">
                             <label>Tempo de Produção</label>
                             <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
                         </div>
 
                         <div class="range-box">
-                            <div class="range-header">
+                            <div class="range-header d-flex campo">
                                 <label for="lucro">Lucro %</label>
                                 <span>Não definido</span>
                             </div>
@@ -88,31 +89,34 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+<footer>
         <div class="info-footer">
             <div class="logo-footer">
-                <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
-                <nav>
-                    <a href="/">Inicio</a> <!--Link da rota-->
-                    <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
-                    <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
-                    <a href="/conta">Conta</a> <!--Link da rota-->
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP">          <!--imagem-->
+                <nav class="footergap">
+                    <a href="/">Inicio</a>                              <!--Link da rota-->                   
+                    <a href="#sobre">Sobre Nós</a>                      <!--Link da rota-->
+                    <a href="#funcionalidades">Funcionalidade</a>       <!--Link da rota-->
+                    <a href="/conta">Conta</a>                          <!--Link da rota-->
                 </nav>
             </div>
-            <hr class="linha-vertical">
+    <hr class="linha-vertical">
             <div>
-                <div class="contato" style="margin: 0;">
-                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp"> <!--imagem-->
+                <div class="contato" class="add6">
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp">        <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>
-                <div class="contato" style="margin: 0;">
-                    <img src="../static/img/E-mail Ícone.png" alt="Email"> <!--imagem-->
+                <div class="contato" class="add6">
+                    <img src="../static/img/E-mail Ícone.png" alt="Email">           <!--imagem-->
                     <p>contato@upmais.com.br</p>
                 </div>
             </div>
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
     </footer>
 </body>
     <script>

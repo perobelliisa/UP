@@ -28,15 +28,15 @@
             <section class="card-branco" style="max-width: 50vw; padding: 20px;">
                 <h1 class="titulo-secao">Edição de Insumo</h1>
                 <form class="form" action=""> <!--Link da rota-->
-                    <div>
+                    <div  class="d-flex campo">
                         <label>Nome do Insumo</label>
                         <input class="input" type="text" id="nomeInsumo" name="nomeInsumo" required value="Chocolate em Barra Nestle">
                     </div>
-                    <div>
+                    <div class="d-flex campo">
                         <label>Descrição</label>
                         <input class="input" type="text" id="descricao" name="descricao" required value="Cobertura de Chocolate Nestle Blend Barra">
                     </div>
-                    <div>
+                    <div class="d-flex campo">
                         <label for="categoria">Categoria</label>
                         
                         <select name="categoria" id="categoria" class="input">
@@ -47,7 +47,7 @@
 
                     </div>
                     
-                    <div class="form-duplo">
+                    <div class="form-duplo" class="d-flex campo">
                         <div>
                             <label>Preço de Compra</label>
                             <input class="input input-pequeno" type="text" id="preco" name="preco" required value="R$83,00">
