@@ -78,3 +78,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// Script para trocar o modo
+function toggleModo() {
+    const root = document.documentElement;
+    const checkbox = document.querySelector('.switch input');
+
+    if (checkbox.checked) {
+        // modo escuro
+        root.style.setProperty('--claro-fundo', '#1A1A1A');
+        root.style.setProperty('--claro-texto', '#EDEDED');
+        root.style.setProperty('--claro-menu', '#2D2D2D');
+        root.style.setProperty('--claro-botoes', '#FF906E')
+        root.style.setProperty('--claro-hover', '#FF5C39');
+        root.style.setProperty('--claro-cartoes', '#262626');
+        root.style.setProperty('--claro-depoimentos', '#EDEDED');
+        root.setAttribute('data-modo', 'escuro');
+        localStorage.setItem('modo', 'escuro');
+    } else {
+        // modo claro
+        root.style.setProperty('--claro-fundo', '#FEFBF0');
+        root.style.setProperty('--claro-texto', '#2D2D2D');
+        root.style.setProperty('--claro-menu', '#FEDFCD');
+        root.style.setProperty('--claro-botoes', '#FF906E');
+        root.style.setProperty('--claro-hover', '#FF5C39');
+        root.style.setProperty('--claro-cartoes', '#FFFFFF');
+        root.style.setProperty('--claro-depoimentos', '#6C6C6C');
+        root.setAttribute('data-modo', 'claro');
+        localStorage.setItem('modo', 'claro');
+    }
+}
+
