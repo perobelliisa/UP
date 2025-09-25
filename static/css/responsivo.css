@@ -651,12 +651,7 @@
     }
 
      /*FOOTER*/
-    
-    .input {
-        height: 6.5vw;
-        width: 52vw;
-        font-size: 16px;
-    }
+
 
     .info-footer nav a {
         font-size: 14px;
@@ -964,11 +959,6 @@
         display: block;
     }
     
-    .input {
-        height: 6.5vw;
-        width: 52vw;
-        font-size: 16px;
-    }
 
     .info-footer nav{
         flex-direction: column;
@@ -1087,11 +1077,6 @@
         margin: 0 auto;
     }
     
-    .input {
-        height: 6.5vw;
-        width: 52vw;
-        font-size: 16px;
-    }
 
     .info-footer nav{
         flex-direction: column;
