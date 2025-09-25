@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <header class="header-home">
-        <img class="titulo" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+    <header class="header-home" id="menu-mobile-home">
+        <img class="titulo desktop" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
         <nav>
             <a href="#banner">Inicio</a>
             <a href="#sobre">Sobre Nós</a>
@@ -26,14 +26,22 @@
 
     <main>
         <!-- Banner -->
+        <section class="space-between topo-usuario mobile">
+            <img src="../static/img/logo2.png" alt="Logo da UP+">
+            <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-home')">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </section>
         <section class="banner" id="banner">
             <img src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
             <h1 class="titulo-secao">Gestão Simplificada para Pequenos Produtores</h1>
             <h3>Otimize sua produção e precificação com facilidade. A solução completa para confeiteiros, costureiras,
                 lanchonetes, hortas e muito mais.</h3>
             <div>
-                <button class="bnt-claroD">Saiba mais</button>
-                <button class="bnt-claroD">Comece Agora!</button>
+                <a href="#sobre" class="bnt-claroD">Saiba mais</a>
+                <a href="../templates/login.html" class="bnt-claroD">Comece Agora!</a>
             </div>
         </section>
 
@@ -57,7 +65,7 @@
                     <p>Tenha controle da sua produção, estoque e finanças em um só lugar, de forma clara e rápida.</p>
                 </div>
             </div>
-            <button class="bnt-claroD">Comece Agora!</button>
+            <a href="../templates/login.html" class="bnt-claroD">Comece Agora!</a>
         </section>
         <hr>
 
@@ -68,19 +76,19 @@
                 mais eficiente, lucrativo e competitivo.</h3>
             <div class="icones" class="add1">
                 <div class="icone-redondo">
-                    <p>Planejamento e controle reduzem desperdícios.</p>
+                    <p>Planejamento e controle reduzem desperdícios</p>
                 </div>
                 <div class="icone-redondo">
-                    <p>Registro de custos evita prejuízos.</p>
+                    <p>Registro de custos evita prejuízos</p>
                 </div>
                 <div class="icone-redondo">
-                    <p>Precificação com margem valoriza o produto.</p>
+                    <p>Precificação com margem valoriza o produto</p>
                 </div>
                 <div class="icone-redondo">
-                    <p>Diferenciação permite preço justo e crescimento.</p>
+                    <p>Diferenciação permite preço justo e crescimento</p>
                 </div>
             </div>
-            <button class="bnt-claroD">Quero me Cadastrar</button>
+            <a href="../templates/cadastro_pessoal.html" class="bnt-claroD">Quero me Cadastrar</a>
         </section>
 
 
@@ -89,10 +97,8 @@
             <h2 class="titulo-secao">Depoimentos</h2>
             <h3>Veja o que nossos usuários dizem sobre a UP+</h3>
 
-            <!-- Carrossel Esquerda -->
-            <div class="carrossel owl-carousel owl-theme carrossel">
-                <div class="item">
-                    <div class="icone-retangulo">
+            <div class="depoimentos-flex">
+                    <div class="icone-retangulo-home">
                         <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
                         <div class="texto-depoimento">
                             <p class="nome-depoimento">Felipe Lima</p>
@@ -100,37 +106,29 @@
                                 organizar tudo.</p>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="icone-retangulo">
+                    <div class="icone-retangulo-home">
                         <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
                         <div class="texto-depoimento">
                             <p class="nome-depoimento">Juliana Martins</p>
-                            <p class="p-depoimento">Esse curso superou todas as minhas expectativas. Recomendo demais!
+                            <p class="p-depoimento">Esse site superou todas as minhas expectativas. Recomendo demais!
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="icone-retangulo">
+                    <div class="icone-retangulo-home">
                         <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
                         <div class="texto-depoimento">
                             <p class="nome-depoimento">Ana Souza</p>
                             <p class="p-depoimento">Meu lucro aumentou e minha rotina ficou muito mais leve!</p>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="icone-retangulo">
+                    <div class="icone-retangulo-home">
                         <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
                         <div class="texto-depoimento">
                             <p class="nome-depoimento">Bernardo Silva</p>
                             <p class="p-depoimento">Consegui dar mais atenção para os meus clientes.</p>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="icone-retangulo">
+                    <div class="icone-retangulo-home">
                         <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
                         <div class="texto-depoimento">
                             <p class="nome-depoimento">Pedro Albuquerque</p>
@@ -138,18 +136,15 @@
                                 gestão.</p>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="icone-retangulo">
+                    <div class="icone-retangulo-home">
                         <img src="../static/img/imagem-perfil.png" alt="Foto de perfil">
                         <div class="texto-depoimento">
                             <p class="nome-depoimento">Mariana Costa</p>
                             <p class="p-depoimento">O UP+ mudou o jeito como administro meu negócio.</p>
                         </div>
                     </div>
-                </div>
             </div>
-            <a class="bnt-claroD">Quero ser UP+</a>
+            <a href="../templates/login.html" class="bnt-claroD">Quero ser UP+</a>
 
         </section>
 
@@ -162,51 +157,51 @@
             <div>
                 <div class="box-faq">
                     <div>
-                        <p>Como funciona o sistema da UP+?</p>
+                        <p>Consigo exportar relatórios em PDF?</p>
                         <button onclick="mostrarResposta('resposta1')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta1"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta1">Resposta</p>
+                    <p class="none resposta" id="resposta1">Sim. Todos os relatórios podem ser exportados em PDF.</p>
                 </div>
                 <div class="box-faq">
                     <div>
-                        <p>Como funciona o sistema da UP+?</p>
+                        <p>Como faço para me cadastrar no sistema?</p>
                         <button onclick="mostrarResposta('resposta2')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta2"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta2">Resposta</p>
+                    <p class="none resposta" id="resposta2">Basta clicar em “Conta”, preencher seus dados e pronto!</p>
                 </div>
                 <div class="box-faq">
                     <div>
-                        <p>Como funciona o sistema da UP+?</p>
+                        <p>Posso alterar o preço ou fórmula de um produto já cadastrado?</p>
                         <button onclick="mostrarResposta('resposta3')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta2"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta3">Resposta</p>
+                    <p class="none resposta" id="resposta3">Sim. Você pode editar o produto a qualquer momento e atualizar custos, insumos ou preço final</p>
                 </div>
                 <div class="box-faq">
                     <div>
-                        <p>Como funciona o sistema da UP+?</p>
+                        <p>Existe limite de produtos ou insumos que posso cadastrar?</p>
                         <button onclick="mostrarResposta('resposta4')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta2"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta4">Resposta</p>
+                    <p class="none resposta" id="resposta4">Não. O sistema permite cadastrar quantos forem necessários.</p>
                 </div>
                 <div class="box-faq">
                     <div>
-                        <p>Como funciona o sistema da UP+?</p>
+                        <p>Como definir o lucro desejado?</p>
                         <button onclick="mostrarResposta('resposta5')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta2"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta5">Resposta</p>
+                    <p class="none resposta" id="resposta5">Ao cadastrar ou editar um produto, basta informar o percentual de lucro que deseja aplicar.</p>
                 </div>
                 <div class="box-faq">
                     <div>
-                        <p>Como funciona o sistema da UP+?</p>
+                        <p>O sistema calcula automaticamente o preço de venda?</p>
                         <button onclick="mostrarResposta('resposta6')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta2"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta6">Resposta</p>
+                    <p class="none resposta" id="resposta6">Sim. O sistema soma todos os custos e aplica o lucro definido para sugerir o preço final.</p>
                 </div>
             </div>
         </section>
@@ -236,20 +231,20 @@
                 </div>
             </div>
 
-            <div class="FaleConosco card-form" class="add3">
+            <div class="FaleConosco card-form add3">
                 <h2 class="titulo-secao">Fale Conosco!</h2>
                 <form class="form" action=""> <!--formulário-->
-                    <div>
+                    <div class="d-flex campo campo-pequeno">
                         <label>Nome</label>
-                        <input class="input" type="text" name="nome" required>
+                        <input class="input input2" type="text" name="nome" required>
                     </div>
-                    <div>
+                    <div class="d-flex campo campo-pequeno">
                         <label>Email</label>
-                        <input class="input" type="email" name="email" required>
+                        <input class="input input2" type="email" name="email" required>
                     </div>
-                    <div>
+                    <div class="d-flex campo campo-pequeno">
                         <label>Deixe sua sugestão, dúvida ou comentário</label>
-                        <textarea class="input" name="mensagem" required class="add4"></textarea>
+                        <textarea class="input input2 add4" name="mensagem" required></textarea>
                     </div>
                     <button class="bnt-claroD" type="submit">Enviar</button>
                 </form>
@@ -263,7 +258,7 @@
             <div class="logo-footer">
                 <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
                 <nav>
-                    <a href="/">Inicio</a> <!--Link da rota-->
+                    <a href="#banner">Inicio</a> <!--Link da rota-->
                     <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
                     <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
                     <a href="../templates/login.html">Conta</a> <!--Link da rota-->
@@ -271,7 +266,7 @@
             </div>
             <hr class="linha-vertical">
             <div>
-                <div class="contato" class="add6">
+                <div class="contato add6">
                     <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp" class="add8"> <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>

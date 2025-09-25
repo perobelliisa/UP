@@ -22,6 +22,7 @@
     --geral-erro: #D9534F;
     --geral-acerto: #5CB85C;
     --hover-acerto: #4cae4c;
+    --fundo-acerto: #B9FFB9;
 
     --linha: #FEDFCD;
     --escuro-linha: #4C2F26;
@@ -153,6 +154,10 @@ body {
     color: var(--claro-texto);
     padding: 0 20px;
     box-sizing: border-box;
+}
+
+.input2 {
+    width: 530px;
 }
 
 .input-pequeno {
@@ -345,9 +350,8 @@ hr {
 
 /* Depoimentos */
 .depoimentos {
-    padding: 80px 20px;
+    padding: 0px 20px 60px;
     text-align: center;
-    height: 700px;
 }
 
 .depoimentos h3 {
@@ -356,31 +360,30 @@ hr {
     margin: 0 auto 60px auto;
 }
 
-.icone-retangulo {
+.icone-retangulo-home {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 600px;
-    height: 130px;
+    padding: 1vw 2vw;
     box-shadow: var(--claro-hover) 0px 4px 7px;
-    gap: 20px;
+    gap: 5px;
     background-color: var(--claro-cartoes);
-    margin: 0 100px;
+    border-radius: var(--card-arredondamento);
 }
 
-.icone-retangulo p {
+.nome-depoimento, .p-depoimento {
     font-size: 20px;
     font-weight: var(--semi-bold);
 }
 
-.icone-retangulo .p-depoimento {
+.icone-retangulo-home .p-depoimento {
     font-size: 17px;
     font-weight: var(--bold);
     color: var(--claro-depoimentos);
     max-width: 350px;
 }
 
-.icone-retangulo img {
+.icone-retangulo-home img {
     width: 90px;
     height: 90px;
 }
@@ -608,7 +611,7 @@ footer .contato p {
     position: relative;
     left: -9%;
     top: -1%;
-    height: 46px;
+    height: 40px;
     width: 161px;
     border-radius: var(--botao-arredondamentod);
     font-size: 18px;
@@ -772,10 +775,17 @@ nav a:hover {
     font-weight: var(--regular);
 }
 
-.cards {
+.cards-dashboard {
     width: 68vw; /*Perguntar para o Igor porque não aplica*/
     margin: 0 auto;
 }
+
+.cards-dashboard div p {
+    font-weight: var(--regular);
+    font-size: 20px;
+}
+
+
 
 .card {
     background-color: var(--claro-cartoes);
@@ -1395,3 +1405,53 @@ select.input:focus {
     height: 25px;
     margin-left: -1vw;
 }
+
+.depoimentos-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: space-between;
+    gap: 2vw;
+    width: 85vw;
+    margin-bottom: 4vw;
+
+}
+
+.acerto {
+    padding: 2vw 2vw 3vw;
+    background-color: var(--fundo-acerto);
+    border-radius: var(--card-arredondamento);
+    position: absolute;
+    left: 65vw;
+    top: 1vw;
+}
+
+.acerto div {
+    width: 100%;
+}
+
+.x {
+    justify-content: end;
+}
+
+.principal {
+    margin-top: -1vw;
+    gap: 1vw;
+    align-items: center;
+}
+
+.principal div {
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.titulo-acerto {
+    font-family: var(--titulo-fonte);
+    font-weight: var(--bold);
+    font-size: 22px;
+}
+
+.acoes .bnt-claroDQ {
+    padding: 20px 14px;
+}
+

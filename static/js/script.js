@@ -66,3 +66,15 @@ function mostrarSenha(id) {
     }
 }
 
+// Script para mostrar mensagem de acerto
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.pathname.includes("dashboard.html")) {
+        if ( document.getElementById("mensagemAcerto").style.display === 'flex') {
+            document.getElementById("mensagemAcerto").style.display = 'none'
+        }
+        else {
+            document.getElementById("mensagemAcerto").style.display = 'flex'
+        }
+    }
+});
+

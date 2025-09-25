@@ -18,8 +18,8 @@
         <header class="header-usuario" id="menu-mobile-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
             <nav class="d-flex">
-                <a href="../templates/dashboard.html">DashBoard</a>
-                <a href="../templates/insumos.html" class="pagina-atual">Insumos</a>
+                <a href="../templates/dashboard.html" class="pagina-atual">DashBoard</a>
+                <a href="../templates/insumos.html">Insumos</a>
                 <a href="../templates/produto.html">Produtos</a>
                 <a href="../templates/relatorios.html">Relatórios</a>
                 <a href="../templates/config.html">Configurações</a>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </section>
-            <section class=" d-flex space-between cards desktop">
+            <section class=" d-flex space-between cards-dashboard desktop">
                         <div class="card d-flex flex-column justify-center">
                             <h3>50</h3>
                             <p>Insumos cadastrados</p>
@@ -89,12 +89,27 @@
 
             <section class="card-branco-sem-fundo">
                 <h2>Ações Rápidas</h2>
-                <div class="d-flex botoes space-around">
-                    <a href="" class="bnt-claroDQ">+ Novo Insumo</a>
-                    <a href="" class="bnt-claroDQ">+ Novo Produto</a>
-                    <a href="" class="bnt-claroDQ">Relatórios</a>
+                <div class="d-flex botoes space-around acoes">
+                    <a href="../templates/cad_Insumo.html" class="bnt-claroDQ">+ Novo Insumo</a>
+                    <a href="../templates/cad_Produto.html" class="bnt-claroDQ">+ Novo Produto</a>
+                    <a href="../templates/relatorios.html" class="bnt-claroDQ">Relatórios</a>
                 </div>
             </section>
+            <section class="none" id="mensagemAcerto">
+                <div class="acerto">
+                    <div class="d-flex x">
+                        <a href="#" onclick="mensagemAcerto()"><img src="../static/img/X-acerto.png" alt="Fechar"></a>
+                    </div>
+                    <div class="d-flex principal">
+                        <img src="../static/img/icone-acerto.png" alt="Ícone de Acerto">
+                        <div class="d-flex">
+                            <p class="titulo-acerto">Usuário logado com sucesso!</p>
+                            <p>Preparado(a) para maximizar os seus lucros?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
         </main>
     </div>
 

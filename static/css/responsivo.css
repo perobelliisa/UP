@@ -425,6 +425,75 @@
         padding-bottom: 5px;
     }
 
+    .box-faq {
+        width: 925px;
+    }
+
+    .add2 {
+        width: 150px;
+        height: auto;
+    }
+
+    .contatos {
+        width: 40vw;
+    }
+
+    .mapa iframe {
+        width: 40vw;
+    }
+
+    .info {
+        gap: 7vw;
+    }
+
+    .FaleConosco {
+        width: 40vw;
+        padding: 40px 20px;
+        height: auto;
+    }
+
+    .campo-pequeno {
+        width: 35vw;
+    }
+
+    .input2 {
+        width: 35vw;
+    }
+
+    .campo textarea {
+        height: 10vw;
+        padding-top: 1vw;
+    }
+
+    .funcionalidades {
+        padding: 53px 20px;
+        height: auto;
+    }
+
+    .funcionalidades h3, .icones {
+        margin-bottom: 40px;
+    }
+
+    .icone-redondo {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    .icone-redondo p {
+        max-width: 19vw;
+    }
+
+    .texto-depoimento {
+        width: 22vw;
+    }
+
+    .faq {
+        height: auto;
+    }
+
+    .faq h2 {
+        margin-bottom: 60px;
+    }
 }
 
 
@@ -732,8 +801,104 @@
         max-width: 25vw;
     }
 
+    .box-faq {
+        width: 90vw;
+    }
+
+    .banner {
+        padding: 50px 20px;
+        height: auto;
+    }
+
+    .banner h1 {
+        font-size: 35px;
+        margin-bottom: 0px;
+    }
+
+    .banner h3 {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .banner .bnt-claroD {
+        padding: 15px 20px;
+    }
+
+    .sobre {
+        padding: 50px 20px;
+        height: auto;
+    }
+
+    .sobre h3 {
+        font-size: 18px;
+        width: 85vw;
+        margin-bottom: 5vw;
+    }
+
+    .icone-texto {
+        width: auto;
+        height: auto;
+        padding: 4vw 2vw;
+    }
+
+    .icone-texto img {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .icone-texto p {
+        font-size: 16px;
+        width: 25vw;
+    }
+
+    .funcionalidades h3 {
+        font-size: 18px;
+        width: 85vw;
+        margin-bottom: 5vw;
+    }
+
+    .icone-redondo p {
+        font-size: 16px;
+    }
+
+    .depoimentos h3 {
+        font-size: 18px;
+        width: 85vw;
+        margin-bottom: 5vw;
+    }
+
+    .depoimentos-flex {
+        margin-bottom: 6vw;
+    }
+
+    .icone-retangulo-home {
+        padding: 1vw 2vw;
+    }
+
+    .texto-depoimento {
+        padding: 1vw;
+    }
+
+    .nome-depoimento {
+        font-size: 18px
+    }
+
+    .p-depoimento {
+        font-size: 16px;
+    }
+
+    .campo {
+        width: 35vw;
+    }
+
+    .input2 {
+        width: 35vw;
+    }
+
+
 
 } 
+
 
 
 /* Mobile */
@@ -1149,6 +1314,91 @@
         padding: 3vw 3vw;
         font-size: 18px;
     }
+
+    .banner div {
+        gap: 40px;
+    }
+
+    .banner .bnt-claroD {
+        width: 30vw;
+    }
+
+    .icones {
+        flex-direction: column;
+        gap: 5vw;
+    }
+
+    .icone-texto img {
+        width: 20vw;
+        height: auto;
+    }
+
+    .icone-texto {
+        width: 60vw;
+    }
+
+    .icone-texto p {
+        width: 50vw;
+    }
+
+    .icone-redondo {
+        height: 45vw;
+        width: 45vw;
+        text-align: center;
+        padding: 0px;
+    }
+
+    .icone-redondo p {
+        width: 40vw;
+        text-align: center;
+    }
+
+    .texto-depoimento {
+        width: 50vw;
+    }
+
+    .depoimentos-flex {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10vw;
+        margin-bottom: 10vw;
+    }
+
+    .info {
+        flex-direction: column;
+        padding: 0 1vw 10vw;
+        justify-content: center;
+    }
+
+    .contatos {
+        width: 80vw;
+    }
+
+    .mapa {
+        width: 100vw;
+    }
+
+    .mapa iframe {
+        margin-left: 10vw;
+        width: 80vw;
+    }
+
+    .add2 {
+        margin-left: 25vw;
+    }
+
+    .FaleConosco {
+        width: 70vw;
+        margin-left: 10vw;
+    }
+
+    .box-faq p {
+        font-size: 16px;
+    }
+
+    .contato {
+        font-size: 18px;
+    }
 }
 
 /* Mobile M */
@@ -1374,5 +1624,50 @@
     .relatorio h3 {
         font-size: 28px;
     }
+
+    .banner div {
+        flex-direction: column;
+    }
+
+    .banner .bnt-claroD {
+        width: 45vw;
+    }
+
+    .sobre .bnt-claroD {
+        padding: 12px 53px;
+    }
+
+    .icone-redondo {
+        height: 60vw;
+        width: 60vw;
+    }
+
+    .icone-redondo p {
+        margin-left: -10vw;
+        text-align: center;
+        width: 50vw;
+    }
+
+    .funcionalidades .bnt-claroD {
+        padding: 12px 30px;
+    }
+
+    .depoimentos .bnt-claroD {
+        padding: 12px 30px;
+    }
+
+    .contato {
+        font-size: 16px;
+        margin-left: 26px;
+    }
+
+    .contatos {
+        width: 100vw;
+    }
+
+    .add2 {
+        margin-left: 7vw;
+    }
+
 
 }
