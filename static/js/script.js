@@ -26,6 +26,16 @@ function adicionarInsumo() {
     }
 }
 
+// Script para mostrar/ocultar card de adição de categoria
+function adicionarCategoria() {
+    if (document.getElementById("adicionarCategoria").style.display === 'block') {
+        document.getElementById("adicionarCategoria").style.display = 'none';
+    }
+    else {
+        document.getElementById("adicionarCategoria").style.display = 'block';
+    }
+}
+
 // Script para mostrar/ocultar campos de quantidade dos ingredientes
 function mostrarQuantidade(id) {
     if (document.getElementById(id).style.display === 'flex') {

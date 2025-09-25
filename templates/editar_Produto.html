@@ -11,7 +11,7 @@
 
 <body>
     <!-- Header -->
-   <div class="d-flex">
+    <div class="d-flex">
         <header class="header-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+">
             <nav class="d-flex">
@@ -30,15 +30,17 @@
                 <form class="form" action=""> <!--Link da rota-->
                     <div class="d-flex campo">
                         <label>Nome do Produto</label>
-                        <input class="input" type="text" id="nomeProduto" name="nomeProduto" required value="Brownie Tradicional">
+                        <input class="input" type="text" id="nomeProduto" name="nomeProduto" required
+                            value="Brownie Tradicional">
                     </div>
                     <div class="d-flex campo">
                         <label>Descrição</label>
-                        <input class="input" type="text" id="descricao" name="descricao" required value="Brownie de chocolate ao leite">
+                        <input class="input" type="text" id="descricao" name="descricao" required
+                            value="Brownie de chocolate ao leite">
                     </div>
                     <div class="d-flex campo">
                         <label for="categoria">Categoria</label>
-                        
+
                         <select name="categoria" id="categoria" class="input">
                             <option value="bolo">Bolo</option>
                             <option value="torta">Torta</option>
@@ -50,37 +52,41 @@
                     <div class="form-duplo">
                         <div class="d-flex campo">
                             <label>Insumos</label>
-                            <input class="input input-pequeno" type="text" id="insumo" name="insumo" required value="Chocolate Nestlé">
+                            <input class="input input-pequeno" type="text" id="insumo" name="insumo" required
+                                value="Chocolate Nestlé">
                         </div>
                         <div class="d-flex campo">
                             <label>Quantidade </label>
-                            <input class="input input-pequeno" type="number" id="quantidade" name="quantidade" required value="100g">
+                            <input class="input input-pequeno" type="number" id="quantidade" name="quantidade" required
+                                value="100g">
                         </div>
                     </div>
 
                     <div class="form-duplo">
                         <div class="d-flex campo">
                             <label>Rendimento de 1 receita</label>
-                            <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required value="12 fatias">
+                            <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required
+                                value="12 fatias">
                         </div>
                         <div class="d-flex campo">
                             <label>Unidade de Venda </label>
-                            <input class="input input-pequeno" type="text" id="unidade" name="unidade" required value="Fatia">
+                            <input class="input input-pequeno" type="text" id="unidade" name="unidade" required
+                                value="Fatia">
                         </div>
                     </div>
-                        <div class="d-flex campo">
-                            <label>Tempo de Produção</label>
-                            <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
-                        </div>
+                    <div class="d-flex campo">
+                        <label>Tempo de Produção</label>
+                        <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
+                    </div>
 
-                        <div class="range-box">
-                            <div class="range-header d-flex campo">
-                                <label for="lucro">Lucro %</label>
-                                <span>Não definido</span>
-                            </div>
-                            <input type="range" id="lucro" name="lucro" min="0" max="100" value="60">
-                            <span id="valor">60%</span>
+                    <div class="range-box">
+                        <div class="range-header d-flex campo">
+                            <label for="lucro">Lucro %</label>
+                            <span>Não definido</span>
                         </div>
+                        <input type="range" id="lucro" name="lucro" min="0" max="100" value="60">
+                        <span id="valor">60%</span>
+                    </div>
 
                     <button class="bnt-claroD btn-largo" type="submit">Editar</button>
                 </form>
@@ -89,25 +95,25 @@
     </div>
 
     <!-- Footer -->
-<footer>
+    <footer>
         <div class="info-footer">
             <div class="logo-footer">
-                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP">          <!--imagem-->
-                <nav class="footergap">
-                    <a href="/">Inicio</a>                              <!--Link da rota-->                   
-                    <a href="#sobre">Sobre Nós</a>                      <!--Link da rota-->
-                    <a href="#funcionalidades">Funcionalidade</a>       <!--Link da rota-->
-                    <a href="/conta">Conta</a>                          <!--Link da rota-->
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="/">Inicio</a> <!--Link da rota-->
+                    <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
+                    <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
+                    <a href="/conta">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
-    <hr class="linha-vertical">
+            <hr class="linha-vertical">
             <div>
                 <div class="contato" class="add6">
-                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp">        <!--imagem-->
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp" class="add8"> <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>
                 <div class="contato" class="add6">
-                    <img src="../static/img/E-mail Ícone.png" alt="Email">           <!--imagem-->
+                    <img src="../static/img/E-mail Ícone.png" alt="Email" class="add9"> <!--imagem-->
                     <p>contato@upmais.com.br</p>
                 </div>
             </div>
@@ -119,12 +125,5 @@
         <script src="../static/js/script.js"></script>
     </footer>
 </body>
-    <script>
-    const range = document.getElementById("lucro");
-    const valor = document.getElementById("valor");
 
-    range.addEventListener("input", () => {
-    valor.textContent = range.value + "%";
-    });
-</script>
 </html>

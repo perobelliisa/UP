@@ -58,7 +58,7 @@
                             <option value="torta">Açúcar</option>
                             <option value="docinho">Farinha</option>
                         </select>
-                        <a href="">Adicionar Categoria </a>
+                        <a href="#" onclick="adicionarCategoria()">Adicionar Categoria </a>
                     </div>
 
                     <div class="form-duplo">
@@ -67,8 +67,8 @@
                             <input class="input input-pequeno" type="text" id="preco" name="preco" required value="R$">
                         </div>
                         <div class="d-flex campo">
-                            <label for="categoria">Unidade de medida</label>
-                            <select name="categoria" id="categoria" class="input input-pequeno">
+                            <label for="unidade">Unidade de medida</label>
+                            <select name="unidade" id="unidade" class="input input-pequeno">
                                 <option value="quilo">Quilograma</option>
                                 <option value="grama">Grama</option>
                                 <option value="litro">Litro</option>
@@ -80,13 +80,28 @@
                     <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
                 </form>
             </section>
+            <section class="none fundo" id="adicionarCategoria">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarCategoria()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Adição de Categoria</h1>
+                    <form class="lista-ingredientes">
+                        <div class="d-flex categoria campo">
+                            <label>Nome da Categoria</label>
+                            <input class="input" type="text" id="nomeCategoria" name="nomeCategoria" required>
+                        </div>
+                        <button onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno"
+                            type="submit">Adicionar</button>
+                    </form>
+                </div>
+            </section>
         </main>
     </div>
     <!-- Footer -->
     <footer>
         <div class="info-footer">
             <div class="logo-footer">
-                <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
                 <nav>
                     <a href="/">Inicio</a> <!--Link da rota-->
                     <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
@@ -94,20 +109,22 @@
                     <a href="/conta">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
-            <hr class="linha-vertical desktop">
-            <div class="desktop">
-                <div class="contato">
-                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp"> <!--imagem-->
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp" class="add8"> <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>
-                <div class="contato">
-                    <img src="../static/img/E-mail Ícone.png" alt="Email"> <!--imagem-->
+                <div class="contato" class="add6">
+                    <img src="../static/img/E-mail Ícone.png" alt="Email" class="add9"> <!--imagem-->
                     <p>contato@upmais.com.br</p>
                 </div>
             </div>
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
         <script src="../static/js/script.js"></script>
     </footer>
 </body>

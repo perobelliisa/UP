@@ -10,7 +10,7 @@
 
 <body>
     <!-- Header -->
-   <div class="d-flex">
+    <div class="d-flex">
         <header class="header-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+">
             <nav class="d-flex">
@@ -28,17 +28,19 @@
             <section class="card-branco" style="max-width: 50vw; padding: 20px;">
                 <h1 class="titulo-secao">Edição de Insumo</h1>
                 <form class="form" action=""> <!--Link da rota-->
-                    <div  class="d-flex campo">
+                    <div class="d-flex campo">
                         <label>Nome do Insumo</label>
-                        <input class="input" type="text" id="nomeInsumo" name="nomeInsumo" required value="Chocolate em Barra Nestle">
+                        <input class="input" type="text" id="nomeInsumo" name="nomeInsumo" required
+                            value="Chocolate em Barra Nestle">
                     </div>
                     <div class="d-flex campo">
                         <label>Descrição</label>
-                        <input class="input" type="text" id="descricao" name="descricao" required value="Cobertura de Chocolate Nestle Blend Barra">
+                        <input class="input" type="text" id="descricao" name="descricao" required
+                            value="Cobertura de Chocolate Nestle Blend Barra">
                     </div>
                     <div class="d-flex campo">
                         <label for="categoria">Categoria</label>
-                        
+
                         <select name="categoria" id="categoria" class="input">
                             <option value="bolo">Chocolate</option>
                             <option value="torta">Açucar</option>
@@ -46,23 +48,24 @@
                         </select>
 
                     </div>
-                    
+
                     <div class="form-duplo" class="d-flex campo">
                         <div>
                             <label>Preço de Compra</label>
-                            <input class="input input-pequeno" type="text" id="preco" name="preco" required value="R$83,00">
+                            <input class="input input-pequeno" type="text" id="preco" name="preco" required
+                                value="R$83,00">
                         </div>
                         <div>
-                        <label for="categoria">Unidade de medida</label>
-                        
-                        <select name="categoria" id="categoria" class="input" style="width: 250px;">
-                            <option value="quilo">Quilograma</option>
-                            <option value="grama">Grama</option>
-                            <option value="litro">Litro</option>
-                            <option value="ml">Mililitro</option>
-                        </select>
+                            <label for="categoria">Unidade de medida</label>
 
-                    </div>
+                            <select name="categoria" id="categoria" class="input" style="width: 250px;">
+                                <option value="quilo">Quilograma</option>
+                                <option value="grama">Grama</option>
+                                <option value="litro">Litro</option>
+                                <option value="ml">Mililitro</option>
+                            </select>
+
+                        </div>
                     </div>
                     <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
                 </form>
@@ -73,7 +76,7 @@
     <footer>
         <div class="info-footer">
             <div class="logo-footer">
-                <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
                 <nav>
                     <a href="/">Inicio</a> <!--Link da rota-->
                     <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
@@ -83,26 +86,22 @@
             </div>
             <hr class="linha-vertical">
             <div>
-                <div class="contato" style="margin: 0;">
-                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp"> <!--imagem-->
+                <div class="contato" class="add6">
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp" class="add8"> <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>
-                <div class="contato" style="margin: 0;">
-                    <img src="../static/img/E-mail Ícone.png" alt="Email"> <!--imagem-->
+                <div class="contato" class="add6">
+                    <img src="../static/img/E-mail Ícone.png" alt="Email" class="add9"> <!--imagem-->
                     <p>contato@upmais.com.br</p>
                 </div>
             </div>
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
     </footer>
 </body>
-    <script>
-    const range = document.getElementById("lucro");
-    const valor = document.getElementById("valor");
 
-    range.addEventListener("input", () => {
-    valor.textContent = range.value + "%";
-    });
-</script>
 </html>

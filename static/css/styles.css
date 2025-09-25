@@ -70,6 +70,10 @@
     font-weight: var(--bold);
 }
 
+.align-center {
+    align-items: center;
+}
+
 html,
 body {
     scroll-behavior: smooth;
@@ -1303,6 +1307,14 @@ select.input:focus {
     border-radius: var(--card-arredondamento);
     padding: 4vw 5vw;
     width: 75vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.botao-mobile {
+    width: 70vw;
+    justify-content: space-around;
 }
 
 .card-insumo-titulo {
@@ -1310,8 +1322,17 @@ select.input:focus {
     font-size: 20px;
 }
 
+.card-insumo-imagem {
+    gap: 2vw;
+}
+
 .cards-mobile {
     flex-direction: column;
     gap: 5vw;
     flex-wrap: wrap;
+}
+
+.categoria {
+    margin: 0 auto;
+    width: 530px;
 }

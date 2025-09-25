@@ -1,182 +1,188 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto</title>
     <link rel="stylesheet" href="../static/css/styles.css">
-    </head>
-    <body>
+</head>
+
+<body>
 
     <!-- HEADER -->
-        <div class="d-flex">
-            <header class="header-usuario">
-                <img src="../static/img/logo2.png" alt="Logo da UP+">
-                <nav class="d-flex">
-                    <a href="">DashBoard</a>
-                    <a href="">Insumos</a>
-                    <a href="" class="pagina-atual">Produtos</a>
-                    <a href="">Relatórios</a>
-                    <a href="">Configurações</a>
-                    <a href="">Sair</a>
-                </nav>
-            </header>
+    <div class="d-flex">
+        <header class="header-usuario">
+            <img src="../static/img/logo2.png" alt="Logo da UP+">
+            <nav class="d-flex">
+                <a href="">DashBoard</a>
+                <a href="">Insumos</a>
+                <a href="" class="pagina-atual">Produtos</a>
+                <a href="">Relatórios</a>
+                <a href="">Configurações</a>
+                <a href="">Sair</a>
+            </nav>
+        </header>
 
-            <!-- MAIN -->
-            <main class="main-usuario">
+        <!-- MAIN -->
+        <main class="main-usuario">
             <section class="card-branco" style="max-width: 70vw;">
                 <div class="d-flex space-between">
-                <h1>Produto</h1>
-                <button class="btn-adicionar">+ Adicionar Novo Produto</button>
+                    <h1>Produto</h1>
+                    <button class="btn-adicionar">+ Adicionar Novo Produto</button>
                 </div>
             </section>
             <section class="card-branco" style="max-width: 70vw; padding-top: 10px;">
                 <div class="tabela-insumos d-flex flex-column">
-                <h2>Lista de Produtos Cadastrados</h2>
-                <table>
-                    <thead>
-                    <tr>
-                        <th style="text-align: left;">Nome</th>
-                        <th>Categoria</th>
-                        <th>Custo</th>
-                        <th>Preço</th>
-                        <th>Lucro</th>
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td style="text-align: left;">Brownie Tradicional</td>
-                        <td>Doces</td>
-                        <td>R$2,00</td>
-                        <td>R$5,00</td>
-                        <td>R$3,00</td>
-                        <td>
-                        <button class="btn-edit">Edit</button>
-                        <button class="btn-del">Del</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Brownie com Ninho</td>
-                        <td>Doces</td>
-                        <td>R$2,50</td>
-                        <td>R$7,00</td>
-                        <td>R$4,50</td>
-                        <td>
-                        <button class="btn-edit">Edit</button>
-                        <button class="btn-del">Del</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Pão de Mel</td>
-                        <td>Doces</td>
-                        <td>R$1,80</td>
-                        <td>R$6,00</td>
-                        <td>R$4,20</td>
-                        <td>
-                        <button class="btn-edit">Edit</button>
-                        <button class="btn-del">Del</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                    <h2>Lista de Produtos Cadastrados</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Nome</th>
+                                <th>Categoria</th>
+                                <th>Custo</th>
+                                <th>Preço</th>
+                                <th>Lucro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: left;">Brownie Tradicional</td>
+                                <td>Doces</td>
+                                <td>R$2,00</td>
+                                <td>R$5,00</td>
+                                <td>R$3,00</td>
+                                <td>
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-del">Del</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Brownie com Ninho</td>
+                                <td>Doces</td>
+                                <td>R$2,50</td>
+                                <td>R$7,00</td>
+                                <td>R$4,50</td>
+                                <td>
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-del">Del</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Pão de Mel</td>
+                                <td>Doces</td>
+                                <td>R$1,80</td>
+                                <td>R$6,00</td>
+                                <td>R$4,20</td>
+                                <td>
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-del">Del</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
             <section>
-                    <h2>Lista de Produtos Cadastrados</h2>
+                <h2>Lista de Produtos Cadastrados</h2>
+                <div>
                     <div>
                         <div>
-                            <div>
-                                <p>Brownie Tradicional</p>
-                                <p>R$5,00</p>
-                            </div>
-                            <div>
-                                <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
-                                <p>Doces</p>
-                            </div>
-                            <div>
-                                <div>
-                                    <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
-                                    <p>R$3,00</p>
-                                </div>
-                                <div>
-                                    <img src="../static/img/icone-custo.png" alt="Ícone custo">
-                                    <p>R$2,00</p>
-                                </div>
-                            </div>
+                            <p>Brownie Tradicional</p>
+                            <p>R$5,00</p>
+                        </div>
+                        <div>
+                            <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
+                            <p>Doces</p>
                         </div>
                         <div>
                             <div>
-                                <p>Brownie com Ninho</p>
-                                <p>R$7,00</p>
+                                <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
+                                <p>R$3,00</p>
                             </div>
                             <div>
-                                <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
-                                <p>Doces</p>
+                                <img src="../static/img/icone-custo.png" alt="Ícone custo">
+                                <p>R$2,00</p>
                             </div>
-                            <div>
-                                <div>
-                                    <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
-                                    <p>R$2,50</p>
-                                </div>
-                                <div>
-                                    <img src="../static/img/icone-custo.png" alt="Ícone custo">
-                                    <p>R$4,50</p>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>Brownie com Ninho</p>
+                            <p>R$7,00</p>
+                        </div>
+                        <div>
+                            <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
+                            <p>Doces</p>
                         </div>
                         <div>
                             <div>
-                                <p>Pão de Mel</p>
-                                <p>R$6,00</p>
+                                <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
+                                <p>R$2,50</p>
                             </div>
                             <div>
-                                <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
-                                <p>Doces</p>
+                                <img src="../static/img/icone-custo.png" alt="Ícone custo">
+                                <p>R$4,50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>Pão de Mel</p>
+                            <p>R$6,00</p>
+                        </div>
+                        <div>
+                            <img src="../static/img/icone-categoria.png" alt="Ícone categoria">
+                            <p>Doces</p>
+                        </div>
+                        <div>
+                            <div>
+                                <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
+                                <p>R$1,80</p>
                             </div>
                             <div>
-                                <div>
-                                    <img src="../static/img/icone-lucro.png" alt="Ícone lucro">
-                                    <p>R$1,80</p>
-                                </div>
-                                <div>
-                                    <img src="../static/img/icone-custo.png" alt="Ícone custo">
-                                    <p>R$4,20</p>
-                                </div>
+                                <img src="../static/img/icone-custo.png" alt="Ícone custo">
+                                <p>R$4,20</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            </main>
-        </div>
-        <!-- Footer -->
-        <footer>
-            <div class="info-footer">
-                <div class="logo-footer">
-                    <img style=" width: 130px; height: 76px;" src="../static/img/logo2.png" alt="Logo da UP">          <!--imagem-->
-                    <nav>
-                        <a href="/">Inicio</a>                                                    <!-- Link da rota -->
-                        <a href="#sobre">Sobre Nós</a>                                            <!-- Link da rota -->
-                        <a href="#funcionalidades">Funcionalidade</a>                             <!-- Link da rota -->
-                        <a href="/conta">Conta</a>                                                <!--Link da rota-->                               
-                    </nav>
+    </div>
+    </section>
+    </main>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="/">Inicio</a> <!--Link da rota-->
+                    <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
+                    <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
+                    <a href="/conta">Conta</a> <!--Link da rota-->
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp" class="add8"> <!--imagem-->
+                    <p>+55 (11) 98765-4321</p>
                 </div>
-                <hr class="linha-vertical">
-                <div>
-                    <div class="contato" style="margin: 0;">
-                        <img src="../static/img/WhatsApp Ícone.png" alt="Whatsapp">        <!--imagem-->
-                        <p>+55 (11) 98765-4321</p>
-                    </div>
-                    <div class="contato" style="margin: 0;">
-                        <img src="../static/img/E-mail Ícone.png" alt="Email">           <!--imagem-->
-                        <p>contato@upmais.com.br</p>
-                    </div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/E-mail Ícone.png" alt="Email" class="add9"> <!--imagem-->
+                    <p>contato@upmais.com.br</p>
                 </div>
             </div>
-            <hr>
-            <p class="copy">© 2025 - Todos os direitos reservados.</p>
-        </footer>
-    
-    </body>
-    </html>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
+    </footer>
+
+</body>
+
+</html>
