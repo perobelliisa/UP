@@ -89,6 +89,8 @@ function fecharMensagem(id) {
 
 // Script para trocar o modo
 function toggleModo() {
+    /*toggleModo é ativado quando o usuário clica no checkbox e assim é ativada a verificação se esse checkbox está checked ou não
+    Caso esteja, é armazenado que o modo é o escuro no localStorage e, caso não, é armazenado que o modo é o claro*/
     const checkbox = document.querySelector('.switch input');
 
     if (checkbox.checked) {
