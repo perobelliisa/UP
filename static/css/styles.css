@@ -326,7 +326,7 @@ hr {
 .funcionalidades {
     padding: 80px 20px;
     text-align: center;
-    height: 650px;
+    height: auto;
 }
 
 .funcionalidades h3 {
@@ -407,9 +407,9 @@ hr {
 /* FAQ */
 .faq {
     background: url('../img/fundoclaro.png') no-repeat center/cover;
-    padding: 80px 20px;
+    padding: 50px 20px;
     text-align: center;
-    height: 700px;
+    height: auto;
 }
 
 .faq h2 {

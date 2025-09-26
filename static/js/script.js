@@ -121,18 +121,15 @@ function carregarModo() {
         root.style.setProperty('--claro-depoimentos', '#6C6C6C');
         root.style.setProperty('--fundo-acerto', '#246024');
         root.style.setProperty('--fundo-erro', '#832B28');
+        root.style.setProperty('--linha', '#4C2F26');
         root.setAttribute('data-modo', 'escuro');
         document.getElementById('email').src = "../static/img/email-icone-claro.png";
         if (document.getElementById('banner')) {
-            document.getElementById('banner').style.backgroundImage.src = "../static/img/fundoescuro.png";
+            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoescuro.png')";
         }
 
         if (document.getElementById('faq')) {
-            document.getElementById('faq').style.backgroundImage.src = "../static/img/fundoescuro.png";
-        }
-
-        if (document.getElementById('linha-faq')) {
-            document.getElementById('linha-faq').style.backgroundColor = "#4C2F26";
+            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoescuro.png')";
         }
 
         if (document.getElementById('olho')) {
@@ -158,18 +155,15 @@ function carregarModo() {
         root.style.setProperty('--claro-depoimentos', '#6C6C6C');
         root.style.setProperty('--fundo-acerto', '#B9FFB9');
         root.style.setProperty('--fundo-erro', '#FFBFBD');
+        root.style.setProperty('--linha', '#FEDFCD');
         root.setAttribute('data-modo', 'claro');
         document.getElementById('email').src = "../static/img/email-icone-escuro.png";
         if (document.getElementById('banner')) {
-            document.getElementById('banner').style.backgroundImage.src = "../static/img/fundoclaro.png";
+            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoclaro.png')";
         }
 
         if (document.getElementById('faq')) {
-            document.getElementById('faq').style.backgroundImage.src = "../static/img/fundoclaro.png";
-        }
-
-        if (document.getElementById('linha-faq')) {
-            document.getElementById('linha-faq').style.backgroundColor = "var(--linha)";
+            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoclaro.png')";
         }
 
         if (document.getElementById('olho')) {
