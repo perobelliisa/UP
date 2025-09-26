@@ -60,7 +60,7 @@ function mostrarMenu(id) {
 
 // Script para mostrar/ocultar senha
 function mostrarSenha(id, olho) {
-    const modo = localStorage.getItem('modo');
+    const modo = localStorage.getItem('modo'); /*Constante, não variável, ou seja, não pode ser alterada*/
     if (document.getElementById(id).type === 'password') {
         document.getElementById(id).type = 'text';
         if (modo === 'escuro') {
