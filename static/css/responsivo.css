@@ -891,6 +891,32 @@
         width: 35vw;
     }
 
+    .erro {
+        width: 52vw;
+        left: 35vw;
+    }
+
+    .erro p {
+        width: 44vw;
+    }
+
+    .campo-login {
+        width: 50vw;
+    }
+
+    .login button {
+        padding: 15px 100px;
+    }
+
+    .acerto {
+        width: 52vw;
+        left: 35vw;
+    }
+
+    .acerto p {
+        width: 44vw;
+    }
+
 
 
 } 
@@ -1404,6 +1430,46 @@
         font-size: 18px;
         width: auto;
     }
+
+    .erro {
+        width: 85vw;
+        left: 5vw;
+        top: 5vw;
+        padding-bottom: 5vw;
+    }
+
+    .erro p {
+        width: 68vw;
+    }
+
+    .principal {
+        gap: 2vw;
+    }
+
+    .principal img {
+        width: 10vw;
+        height: auto;
+    }
+
+    .acerto {
+        width: 85vw;
+        left: 5vw;
+        top: 5vw;
+        padding-bottom: 5vw;
+    }
+
+    .acerto p {
+        width: 68vw;
+    }
+
+    .x {
+        margin-top: 1vw;
+        margin-right: 1vw;
+    }
+
+    .paragrafo-acerto{
+        font-size: 18px;
+    }
 }
 
 /* Mobile M */
@@ -1554,6 +1620,14 @@
         width: 40vw;
     }
 
+    .titulo-acerto{
+        font-size: 18px;
+    }
+
+
+    .x a {
+        margin-right: 3vw;
+    }
 
 }
 
@@ -1673,5 +1747,21 @@
         margin-left: 7vw;
     }
 
+    .principal {
+        gap: 4vw;
+        margin-left: 2vw;
+    }
+
+    .principal img {
+        width: 15vw;
+    }
+
+    .principal p {
+        width: 60vw;
+    }
+
+    .card {
+        height: 30vw;
+    }
 
 }

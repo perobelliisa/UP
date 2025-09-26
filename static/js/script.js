@@ -59,12 +59,25 @@ function mostrarMenu(id) {
 }
 
 // Script para mostrar/ocultar senha
-function mostrarSenha(id) {
+function mostrarSenha(id, olho) {
+    const modo = localStorage.getItem('modo');
     if (document.getElementById(id).type === 'password') {
         document.getElementById(id).type = 'text';
+        if (modo === 'escuro') {
+            document.getElementById(olho).src = "../static/img/olho-aberto-claro.png";
+        }
+        else {
+            document.getElementById(olho).src = "../static/img/olho-aberto-escuro.png";
+        }
     }
     else {
         document.getElementById(id).type = 'password';
+        if (modo === 'escuro') {
+            document.getElementById(olho).src = "../static/img/olho-fechado-claro.png";
+        }
+        else {
+            document.getElementById('olho').src = "../static/img/olho-fechado-escuro.png";
+        }
     }
 }
 
@@ -81,9 +94,11 @@ function toggleModo() {
     if (checkbox.checked) {
         // modo escuro
         localStorage.setItem('modo', 'escuro');
+        document.getElementById('modo').innerText = 'Escuro';
     } else {
         // modo claro
         localStorage.setItem('modo', 'claro');
+        document.getElementById('modo').innerText = 'Claro';
     }
 
     carregarModo();
@@ -103,8 +118,30 @@ function carregarModo() {
         root.style.setProperty('--claro-botoes', '#FF906E')
         root.style.setProperty('--claro-hover', '#FF5C39');
         root.style.setProperty('--claro-cartoes', '#262626');
-        root.style.setProperty('--claro-depoimentos', '#EDEDED');
+        root.style.setProperty('--claro-depoimentos', '#6C6C6C');
+        root.style.setProperty('--fundo-acerto', '#246024');
+        root.style.setProperty('--fundo-erro', '#832B28');
         root.setAttribute('data-modo', 'escuro');
+        document.getElementById('email').src = "../static/img/email-icone-claro.png";
+        if (document.getElementById('banner')) {
+            document.getElementById('banner').style.backgroundImage.src = "../static/img/fundoescuro.png";
+        }
+
+        if (document.getElementById('faq')) {
+            document.getElementById('faq').style.backgroundImage.src = "../static/img/fundoescuro.png";
+        }
+
+        if (document.getElementById('linha-faq')) {
+            document.getElementById('linha-faq').style.backgroundColor = "#4C2F26";
+        }
+
+        if (document.getElementById('olho')) {
+            document.getElementById('olho').src = "../static/img/olho-fechado-claro.png";
+        }
+
+        if (document.getElementById('olhoC')) {
+            document.getElementById('olhoC').src = "../static/img/olho-fechado-claro.png";
+        }
 
         if (checkbox) {
             checkbox.checked = true;
@@ -119,7 +156,30 @@ function carregarModo() {
         root.style.setProperty('--claro-hover', '#FF5C39');
         root.style.setProperty('--claro-cartoes', '#FFFFFF');
         root.style.setProperty('--claro-depoimentos', '#6C6C6C');
+        root.style.setProperty('--fundo-acerto', '#B9FFB9');
+        root.style.setProperty('--fundo-erro', '#FFBFBD');
         root.setAttribute('data-modo', 'claro');
+        document.getElementById('email').src = "../static/img/email-icone-escuro.png";
+        if (document.getElementById('banner')) {
+            document.getElementById('banner').style.backgroundImage.src = "../static/img/fundoclaro.png";
+        }
+
+        if (document.getElementById('faq')) {
+            document.getElementById('faq').style.backgroundImage.src = "../static/img/fundoclaro.png";
+        }
+
+        if (document.getElementById('linha-faq')) {
+            document.getElementById('linha-faq').style.backgroundColor = "var(--linha)";
+        }
+
+        if (document.getElementById('olho')) {
+            document.getElementById('olho').src = "../static/img/olho-fechado-escuro.png";
+        }
+
+        if (document.getElementById('olhoC')) {
+            document.getElementById('olhoC').src = "../static/img/olho-fechado-escuro.png";
+        }
+
         if (checkbox) {
             checkbox.checked = false;
             document.getElementById('modo').innerText = 'Claro';

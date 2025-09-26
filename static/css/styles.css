@@ -160,6 +160,7 @@ body {
     color: var(--claro-texto);
     padding: 0 20px;
     box-sizing: border-box;
+    background-color: var(--claro-cartoes);
 }
 
 .input2 {
@@ -631,6 +632,8 @@ footer .contato p {
     padding: 0 20px;
     border: none;
     outline: none;
+    background-color: var(--claro-cartoes);
+
 }
 
 /*Perguntar para o Igor como esconder o input quando clica e se tem como a borda da div ficar tipo os outros inputs*/
@@ -887,17 +890,17 @@ nav a:hover {
     width: 1.5vw;
     left: 0.25vw;
     bottom: 0.25vw;
-    background-color: var(--claro-menu);
+    background-color: var(--claro-hover);
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked+.slider {
-    background-color: var(--claro-menu);
+    background-color: var(--claro-hover);
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 0.5vw var(--claro-menu);
+    box-shadow: 0 0 0.5vw var(--claro-hover);
 }
 
 input:checked+.slider:before {
@@ -1398,6 +1401,7 @@ select.input:focus {
     font-size: 18px;
     font-weight: var(--regular);
     color: var(--claro-texto);
+    background-color: var(--claro-cartoes);
     padding: 0 20px;
     border: none;
     outline: none;
