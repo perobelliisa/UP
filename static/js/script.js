@@ -95,24 +95,24 @@ function toggleModo() {
 
     if (checkbox.checked) {
         // modo escuro
-        localStorage.setItem('modo', 'escuro');
-        document.getElementById('modo').innerText = 'Escuro';
+        localStorage.setItem('modo', 'escuro'); /*armazer na localstorege que o modo é o escuro*/
+        document.getElementById('modo').innerText = 'Escuro'; /*verificar se está no modo escuro , para ficar escrito escuro do lado do botão*/
     } else {
         // modo claro
         localStorage.setItem('modo', 'claro');
-        document.getElementById('modo').innerText = 'Claro';
+        document.getElementById('modo').innerText = 'Claro'; /*verificar se está no modo claro, para ficar escrito claro do lado do botão*/
     }
 
     carregarModo();
 }
 
 
-function carregarModo() {
-    const root = document.documentElement;
-    const modo = localStorage.getItem('modo');
+function carregarModo() /* so aqui vai  fazer a verificação do modo para mudar as variaveis  do modo claro para o modo escuro*/ {
+    const root = document.documentElement; /* root pega tudo que esta no html*/
+    const modo = localStorage.getItem('modo'); /*estou procurando o que eu salvei como modo no meu localstorege*/
     const checkbox = document.querySelector('.switch input');
 
-    if (modo === 'escuro') {
+    if (modo === 'escuro') /*modificar as variaveis de cor do modo claro para o modo escuro*/ {
         // modo escuro
         root.style.setProperty('--claro-fundo', '#1A1A1A');
         root.style.setProperty('--claro-texto', '#EDEDED');
@@ -125,14 +125,14 @@ function carregarModo() {
         root.style.setProperty('--fundo-erro', '#832B28');
         root.style.setProperty('--linha', '#4C2F26');
         root.setAttribute('data-modo', 'escuro');
-        document.getElementById('email').src = "../static/img/email-icone-claro.png";
+        document.getElementById('email').src = "../static/img/email-icone-claro.png"; /*aqui estou dizendo que tem email em todas as paginas(rodape) icone, para mudar quando estiver no mdo escuro para o icone claro*/
         if (document.getElementById('banner')) {
-            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoescuro.png')";
+            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoescuro.png')"; /* vai verificar o banner, pois nao é o mesmo banner para o modo claro e modo escuro, estnao aqui vai mudar para o banner do modo escuro*/
         }
         /* IF VERIFICA SE O ID QUE VC QUER MEXER EXISTE NAQUELA PÁGINA PARA O JAVA SCRIPTH NÃO TRAVAR*/
 
         if (document.getElementById('faq')) {
-            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoescuro.png')";
+            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoescuro.png')"; /* pq o fundo aqui tambem é no modo escuro, pois não é o mesmo para o modo claro e o modo escuro*/
         }
 
         if (document.getElementById('olho')) {
@@ -167,25 +167,28 @@ function carregarModo() {
         document.getElementById('email').src = "../static/img/email-icone-escuro.png";
         /*O EMAIL NÃO TEM O IF PQ TODAS AS PAGINAS TEM FOOTER, ICONE*/
         if (document.getElementById('banner')) {
-            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoclaro.png')";
+            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoclaro.png')"; /* vai verificar o banner, pois nao é o mesmo banner para o modo claro e modo escuro, estão aqui vai mudar para o banner do modo claro*/
         }
 
         if (document.getElementById('faq')) {
-            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoclaro.png')";
+            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoclaro.png')"; /* pq o fundo aqui tambem é no modo claro, pois não é o mesmo para o modo claro e o modo escuro*/
         }
 
         if (document.getElementById('olho')) {
             document.getElementById('olho').src = "../static/img/olho-fechado-escuro.png";
         }
+        /*PARA VERFICAR SE O ELEMENTO QUE EU VOU MEXER  EXISTE NAQUELA PÁGINA*/
 
         if (document.getElementById('olhoC')) {
             document.getElementById('olhoC').src = "../static/img/olho-fechado-escuro.png";
         }
+        /*NÃO PODE TER DOIS ELEMENTOS COM A MESMA ID, TEM EM ALGUMAS PAGINA QUE SO TENHA SENHA OU SO CONFIRMAR SENHA, POR ISSO É SEPARADO, pois se não  vai travar*/
 
         if (checkbox) {
             checkbox.checked = false;
             document.getElementById('modo').innerText = 'Claro';
         }
+        /*PARA GARANTIR QUE A CHECKBOX VAI FICAR MARCADA, mesmo que eu sair do site vai ficar selecionado aquela opcção que eu marquei*/
     }
 }
 
