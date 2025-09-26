@@ -127,6 +127,7 @@ function carregarModo() {
         if (document.getElementById('banner')) {
             document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoescuro.png')";
         }
+        /* IF VERIFICA SE O ID QUE VC QUER MEXER EXISTE NAQUELA PÁGINA PARA O JAVA SCRIPTH NÃO TRAVAR*/
 
         if (document.getElementById('faq')) {
             document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoescuro.png')";
@@ -135,17 +136,21 @@ function carregarModo() {
         if (document.getElementById('olho')) {
             document.getElementById('olho').src = "../static/img/olho-fechado-claro.png";
         }
+        /*PARA VERFICAR SE O ELEMENTO QUE EU VOU MEXER  EXISTE NAQUELA PÁGINA*/
 
         if (document.getElementById('olhoC')) {
             document.getElementById('olhoC').src = "../static/img/olho-fechado-claro.png";
         }
+        /*NÃO PODE TER DOIS ELEMENTOS COM A MESMA ID, TEM EM ALGUMAS PAGINA QUE SO TENHA SENHA OU SO CONFIRMAR SENHA, POR ISSO É SEPARADO*/
 
         if (checkbox) {
             checkbox.checked = true;
             document.getElementById('modo').innerText = 'Escuro';
         }
+        /*PARA GARANTIR QUE A CHECKBOX VAI FICAR MARCADA*/
+
     } else {
-        // modo claro
+        // modo claro (MUDANCA DAS VARIAVEIS DO MODO ESCURO PARA O MODO CLARO)
         root.style.setProperty('--claro-fundo', '#FEFBF0');
         root.style.setProperty('--claro-texto', '#2D2D2D');
         root.style.setProperty('--claro-menu', '#FEDFCD');
@@ -158,6 +163,7 @@ function carregarModo() {
         root.style.setProperty('--linha', '#FEDFCD');
         root.setAttribute('data-modo', 'claro');
         document.getElementById('email').src = "../static/img/email-icone-escuro.png";
+        /*O EMAIL NÃO TEM O IF PQ TODAS AS PAGINAS TEM FOOTER, ICONE*/
         if (document.getElementById('banner')) {
             document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoclaro.png')";
         }
