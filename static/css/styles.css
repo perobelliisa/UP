@@ -114,6 +114,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 /* =====================
    COMPONENTES GERAIS
 ===================== */

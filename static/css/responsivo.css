@@ -627,7 +627,7 @@
     }
 
     .copy {
-        font-size: 12px;
+        font-size: 16px;
         text-align: center;
         padding-bottom: 5px;
     }
@@ -745,7 +745,7 @@
     }
 
     .copy {
-        font-size: 12px;
+        font-size: 16px;
         text-align: center;
         padding-bottom: 5px;
     }
@@ -1224,7 +1224,7 @@
     }
 
     .copy {
-        font-size: 12px;
+        font-size: 16px;
         text-align: center;
         padding-bottom: 5px;
     }
@@ -1470,6 +1470,26 @@
     .paragrafo-acerto{
         font-size: 18px;
     }
+
+    .info-footer nav{
+        flex-direction: column;
+        display: block;
+        padding-bottom: 20px;
+        margin-top: 15px;
+    }
+
+    .info-footer nav a {
+        font-size: 24px;
+    }
+
+    .info-footer {
+        height: auto;
+        padding: 20px;
+    }
+
+    footer .contato p {
+        font-size: 18px;
+    }
 }
 
 /* Mobile M */
@@ -1525,13 +1545,11 @@
     }
 
     .info-footer nav a {
-        font-size: 14px;
         display: block;
         padding-bottom: 6px;
     }
     
     .info-footer {
-        height: 170px;
         flex-wrap: wrap;}
 
 
@@ -1545,7 +1563,6 @@
 
     footer .contato p {
         font-weight: var(--regular);
-        font-size: 12px;
     }
 
     .linha-vertical {
@@ -1556,7 +1573,7 @@
     }
 
     .copy {
-        font-size: 12px;
+        font-size: 16px;
         text-align: center;
         padding-bottom: 5px;
         padding-top: 5px;
