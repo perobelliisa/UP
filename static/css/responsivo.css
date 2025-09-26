@@ -390,7 +390,6 @@
     .linha-vertical {
         width: 1px;
         height: 80px;
-        background-color: #000;
         border: none;
     }
 
@@ -416,7 +415,6 @@
     .linha-vertical {
         width: 1px;
         height: 80px;
-        background-color: #000;
         border: none;
     }
 
@@ -625,7 +623,6 @@
         margin-top: -13px;
         width: 1px;
         height: 60px;
-        background-color: #000;
         border: none;
     }
 
@@ -744,7 +741,6 @@
         margin-top: -13px;
         width: 1px;
         height: 60px;
-        background-color: #000;
         border: none;
     }
 
@@ -1041,7 +1037,7 @@
         height: 5vw;     
         width: 5vw;
         left: 0.60vw;      
-        bottom: 0.70vw;
+        bottom: 1vw;
     }
 
     input:checked + .slider:before {
@@ -1198,7 +1194,6 @@
         margin-top: -13px;
         width: 1px;
         height: 60px;
-        background-color: #000;
         border: none;
     }
 
@@ -1399,6 +1394,16 @@
     .contato {
         font-size: 18px;
     }
+
+    .card-config {
+        flex-direction: column;
+    }
+
+    .card-edicao .bnt-claroDQ {
+        padding: 12px 40px;
+        font-size: 18px;
+        width: auto;
+    }
 }
 
 /* Mobile M */
@@ -1481,7 +1486,6 @@
         margin-top: -13px;
         width: 1px;
         height: 60px;
-        background-color: #000;
         border: none;
     }
 

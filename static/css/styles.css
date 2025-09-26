@@ -19,14 +19,20 @@
     --escuro-cartoes: #262626;
     --escuro-depoimentos: #EDEDED;
 
+    --fundo-: rgba(0, 0, 0, 0.3);
+
     --geral-erro: #D9534F;
+    --hover-erro: #c9302c;
     --geral-acerto: #5CB85C;
     --hover-acerto: #4cae4c;
     --fundo-acerto: #B9FFB9;
+    --fundo-erro: #FFBFBD;
 
+    --box-shadow: rgba(0, 0, 0, 0.1);
     --linha: #FEDFCD;
     --escuro-linha: #4C2F26;
 
+    --botao-texto: #EDEDED;
     --botao-arredondamentod: 10px;
     --botao-arredondamentom: 50px;
     --card-arredondamento: 20px;
@@ -121,7 +127,7 @@ body {
 
 .bnt-claroD {
     background-color: var(--claro-botoes);
-    color: var(--claro-cartoes);
+    color: var(--botao-texto);
     border: none;
     padding: 15px 30px;
     border-radius: var(--botao-arredondamentom);
@@ -210,7 +216,7 @@ body {
     align-items: center;
     padding: 10px;
     background-color: var(--claro-cartoes);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--box-shadow);
 }
 
 .header-home img {
@@ -371,7 +377,8 @@ hr {
     border-radius: var(--card-arredondamento);
 }
 
-.nome-depoimento, .p-depoimento {
+.nome-depoimento,
+.p-depoimento {
     font-size: 20px;
     font-weight: var(--semi-bold);
 }
@@ -532,6 +539,7 @@ footer hr {
     gap: 5vw;
     padding: 40px 20px;
     height: 60px;
+    background-color: var(--claro-cartoes);
 }
 
 
@@ -552,18 +560,21 @@ footer hr {
 footer .contato p {
     font-weight: var(--regular);
     font-size: 20px;
+    color: var(--claro-texto);
 }
 
 .linha-vertical {
     width: 1px;
     height: 80px;
-    background-color: #000;
+    background-color: var(--claro-texto);
     border: none;
 }
 
 .copy {
     text-align: center;
     padding-bottom: 5px;
+    background-color: var(--claro-cartoes);
+    color: var(--claro-texto);
 }
 
 .login {
@@ -690,7 +701,7 @@ nav a:hover {
     padding: 4vw 8vw;
     align-items: center;
     background-color: var(--claro-cartoes);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--box-shadow);
 }
 
 .topo-usuario img {
@@ -708,7 +719,7 @@ nav a:hover {
     background-color: var(--claro-menu);
     flex-direction: column;
     width: 16vw;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--box-shadow);
 }
 
 .header-usuario img {
@@ -747,8 +758,10 @@ nav a:hover {
     padding: 3vw 4vw;
     width: 1054px;
     box-shadow: 0px 4px 4px var(--geral-erro);
-    max-width: 50vw; 
-    padding: 20px;"
+    max-width: 50vw;
+    padding: 20px;
+    "
+
 }
 
 .titulo-secao {
@@ -776,7 +789,8 @@ nav a:hover {
 }
 
 .cards-dashboard {
-    width: 68vw; /*Perguntar para o Igor porque não aplica*/
+    width: 68vw;
+    /*Perguntar para o Igor porque não aplica*/
     margin: 0 auto;
 }
 
@@ -817,9 +831,9 @@ nav a:hover {
 
 .bnt-claroDQ {
     background-color: var(--claro-botoes);
-    color: var(--claro-cartoes);
+    color: var(--botao-texto);
     border: none;
-    padding: 20px 30px;
+    padding: 10px 20px;
     border-radius: var(--botao-arredondamentod);
     font-size: 22px;
     font-weight: var(--semi-bold);
@@ -966,18 +980,6 @@ input:checked+.slider:before {
     margin: 3vw auto 0;
 }
 
-.bnt-claroDQ {
-    background-color: var(--claro-botoes);
-    color: var(--claro-cartoes);
-    border: none;
-    padding: 20px 30px;
-    border-radius: var(--botao-arredondamentod);
-    font-size: 22px;
-    font-weight: var(--semi-bold);
-    cursor: pointer;
-    text-align: center;
-}
-
 .bnt-claroDQ:hover {
     background-color: var(--claro-hover);
 }
@@ -1005,7 +1007,7 @@ input:checked+.slider:before {
 ===================== */
 .btn-adicionar {
     background-color: var(--claro-botoes);
-    color: var(--claro-cartoes);
+    color: var(--botao-texto);
     border: none;
     padding: 12px 25px;
     border-radius: var(--botao-arredondamentod);
@@ -1052,7 +1054,7 @@ input:checked+.slider:before {
 /* Botões da tabela */
 .btn-edit {
     background-color: var(--geral-acerto);
-    color: white;
+    color: var(--botao-texto);
     border: none;
     padding: 6px 14px;
     border-radius: var(--botao-arredondamentod);
@@ -1063,12 +1065,12 @@ input:checked+.slider:before {
 
 
 .btn-edit:hover {
-    background-color: #4cae4c;
+    background-color: var(--hover-acerto);
 }
 
 .btn-del {
     background-color: var(--geral-erro);
-    color: white;
+    color: var(--botao-texto);
     border: none;
     padding: 6px 14px;
     border-radius: var(--botao-arredondamentod);
@@ -1078,7 +1080,7 @@ input:checked+.slider:before {
 }
 
 .btn-del:hover {
-    background-color: #c9302c;
+    background-color: var(--hover-erro);
 }
 
 /* =====================
@@ -1101,7 +1103,7 @@ input:checked+.slider:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--fundo-);
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -1202,7 +1204,7 @@ input:checked+.slider:before {
 }
 
 select option {
-    background-color: #fff;
+    background-color: var(--claro-cartoes);
     color: var(--claro-texto);
 }
 
@@ -1364,17 +1366,17 @@ select.input:focus {
 }
 
 .bnt-claroD a {
-    color: var(--claro-cartoes);
+    color: var(--botao-texto);
     font-size: 22px;
 }
 
 .btn-adicionar a {
-    color: var(--claro-cartoes);
+    color: var(--botao-texto);
     font-size: 18px;
 }
 
 .btn-edit:hover {
-    background-color: #4cae4c;
+    background-color: var(--hover-acerto)
 }
 
 .input-senha {
@@ -1422,9 +1424,11 @@ select.input:focus {
     background-color: var(--fundo-acerto);
     border-radius: var(--card-arredondamento);
     position: absolute;
-    left: 65vw;
+    left: 62vw;
     top: 1vw;
+    border: 2px solid var(--geral-acerto);
 }
+
 
 .acerto div {
     width: 100%;
@@ -1455,3 +1459,20 @@ select.input:focus {
     padding: 20px 14px;
 }
 
+#mensagemAcerto {
+    display: block;
+}
+
+.principal p {
+    width: 25vw;
+}
+
+.erro {
+    padding: 2vw 2vw 3vw;
+    background-color: var(--fundo-erro);
+    border-radius: var(--card-arredondamento);
+    position: absolute;
+    left: 62vw;
+    top: 1vw;
+    border: 2px solid var(--geral-erro);
+}
