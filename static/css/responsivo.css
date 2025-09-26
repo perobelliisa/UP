@@ -1005,7 +1005,7 @@
     .header-home {
         display: none;
         position: absolute;
-        top: 13%;
+        top: 10%;
         left: 43%;
         width: 50vw;
         justify-content: start;
@@ -1187,7 +1187,6 @@
 
     .info-footer nav{
         flex-direction: column;
-        display: block;
         padding-bottom: 20px;
         margin-top: 15px
     }
@@ -1233,7 +1232,6 @@
         margin-top: -17px;
         font-size: 18px;
         margin-bottom: 21px;
-        margin-left: 80px;
         
     }
 
@@ -1471,11 +1469,15 @@
         font-size: 18px;
     }
 
-    .info-footer nav{
+    .info-footer {
+        justify-content: center;
+    }
+
+    .info-footer nav {
         flex-direction: column;
-        display: block;
         padding-bottom: 20px;
         margin-top: 15px;
+        display: flex;
     }
 
     .info-footer nav a {
@@ -1516,7 +1518,7 @@
 
     .header-home {
         width: 60vw;
-        top: 12%;
+        top: 9.5%;
         left: 32%;
     }
 
@@ -1537,9 +1539,8 @@
     }
     
 
-    .info-footer nav{
+    .info-footer nav {
         flex-direction: column;
-        display: block;
         padding-bottom: 20px;
         margin-top: 15px
     }
@@ -1657,13 +1658,13 @@
 
     .header-home {
         width: 65vw;
-        top: 11%;
+        top: 9%;
         left: 25%;
     }
 
     .header-usuario {
         width: 65vw;
-        top: 12%;
+        top: 12.4%;
     }
 
     .card-branco-sem-fundo h1 {

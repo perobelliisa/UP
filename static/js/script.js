@@ -76,7 +76,7 @@ function mostrarSenha(id, olho) {
             document.getElementById(olho).src = "../static/img/olho-fechado-claro.png";
         }
         else {
-            document.getElementById('olho').src = "../static/img/olho-fechado-escuro.png";
+            document.getElementById(olho).src = "../static/img/olho-fechado-escuro.png";
         }
     }
 }
