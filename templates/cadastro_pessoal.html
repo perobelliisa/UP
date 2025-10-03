@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsivo.css') }}">
     <title>Cadastro Pessoal</title>
 </head>
 
 <body>
     <!-- Header -->
     <header class="header-home" id="menu-mobile-home">
-        <img class="desktop" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+        <img class="desktop" src="{{ url_for('static', filename='img/logo2.png') }}" alt="Logo da UP"> <!--imagem-->
         <nav>
-            <a href="../templates/index.html">Inicio</a> <!--Link da rota-->
-            <a href="../templates/index.html">Sobre Nós</a> <!--Link da rota-->
-            <a href="../templates/index.html">Funcionalidade</a> <!--Link da rota-->
-            <a href="../templates/login.html">Conta</a> <!--Link da rota-->
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('index') }}">Sobre Nós</a>
+            <a href="{{ url_for('index') }}">Funcionalidade</a>
+            <a href="{{ url_for('index') }}">Conta</a>
         </nav>
     </header>
 
     <!-- Main -->
     <main>
         <section class="space-between topo-usuario mobile">
-            <img src="../static/img/logo2.png" alt="Logo da UP+">
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" alt="Logo da UP+">
             <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-home')">
                 <div></div>
                 <div></div>
@@ -34,7 +34,7 @@
         <div class="main-cadastro">
             <section class="cadastro_pessoal card-form">
                 <h1 class="titulo-secao">Cadastro Pessoal</h1>
-                <form class="form" action=""> <!--Link da rota-->
+                <form method="post" action="{{ url_for('cadastro') }}"  class="form">
                     <div class="form-duplo">
                         <div class="d-flex campo">
                             <label>Nome</label>
@@ -61,8 +61,8 @@
                         <div class="d-flex campo">
                             <label>Senha</label>
                             <div class="input input-pequeno d-flex input-senha">
-                                <input type="password" id="senha" name="senha" required>
-                                <img src="../static/img/olho-fechado-escuro.png" id="olho" alt="Mostrar Senha" onclick="mostrarSenha('senha', 'olho')">
+                                <input type="password" id="senha" name="senha" onkeypress="validarSenha()" required>
+                                <img src="{{ url_for('static', filename='img/olho-fechado-escuro.png') }}" id="olho" alt="Mostrar Senha" onclick="mostrarSenha('senha', 'olho')">
                                 <!--imagem-->
                             </div>
                         </div>
@@ -70,12 +70,12 @@
                             <label>Confirmar Senha</label>
                             <div class="input input-pequeno d-flex input-senha">
                                 <input type="password" id="Csenha" name="Csenha" required>
-                                <img src="../static/img/olho-fechado-escuro.png" id="olhoC" alt="Mostrar Senha" onclick="mostrarSenha('Csenha', 'olhoC')">
+                                <img src="{{ url_for('static', filename='img/olho-fechado-escuro.png') }}" id="olhoC" alt="Mostrar Senha" onclick="mostrarSenha('Csenha', 'olhoC')">
                                 <!--imagem-->
                             </div>
                         </div>
                     </div>
-                    <button class="bnt-claroD btn-largo" type="submit"><a href="../templates/cadEmp.html">Continuar</a></button>
+                    <button class="bnt-claroD btn-largo" type="submit">Continuar</button>
                 </form>
             </section>
         </div>
@@ -85,22 +85,22 @@
     <footer>
         <div class="info-footer">
             <div class="logo-footer">
-                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <img class="add5" src="{{ url_for('static', filename='img/logo2.png') }}" alt="Logo da UP"> <!--imagem-->
                 <nav>
-                    <a href="../templates/index.html">Inicio</a> <!--Link da rota-->
-                    <a href="../templates/index.html">Sobre Nós</a> <!--Link da rota-->
-                    <a href="../templates/index.html">Funcionalidade</a> <!--Link da rota-->
-                    <a href="../templates/login.html">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                    <a href="{{ url_for('index') }}">Sobre Nós</a>
+                    <a href="{{ url_for('index') }}">Funcionalidade</a>
+                    <a href="{{ url_for('index') }}">Conta</a>
                 </nav>
             </div>
             <hr class="linha-vertical">
             <div>
                 <div class="contato" class="add6">
-                    <img src="../static/img/whatsapp-icone.png" alt="Whatsapp" class="add8"> <!--imagem-->
+                    <img src="{{ url_for('static', filename='img/whatsapp-icone.png') }}" alt="Whatsapp" class="add8"> <!--imagem-->
                     <p>+55 (11) 98765-4321</p>
                 </div>
                 <div class="contato" class="add6">
-                    <img src="../static/img/email-icone-escuro.png" id="email" alt="Email" class="add9"> <!--imagem-->
+                    <img src="{{ url_for('static', filename='img/email-icone-escuro.png') }}" id="email-icone" alt="Email" class="add9"> <!--imagem-->
                     <p>contato@upmais.com.br</p>
                 </div>
             </div>
@@ -108,8 +108,8 @@
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
-        <script src="../static/js/script.js"></script>
+        <script src="{{ url_for('static', filename='js/owl-carousel/owl.carousel.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </footer>
 </body>
 
