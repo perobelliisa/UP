@@ -194,3 +194,9 @@ function carregarModo() /* so aqui vai  fazer a verificação do modo para mudar
 
 window.document.addEventListener('DOMContentLoaded', carregarModo); 
 /*sempre que abrir uma janela ele carregar o modo*/
+
+function validarSenha() {
+    var senha = document.getElementById("senha").value;
+    
+    console.log(senha);
+}
