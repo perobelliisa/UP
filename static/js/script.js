@@ -193,10 +193,48 @@ function carregarModo() /* so aqui vai  fazer a verificação do modo para mudar
 }
 
 window.document.addEventListener('DOMContentLoaded', carregarModo); 
-/*sempre que abrir uma janela ele carregar o modo*/
 
-function validarSenha() {
-    var senha = document.getElementById("senha").value;
-    
-    console.log(senha);
-}
+document.addEventListener('DOMContentLoaded', function () {
+  var form     = document.querySelector('form[action*="cadastro"]');
+  var senhaErro  = document.getElementById('senha');
+  var csenhaErro = document.getElementById('Csenha');
+
+  function getAvisoEl() {
+    var erro = document.getElementById('aviso');
+    if (!erro) {
+      var senhas = csenhaErro || senhaErro;
+      if (senhas && senhas.parentNode) {
+        senhas.parentNode.appendChild(erro);
+      } else {
+        document.body.appendChild(erro);
+      }
+    }
+    return erro;
+  }
+  var avisoEl = getAvisoEl();
+
+  function validarSenha() {
+    var senha  = senhaErro ? senhaErro.value : '';
+    var csenha = csenhaErro ? csenhaErro.value : '';
+    var msg = '';
+
+    if (senha.length < 8 || senha.length > 12)        msg = 'Senha: 8 a 12 caracteres.';
+    else if (senha.toLowerCase() === senha)           msg = 'Inclua 1 letra MAIÚSCULA.';
+    else if (senha.toUpperCase() === senha)           msg = 'Inclua 1 letra minúscula.';
+    else if (!/[0-9]/.test(senha))                    msg = 'Inclua 1 número.';
+    else if (/^[A-Za-z0-9]*$/.test(senha))            msg = 'Inclua 1 caractere especial.';
+    else if (csenha && senha !== csenha)              msg = 'As senhas não coincidem.';
+
+    avisoEl.textContent = msg;
+    return msg === '';
+  }
+  if (senhaErro)  senhaErro.addEventListener('input', validarSenha);
+  if (csenhaErro) csenhaErro.addEventListener('input', validarSenha);
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      if (!validarSenha()) e.preventDefault();
+    });
+  }
+  validarSenha();
+});
+
