@@ -56,20 +56,6 @@
                     </div> <!--Link da rota-->
                 </div>
             </section>
-            <!-- <section class="" id="mensagemErro">
-                <div class="erro">
-                    <div class="d-flex x">
-                        <a href="#" onclick="fecharMensagem('mensagemErro')"><img src="../static/img/X-erro.png" alt="Fechar"></a>
-                    </div>
-                    <div class="d-flex principal">
-                        <img src="../static/img/icone-erro.png" alt="Ícone de Acerto">
-                        <div class="d-flex">
-                            <p class="titulo-acerto">Não conseguimos te conectar</p>
-                            <p class="paragrafo-acerto">Seu email e/ou senha estão incorretos</p>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
             {% with msgs = get_flashed_messages(with_categories=true) %}
             {% if msgs %}
                 {% for category, msg in msgs %}
@@ -77,28 +63,32 @@
                 {% if category == 'success' %}{% set classe = 'acerto' %}{% endif %}
                 {% if category == 'warning' %}{% set classe = 'aviso' %}{% endif %}
 
-                <section class="mensagem-flash">
+                <section class="mensagem-flash" id="msgFlash">
                     <div class="{{ classe }}">
                     <div class="d-flex x">
-                        <a href="#" onclick="this.closest('section.mensagem-flash').remove(); return false;">
-                        {% if category == 'erro' %}
+                        <a href="#" onclick="fecharMensagem('msgFlash')">
+                        {% if classe == 'erro' %}
                         <img src="{{ url_for('static', filename='img/X-erro.png') }}" alt="Fechar">
                         </a>
-                        {% endif %}
-                        {% if category == 'success' %}
+                        {% elif classe == 'acerto' %}
                         <img src="{{ url_for('static', filename='img/X-acerto.png') }}" alt="Fechar">
                         </a>
                         {% endif %}
                     </div>
                     <div class="d-flex principal">
-                        {% if category == 'erro' %}
+                        {% if classe == 'erro' %}
                         <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="Ícone">
                         {% endif %}
-                        {% if category == 'success' %}
+                        {% if classe == 'acerto' %}
                         <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="Ícone">
                         {% endif %}
                         <div class="d-flex">
+                        {% if classe == 'acerto' %}
                         <p class="titulo-acerto">{{ msg }}</p>
+                        {% endif %}
+                        {% if classe == 'erro' %}
+                        <p class="titulo-erro">{{ msg }}</p>
+                        {% endif %}
                         </div>
                     </div>
                     </div>
