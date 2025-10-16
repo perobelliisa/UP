@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Aluno\Desktop\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -59,8 +59,8 @@ def cadastro():
 
 @app.route('/cadastroEmpresa', methods=['GET', 'POST'])
 def cadastroEmpresa():
+    email = session.get('email_pendente', '')
     if request.method == 'POST':
-        email = session.get('email_pendente', '')
         if not email:
             flash('Não foi possível identificar o usuário. Refaça o cadastro.')
             return redirect(url_for('cadastro'))
@@ -93,7 +93,9 @@ def cadastroEmpresa():
             return render_template('cadEmp.html')
         finally:
             cursor.close()
-
+    if 'email_pendente' not in session:
+        flash('Não foi possível identificar o usuário. Faça o login ou se cadastre.')
+        return redirect(url_for('login'))
     return render_template('cadEmp.html')
 
 
@@ -119,10 +121,12 @@ def login():
             flash('Email ou senha inválidos.')
             return render_template('login.html')
 
+        if 'email_pendente' in session:
+            flash('Termine o cadastro da sua empresa primeiro.')
+            return redirect(url_for('cadastroEmpresa'))
         session['id_usuario'] = id_usuario
         flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('dashboard'))
-
     return render_template('login.html')
 
 
@@ -148,9 +152,97 @@ def dashboard():
 
 @app.route("/config")
 def config():
-    return render_template('config.html')
+    if 'id_usuario' not in session:
+        flash('Faça login para continuar.')
+        return redirect(url_for('login'))
+    id = session.get('id_usuario', '')
+    print(id)
+    try:
+        cursor = con.cursor()
+        cursor.execute('SELECT NOME, SOBRENOME, EMAIL, TELEFONE, ID_USUARIO FROM USUARIO WHERE ID_USUARIO = ?', (session['id_usuario'],))
+        usuario = cursor.fetchone()
+        print(usuario)
+        cursor.execute('SELECT NOME, TIPO FROM EMPRESA WHERE ID_USUARIO = ?', (session['id_usuario'],))
 
+        empresa = cursor.fetchone()
+        print(empresa)
+        if empresa[1] == 1:
+            tipo = "Confeitaria"
+        elif empresa[1] == 2:
+            tipo = "Padaria"
+        elif empresa[1] == 3:
+            tipo = "Hort Fruit"
+        elif empresa[1] == 4:
+            tipo = "Lanchonete"
+        else:
+            tipo = "Outros"
+    finally:
+        cursor.close()
+    return render_template('config.html', usuario=usuario, empresa=empresa, tipo=tipo)
 
+@app.route('/editar/<int:id>', methods=['POST', 'GET'])
+def editar(id):
+    if request.method =='POST':
+        nome = request.form['nome']
+        sobrenome = request.form['sobrenome']
+        email = request.form['email'].strip().lower()
+        cpf = request.form['cpf']
+        telefone = request.form['telefone']
+        senha = request.form['senha']
+        Csenha = request.form['Csenha']
+        nomeEmp = request.form.get('nomeEmp')
+        endereco = request.form.get('endereco')
+        cnpj = request.form.get('cnpj')
+        tipo = request.form.get('tipo')
+        porte = request.form.get('porte')
+        valor = request.form.get('valor')
+        print('oi')
+        cursor = con.cursor()
+        try:
+            cursor.execute("SELECT EMAIL FROM USUARIO WHERE EMAIL = ? AND ID_USUARIO != ?", (email, id,))
+            if cursor.fetchone():
+                flash('Email já cadastrado!')
+                return render_template('cadastro_pessoal.html')
+            print('verificando')
+
+            if len(senha) != 0:
+                senha_cripto = generate_password_hash(senha).decode('utf-8')
+                cursor.execute("""
+                                           UPDATE USUARIO
+                                           SET NOME = ?, SOBRENOME = ?, EMAIL = ?, CPF = ?, TELEFONE = ?, SENHA = ?
+                                           WHERE ID_USUARIO = ?
+                                       """, (nome, sobrenome, email, cpf, telefone, senha_cripto, id))
+            else:
+                cursor.execute("""
+                                           UPDATE USUARIO
+                                           SET NOME = ?, SOBRENOME = ?, EMAIL = ?, CPF = ?, TELEFONE = ?,
+                                           WHERE ID_USUARIO = ?
+                                       """, (nome, sobrenome, email, cpf, telefone, id))
+
+            # Atualiza empresa
+            cursor.execute("""
+                           UPDATE EMPRESA
+                           SET NOME = ?, ENDERECO = ?, CNPJ = ?, TIPO = ?, PORTE = ?, VALOR_MAO = ?
+                           WHERE ID_USUARIO = ?
+                       """, (nomeEmp, endereco, cnpj, tipo, porte, valor, id))
+            con.commit()
+            flash('Usuário editado com sucesso!', 'success')
+            return redirect('dashboard')
+            print('inserir')
+
+        finally:
+            cursor.close()
+            # flash('Não foi possível editar o usuário')
+            return redirect('/dashboard')
+            print('fim')
+    cursor = con.cursor()
+    cursor.execute("SELECT NOME, SOBRENOME, EMAIL, CPF, TELEFONE, ID_USUARIO FROM USUARIO WHERE ID_USUARIO = ?", (id,))
+    usuario = cursor.fetchone()
+    print(usuario)
+    cursor.execute("SELECT NOME, ENDERECO, CNPJ, TIPO, PORTE, VALOR_MAO FROM EMPRESA WHERE ID_USUARIO = ?", (id,))
+    empresa = cursor.fetchone()
+    cursor.close()
+    return render_template('editar_Usuario.html', usuario=usuario, empresa=empresa)
 @app.route('/logout')
 def logout():
     session.pop('id_usuario', None)
