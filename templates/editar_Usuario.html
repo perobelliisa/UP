@@ -15,11 +15,11 @@
         <header class="header-usuario" id="menu-mobile-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
             <nav class="d-flex">
-                <a href="../templates/dashboard.html">DashBoard</a>
-                <a href="../templates/insumos.html">Insumos</a>
-                <a href="../templates/produto.html">Produtos</a>
-                <a href="../templates/relatorios.html">Relatórios</a>
-                <a href="../templates/config.html" class="pagina-atual">Configurações</a>
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a href="{{ url_for('insumos') }}" class="pagina-atual">Insumos</a>
+                <a href="{{ url_for('produtos') }}">Produtos</a>
+                <a href="{{ url_for('relatorios') }}">Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
                 <a href="/logout">Sair</a>
             </nav>
         </header>
@@ -140,7 +140,7 @@
         </div>
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script&gt;
         <script src="../static/js/owl-carousel/owl.carousel.js"></script>
         <script src="../static/js/script.js"></script>
     </footer>
