@@ -86,10 +86,10 @@
             <div class="logo-footer">
                 <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
                 <nav>
-                    <a href="../templates/index.html">Inicio</a> <!--Link da rota-->
-                    <a href="../templates/index.html">Sobre Nós</a> <!--Link da rota-->
-                    <a href="../templates/index.html">Funcionalidade</a> <!--Link da rota-->
-                    <a href="../templates/login.html">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">

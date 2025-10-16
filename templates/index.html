@@ -20,7 +20,7 @@
             <a href="#banner">Inicio</a>
             <a href="#sobre">Sobre Nós</a>
             <a href="#funcionalidades">Funcionalidade</a>
-            <a href="../templates/login.html">Conta</a>
+            <a href="{{ url_for('login') }}">Conta</a>
         </nav>
     </header>
 
@@ -41,7 +41,7 @@
                 lanchonetes, hortas e muito mais.</h3>
             <div>
                 <a href="#sobre" class="bnt-claroD">Saiba mais</a>
-                <a href="../templates/login.html" class="bnt-claroD">Comece Agora!</a>
+                <a href="{{ url_for('login') }}" class="bnt-claroD">Comece Agora!</a>
             </div>
         </section>
 
@@ -65,7 +65,7 @@
                     <p>Tenha controle da sua produção, estoque e finanças em um só lugar, de forma clara e rápida.</p>
                 </div>
             </div>
-            <a href="../templates/login.html" class="bnt-claroD">Comece Agora!</a>
+            <a href="{{ url_for('login') }}" class="bnt-claroD">Comece Agora!</a>
         </section>
         <hr>
 
@@ -144,7 +144,7 @@
                         </div>
                     </div>
             </div>
-            <a href="../templates/login.html" class="bnt-claroD">Quero ser UP+</a>
+            <a href="{{ url_for('login') }}" class="bnt-claroD">Quero ser UP+</a>
 
         </section>
 
@@ -301,7 +301,7 @@
                     <a href="#banner">Inicio</a> <!--Link da rota-->
                     <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
                     <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
-                    <a href="../templates/login.html">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">

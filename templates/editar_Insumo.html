@@ -15,11 +15,11 @@
         <header class="header-usuario" id="menu-mobile-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
             <nav class="d-flex">
-                <a href="../templates/dashboard.html">DashBoard</a>
-                <a href="../templates/insumos.html" class="pagina-atual">Insumos</a>
-                <a href="../templates/produto.html">Produtos</a>
-                <a href="../templates/relatorios.html">Relatórios</a>
-                <a href="../templates/config.html">Configurações</a>
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a href="{{ url_for('insumos') }}" class="pagina-atual">Insumos</a>
+                <a href="{{ url_for('produtos') }}">Produtos</a>
+                <a href="{{ url_for('relatorios') }}">Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
                 <a href="/logout">Sair</a>
             </nav>
         </header>
@@ -149,10 +149,10 @@
             <div class="logo-footer">
                 <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
                 <nav>
-                    <a href="../templates/index.html">Inicio</a> <!--Link da rota-->
-                    <a href="../templates/index.html">Sobre Nós</a> <!--Link da rota-->
-                    <a href="../templates/index.html">Funcionalidade</a> <!--Link da rota-->
-                    <a href="../templates/login.html">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">
