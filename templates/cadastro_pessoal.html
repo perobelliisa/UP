@@ -55,7 +55,7 @@
                     </div>
                     <div class="d-flex campo">
                         <label>Telefone</label>
-                        <input class="input" type="tel" id="telefone" name="telefone" required maxlength="11" inputmode="numeric" oninput="this.value = this.value.replace(/\D/g, '')">
+                        <input class="input" type="tel" id="telefone" name="telefone" required pattern="\d{11}" maxlength="11" inputmode="numeric" oninput="this.value = this.value.replace(/\D/g, '')">
                     </div>
                     <div class="form-duplo">
                         <div class="d-flex campo">
