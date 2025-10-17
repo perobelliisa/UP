@@ -20,7 +20,7 @@
             <nav class="d-flex">
                 <a href="{{ url_for('dashboard') }}" class="pagina-atual">DashBoard</a>
                 <a href="{{ url_for('insumos', id=id) }}">Insumos</a>
-                <a>Produtos</a>
+                <a href="{{ url_for('produtos', id=id) }}">Produtos</a>
                 <a>Relatórios</a>
                 <a href="{{ url_for('config') }}">Configurações</a>
                 <a href="/logout">Sair</a>

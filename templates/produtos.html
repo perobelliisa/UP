@@ -17,8 +17,8 @@
             <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
             <nav class="d-flex">
                 <a href="{{ url_for('dashboard') }}">DashBoard</a>
-                <a>Insumos</a>
-                <a class="pagina-atual">Produtos</a>
+                <a href="{{ url_for('insumos', id=id) }}">Insumos</a>
+                <a href="{{ url_for('produtos', id=id) }}" class="pagina-atual">Produtos</a>
                 <a>Relatórios</a>
                 <a href="{{ url_for('config') }}">Configurações</a>
                 <a href="/logout">Sair</a>
@@ -44,7 +44,7 @@
             <section class="card-branco-sem-fundo">
                 <div class="d-flex space-between insumo">
                     <h1>Produto</h1>
-                    <a class="btn-adicionar" href="../templates/cad_Produto.html">+ Adicionar Novo Produto</a>
+                    <a class="btn-adicionar" href="{{ url_for('cad_produto', id=id) }}">+ Adicionar Novo Produto</a>
                 </div>
             </section>
             <section class="card-branco-sem-fundo desktop">

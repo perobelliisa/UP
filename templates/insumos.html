@@ -18,7 +18,7 @@
             <nav class="d-flex">
                 <a href="{{ url_for('dashboard') }}">DashBoard</a>
                 <a href="{{ url_for('insumos', id=id) }}" class="pagina-atual">Insumos</a>
-                <a>Produtos</a>
+                <a href="{{ url_for('produtos', id=id) }}">Produtos</a>
                 <a>Relatórios</a>
                 <a href="{{ url_for('config') }}">Configurações</a>
                 <a href="/logout">Sair</a>
@@ -54,7 +54,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Categoria</th>
+                                <th>Descrição</th>
                                 <th>Valor</th>
                                 <th>Unidade</th>
                                 <th>Estoque</th>
@@ -65,7 +65,7 @@
                             {% for insumo in insumos %}
                             <tr>
                                 <td>{{ insumo[1] }}</td>
-                                <td>{{ insumo[2] }}</td>
+                                <td>R$ {{ insumo[2] }}</td>
                                 <td>{{ insumo[3] }}</td>
                                 <td>{{ insumo[4] }}</td>
                                 <td>{{ insumo[5] }}</td>
