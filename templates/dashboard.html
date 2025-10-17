@@ -18,8 +18,8 @@
         <header class="header-usuario" id="menu-mobile-usuario">
             <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
             <nav class="d-flex">
-                <a href="{{ url_for('dashboard') }}">DashBoard</a>
-                <a class="pagina-atual">Insumos</a>
+                <a href="{{ url_for('dashboard') }}" class="pagina-atual">DashBoard</a>
+                <a>Insumos</a>
                 <a>Produtos</a>
                 <a>Relatórios</a>
                 <a href="{{ url_for('config') }}">Configurações</a>
@@ -51,8 +51,8 @@
                 <div class="d-flex desktop">
                     <img src="../static/img/imagem-perfil.png" alt="Foto do usuário" class="imagem-perfil">
                     <div class="d-flex flex-column justify-center">
-                    <p>{{ nome }}</p>
-                    <p>{{ empresa }}</p>
+                        <p>{{ nome }}</p>
+                        <p>{{ empresa[0] }}</p>
                     </div>
                 </div>
             </section>
