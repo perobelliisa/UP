@@ -24,7 +24,19 @@ function adicionarInsumo() {
         document.getElementById("adicionarInsumo").style.display = 'none';
     }
     else {
+    document.getElementById("visualizarInsumo").style.display = 'none';
         document.getElementById("adicionarInsumo").style.display = 'block';
+    }
+}
+
+
+// Script para mostrar/ocultar card de visualização de insumo
+function visualizarInsumo() {
+    if (document.getElementById("visualizarInsumo").style.display === 'block') {
+        document.getElementById("visualizarInsumo").style.display = 'none';
+    }
+    else {
+        document.getElementById("visualizarInsumo").style.display = 'block';
     }
 }
 

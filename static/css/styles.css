@@ -1046,14 +1046,14 @@ input:checked+.slider:before {
     font-weight: var(--semi-bold);
     padding: 12px;
     border-bottom: 2px solid var(--linha);
-    text-align: left;
+    text-align: center;
 }
 
 .tabela-insumos td {
     font-size: 16px;
     padding: 12px;
     border-bottom: 1px solid var(--linha);
-    text-align: left;
+    text-align: center;
 }
 
 /* Botões da tabela */
@@ -1096,7 +1096,7 @@ input:checked+.slider:before {
     padding: 40px 20px;
 }
 
-.card-produto a {
+.laranja {
     color: var(--claro-hover);
     font-size: 16px;
     font-weight: var(--semi-bold);
@@ -1136,7 +1136,7 @@ input:checked+.slider:before {
 
 .ingrediente {
     margin: 0 auto;
-    width: 530px;
+    width: 640px;
     gap: 20px;
     height: 35px;
     align-items: center;
@@ -1179,7 +1179,7 @@ input:checked+.slider:before {
 }
 
 .checkbox {
-    width: 200px;
+    width: 350px;
     flex-direction: row;
     gap: 10px;
     font-size: 18px;
