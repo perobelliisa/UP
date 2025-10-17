@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Aluno\Desktop\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -57,7 +57,9 @@ def cadastro():
             return render_template('cadastro_pessoal.html')
         finally:
             cursor.close()
-
+    if 'id_usuario' in session:
+        flash('Faça logout para cadastrar outra conta.')
+        return redirect(url_for('dashboard'))
     return render_template('cadastro_pessoal.html')
 
 
@@ -101,6 +103,9 @@ def cadastroEmpresa():
             return render_template('cadEmp.html')
         finally:
             cursor.close()
+    if 'id_usuario' in session:
+        flash('Faça logout para cadastrar outra conta.')
+        return redirect(url_for('dashboard'))
     if 'email_pendente' not in session:
         flash('Não foi possível identificar o usuário. Faça o login ou se cadastre.')
         return redirect(url_for('login'))
