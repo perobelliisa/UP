@@ -128,7 +128,7 @@
                     <a href="#" onclick="adicionarInsumo()"><img src="../static/img/voltar.png" alt="Voltar"
                             class="seta"></a>
                     <h1 class="titulo-secao">Adição de Insumos</h1>
-                    <form class="lista-ingredientes">
+                    <form class="lista-ingredientes" amethod="post" action="{{ url_for('adicionar_insumo', id=id) }}">
                         <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
                         <div class="d-flex ingrediente">
                             <input class="input" type="text" placeholder="Pesquisa" min="0" name="pesquisa">
@@ -136,25 +136,24 @@
                         {% for insumo in insumos %}
                         <div class="d-flex ingrediente">
                             <div class="d-flex checkbox">
-                                <input type="checkbox" name="ingrediente" value="farinha"
+                                <input type="checkbox" name="ingrediente" value="{{insumo[0]}}"
                                     onclick="mostrarQuantidade({{insumo[0]}})">
                                 <label>{{ insumo[1] }}</label>
                             </div>
                             <div class="d-flex ingrediente-un none" id={{insumo[0]}}>
                                 <input type="number" placeholder="Quantidade" min="0">
                                 <select name="categoria">
-                                    <option value="quilo">Quilograma</option>
-                                    <option value="grama">Grama</option>
-                                    <option value="litro">Litro</option>
-                                    <option value="ml">Mililitro</option>
-                                    <option value="un">Unidade</option>
+                                    <option value="1">Quilograma</option>
+                                    <option value="2">Grama</option>
+                                    <option value="3">Litro</option>
+                                    <option value="4">Mililitro</option>
+                                    <option value="5">Unidade</option>
                                 </select>
                             </div>
                         </div>
                         {% endfor %}
                         <div>
-                             <button class="bnt-claroD bnt-pequeno"
-                            type="submit">Adicionar Insumos</button>
+                             <button class="bnt-claroD bnt-pequeno" type="submit">Adicionar Insumos</button>
                         </div>
                     </form>
                 </div>

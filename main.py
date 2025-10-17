@@ -313,7 +313,7 @@ def insumos(id):
     cursor.execute("""SELECT ID_INSUMO
      , NOME
      , DESCRICAO
-     , PRECO_COMPRA
+     , TRUNC(PRECO_COMPRA, 2)
      , CASE UNIDADE_DE_MEDIDA
          WHEN 1 THEN 'Quilo'
          WHEN 2 THEN 'Grama'
@@ -475,6 +475,11 @@ def cad_categoria(id):
         finally:
             cursor.close()
 
+@app.route('/adicionar_insumo/<int:id>', methods=['POST'])
+def adicionar_insumo(id):
+    if request.method == 'POST':
+        ingredientes = request.form("ingrediente")
+        print(ingredientes)
 @app.route('/logout')
 def logout():
     session.pop('id_usuario', None)
