@@ -194,14 +194,17 @@ function carregarModo() /* so aqui vai  fazer a verificação do modo para mudar
 
 window.document.addEventListener('DOMContentLoaded', carregarModo); 
 
-document.addEventListener('DOMContentLoaded', function () {
-  var form     = document.querySelector('form[action*="cadastro"]');
+
+  var form     = document.querySelector('#form-senha');
   var senhaErro  = document.getElementById('senha');
   var csenhaErro = document.getElementById('Csenha');
+
 
   function getAvisoEl() {
     var erro = document.getElementById('aviso');
     if (!erro) {
+      erro = document.createElement('div');
+      erro.id = 'aviso';
       var senhas = csenhaErro || senhaErro;
       if (senhas && senhas.parentNode) {
         senhas.parentNode.appendChild(erro);
@@ -211,21 +214,43 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     return erro;
   }
-  var avisoEl = getAvisoEl();
+  // avisoEl será obtido sob demanda dentro da função de validação
 
   function validarSenha() {
+    var senhaErro  = document.getElementById('senha');
+    var csenhaErro = document.getElementById('Csenha');
+    var verificador =  (senhaErro && senhaErro.dataset) ? senhaErro.dataset.tipo : ''
+
+    if (!senhaErro) return true;
+
     var senha  = senhaErro ? senhaErro.value : '';
     var csenha = csenhaErro ? csenhaErro.value : '';
     var msg = '';
 
-    if (senha.length < 8 || senha.length > 12)        msg = 'Senha: 8 a 12 caracteres.';
-    else if (senha.toLowerCase() === senha)           msg = 'Inclua 1 letra MAIÚSCULA.';
-    else if (senha.toUpperCase() === senha)           msg = 'Inclua 1 letra minúscula.';
-    else if (!/[0-9]/.test(senha))                    msg = 'Inclua 1 número.';
-    else if (/^[A-Za-z0-9]*$/.test(senha))            msg = 'Inclua 1 caractere especial.';
-    else if (csenha && senha !== csenha)              msg = 'As senhas não coincidem.';
+    if (verificador === 'nao') {
 
-    avisoEl.textContent = msg;
+        var totalCaract = (typeof senha === 'string') ? senha.length : 0
+
+        if (totalCaract !== 0) {
+            if (totalCaract < 8 || totalCaract > 12)        msg = 'Senha: 8 a 12 caracteres.';
+            else if (senha.toLowerCase() === senha)           msg = 'Inclua 1 letra MAIÚSCULA.';
+            else if (senha.toUpperCase() === senha)           msg = 'Inclua 1 letra minúscula.';
+            else if (!/[0-9]/.test(senha))                    msg = 'Inclua 1 número.';
+            else if (/^[A-Za-z0-9]*$/.test(senha))            msg = 'Inclua 1 caractere especial.';
+            else if (csenha && senha !== csenha)              msg = 'As senhas não coincidem.';
+        }
+    }
+
+    if (verificador === 'sim') {
+        if (senha.length < 8 || senha.length > 12)        msg = 'Senha: 8 a 12 caracteres.';
+        else if (senha.toLowerCase() === senha)           msg = 'Inclua 1 letra MAIÚSCULA.';
+        else if (senha.toUpperCase() === senha)           msg = 'Inclua 1 letra minúscula.';
+        else if (!/[0-9]/.test(senha))                    msg = 'Inclua 1 número.';
+        else if (/^[A-Za-z0-9]*$/.test(senha))            msg = 'Inclua 1 caractere especial.';
+        else if (csenha && senha !== csenha)              msg = 'As senhas não coincidem.';
+    }
+    var avisoEl = getAvisoEl();
+    if (avisoEl) avisoEl.textContent = msg;
     return msg === '';
   }
   if (senhaErro)  senhaErro.addEventListener('input', validarSenha);
@@ -236,5 +261,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   validarSenha();
-});
+
 
