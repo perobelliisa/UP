@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Aluno\Desktop\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -129,14 +129,13 @@ def login():
         if not check_password_hash(senha_hash, senha):
             flash('Email ou senha inválidos.')
             return render_template('login.html')
-
         cursor = con.cursor()
         cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
         empresa = cursor.fetchone()
         cursor.close()
-        if 'email_pendente' in session or empresa == '':
+        if empresa == None:
             flash('Termine o cadastro da sua empresa primeiro.')
-            return redirect(url_for('cadastroEmpresa'))
+            return render_template('cadEmp.html', id=id)
         session['id_usuario'] = id_usuario
         flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('dashboard'))
@@ -296,7 +295,8 @@ def insumos(id):
         return redirect(url_for('login'))
 
     cursor = con.cursor()
-    cursor.execute("""SELECT NOME
+    cursor.execute("""SELECT ID_INSUMO
+     , NOME
      , DESCRICAO
      , PRECO_COMPRA
      , CASE UNIDADE_DE_MEDIDA
@@ -359,6 +359,57 @@ def cad_insumo(id):
 
     return render_template('cad_Insumo.html', id=id)
 
+
+@app.route('/editar_insumo/<int:id>/<int:insumo_id>', methods=['GET', 'POST'])
+def editar_insumo(id, insumo_id):
+    if "id_usuario" not in session:
+        flash("Você precisa estar logado para acessar essa página", "error")
+        return redirect(url_for('login'))
+
+    cursor = con.cursor()
+    try:
+        cursor.execute(
+            """
+            SELECT ID_INSUMO, NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE
+              FROM INSUMO
+             WHERE ID_INSUMO = ? AND ID_USUARIO = ?
+            """,
+            (insumo_id, id)
+        )
+        insumo = cursor.fetchone()
+
+        if not insumo:
+            flash('Insumo não encontrado.', 'error')
+            return redirect(url_for('insumos', id=id))
+
+        if request.method == 'POST':
+            nome = request.form.get('nomeInsumo')
+            descricao = request.form.get('descricao')
+            peso_unidade = request.form.get('peso_unidade')
+            unidade = request.form.get('unidade')
+            preco = request.form.get('preco')
+            estoque = request.form.get('estoque')
+
+            try:
+                cursor.execute(
+                    """
+                    UPDATE INSUMO
+                       SET NOME = ?, DESCRICAO = ?, PESO_UNIDADE = ?, PRECO_COMPRA = ?, UNIDADE_DE_MEDIDA = ?, ESTOQUE = ?
+                     WHERE ID_INSUMO = ? AND ID_USUARIO = ?
+                    """,
+                    (nome, descricao, peso_unidade, preco, unidade, estoque, insumo_id, id)
+                )
+                con.commit()
+                flash('Insumo atualizado com sucesso!', 'success')
+                return redirect(url_for('insumos', id=id))
+            except Exception as e:
+                con.rollback()
+                flash(f'Erro ao atualizar insumo: {e}', 'error')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+
+        return render_template('editar_Insumo.html', id=id, insumo_id=insumo_id, insumo=insumo)
+    finally:
+        cursor.close()
 
 @app.route('/logout')
 def logout():
