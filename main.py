@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\luisa\OneDrive\Documentos\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -192,6 +192,7 @@ def editar(id):
 
     cursor = con.cursor()
 
+    # --- BUSCA USUÁRIO (retorna TUPLA) ---
     cursor.execute("""
         SELECT u.ID_USUARIO, u.NOME, u.SOBRENOME, u.EMAIL, u.CPF, u.TELEFONE, u.SENHA
         FROM USUARIO u
@@ -204,6 +205,7 @@ def editar(id):
         flash("Usuário não foi encontrado")
         return redirect(url_for('index'))
 
+    # --- BUSCA EMPRESA (TUPLA ou placeholder) ---
     cursor.execute("""
         SELECT NOME, ENDERECO, CNPJ, TIPO, PORTE, VALOR_MAO
         FROM EMPRESA
@@ -220,7 +222,7 @@ def editar(id):
         email     = request.form['email']
         cpf       = request.form['cpf']
         telefone  = request.form['telefone']
-        senha     = request.form['senha']     # pode vir vazio
+        senha     = request.form['senha']    
 
         nomeE     = request.form['nomeEmp']
         endereco  = request.form['endereco']
@@ -230,8 +232,9 @@ def editar(id):
         valor     = request.form['valor']
 
         try:
+            # --- USUARIO: atualiza com OU sem senha ---
             if senha:
-                senha_cripto = generate_password_hash(senha)  # já retorna str
+                senha_cripto = generate_password_hash(senha)
                 cursor.execute("""
                     UPDATE USUARIO
                        SET NOME = ?, SOBRENOME = ?, EMAIL = ?, CPF = ?, TELEFONE = ?, SENHA = ?
@@ -244,6 +247,7 @@ def editar(id):
                      WHERE ID_USUARIO = ?
                 """, (nome, sobrenome, email, cpf, telefone, id))
 
+            # --- EMPRESA ---
             cursor.execute("""
                 UPDATE EMPRESA
                    SET NOME = ?, ENDERECO = ?, CNPJ = ?, TIPO = ?, PORTE = ?, VALOR_MAO = ?
@@ -251,7 +255,7 @@ def editar(id):
             """, (nomeE, endereco, cnpj, tipo, porte, valor, id))
 
             con.commit()
-            flash("Usuário atualizado com sucesso")
+            flash("Usuário atualizado com sucesso", "success")
             cursor.close()
             return redirect(url_for('dashboard'))
 
@@ -262,7 +266,9 @@ def editar(id):
             return redirect(url_for('editar', id=id))
 
     cursor.close()
+    # GET: envia as TUPLAS para pré-preencher (use índices no template)
     return render_template('editar_Usuario.html', id=id, usuario=usuario, empresa=empresa)
+
 @app.route('/logout')
 def logout():
     session.pop('id_usuario', None)
