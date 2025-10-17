@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
 
 <head>
@@ -15,12 +15,12 @@
 
 <body>
     <header class="header-home" id="menu-mobile-home">
-        <img class="titulo desktop" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+        <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
         <nav>
             <a href="#banner">Inicio</a>
             <a href="#sobre">Sobre Nós</a>
             <a href="#funcionalidades">Funcionalidade</a>
-            <a href="{{ url_for('login') }}">Conta</a>
+            <a href="{{ url_for('conta') }}">Conta</a>
         </nav>
     </header>
 
@@ -41,7 +41,7 @@
                 lanchonetes, hortas e muito mais.</h3>
             <div>
                 <a href="#sobre" class="bnt-claroD">Saiba mais</a>
-                <a href="{{ url_for('login') }}" class="bnt-claroD">Comece Agora!</a>
+                <a href="{{ url_for('conta') }}" class="bnt-claroD">Comece Agora!</a>
             </div>
         </section>
 
@@ -65,7 +65,7 @@
                     <p>Tenha controle da sua produção, estoque e finanças em um só lugar, de forma clara e rápida.</p>
                 </div>
             </div>
-            <a href="{{ url_for('login') }}" class="bnt-claroD">Comece Agora!</a>
+            <a href="{{ url_for('conta') }}" class="bnt-claroD">Comece Agora!</a>
         </section>
         <hr>
 
@@ -144,7 +144,7 @@
                         </div>
                     </div>
             </div>
-            <a href="{{ url_for('login') }}" class="bnt-claroD">Quero ser UP+</a>
+            <a href="{{ url_for('conta') }}" class="bnt-claroD">Quero ser UP+</a>
 
         </section>
 
@@ -169,7 +169,7 @@
                         <button onclick="mostrarResposta('resposta2')"><img src="../static/img/+.png" alt="+"
                                 id="pergunta2"></button> <!--imagem-->
                     </div>
-                    <p class="none resposta" id="resposta2">Basta clicar em “Conta”, preencher seus dados e pronto!</p>
+                    <p class="none resposta" id="resposta2">Basta clicar em "conta", preencher seus dados e pronto!</p>
                 </div>
                 <div class="box-faq">
                     <div>
@@ -271,10 +271,10 @@
                     </div>
                     <div class="d-flex principal">
                         {% if classe == 'erro' %}
-                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="Ícone">
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="ícone">
                         {% endif %}
                         {% if classe == 'acerto' %}
-                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="Ícone">
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="ícone">
                         {% endif %}
                         <div class="d-flex">
                         {% if classe == 'acerto' %}
@@ -301,7 +301,7 @@
                     <a href="#banner">Inicio</a> <!--Link da rota-->
                     <a href="#sobre">Sobre Nós</a> <!--Link da rota-->
                     <a href="#funcionalidades">Funcionalidade</a> <!--Link da rota-->
-                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">

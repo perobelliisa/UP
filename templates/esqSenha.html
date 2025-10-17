@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
 
 <head>
@@ -11,12 +11,12 @@
 <body>
     <!--Header-->
     <header class="header-home" id="menu-mobile-home">
-        <img class="desktop" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+        <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
         <nav>
             <a href="../templates/index.html">Inicio</a> <!--Link da rota-->
             <a href="../templates/index.html">Sobre Nós</a> <!--Link da rota-->
             <a href="../templates/index.html">Funcionalidade</a> <!--Link da rota-->
-            <a href="../templates/login.html">Conta</a> <!--Link da rota-->
+            <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
         </nav>
     </header>
 
@@ -58,10 +58,10 @@
                     </div>
                     <div class="d-flex principal">
                         {% if classe == 'erro' %}
-                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="Ícone">
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="Ãcone">
                         {% endif %}
                         {% if classe == 'acerto' %}
-                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="Ícone">
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="Ãcone">
                         {% endif %}
                         <div class="d-flex">
                         {% if classe == 'acerto' %}
@@ -89,7 +89,7 @@
                     <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
                     <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
                     <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
-                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">

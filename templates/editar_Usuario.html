@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
 
 <head>
@@ -13,7 +13,7 @@
     <!-- Header -->
     <div class="d-flex">
         <header class="header-usuario" id="menu-mobile-usuario">
-            <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
             <nav class="d-flex">
                 <a href="{{ url_for('dashboard') }}">DashBoard</a>
                 <a>Insumos</a>
@@ -42,7 +42,7 @@
             </section>
             <section class="card-branco card-produto">
                 <h1 class="titulo-secao">Edição de Perfil</h1>
-                <form class="form" method="POST" action="{{ url_for('editar', id=id) }}"> <!--Link da rota-->
+                <form class="form" method="POST" action="{{ url_for('editar', id=id) }}" id="form-senha"> <!--Link da rota-->
                     <div class="form-duplo">
                         <div class="d-flex campo">
                             <label>Nome</label>
@@ -69,7 +69,7 @@
                         <div class="d-flex campo">
                             <label>Senha</label>
                             <div class="input input-pequeno d-flex input-senha">
-                                <input type="password" id="senha" name="senha">
+                                <input type="password" id="senha" name="senha" data-tipo="nao" onkeypress="validarSenha()">
                                 <img src="../static/img/olho-fechado-escuro.png" id="olho" alt="Mostrar Senha" onclick="mostrarSenha('senha', 'olho')">
                                 <!--imagem-->
                             </div>
@@ -81,6 +81,7 @@
                                 <img src="../static/img/olho-fechado-escuro.png" id="olhoC" alt="Mostrar Senha" onclick="mostrarSenha('Csenha', 'olhoC')">
                                 <!--imagem-->
                             </div>
+                            <div id="aviso" style="color:#b00020; margin:6px 0;"></div>
                         </div>
                     </div>
                     <div class="d-flex campo">
@@ -135,7 +136,7 @@
                     <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
                     <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
                     <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
-                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">
@@ -154,7 +155,7 @@
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script&gt;
         <script src="../static/js/owl-carousel/owl.carousel.js"></script>
-        <script src="../static/js/script.js"></script>
+        <script src="../static/js/script.js" defer></script>
     </footer>
 </body>
 
