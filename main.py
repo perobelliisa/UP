@@ -116,30 +116,32 @@ def login():
 
         cursor = con.cursor()
         cursor.execute('SELECT u.ID_USUARIO, u.SENHA FROM USUARIO u WHERE u.EMAIL = ?', (email,))
-        fetchone = cursor.fetchone()
-        id = fetchone[0]
+        usuario = cursor.fetchone()
+        
         cursor.close()
 
-        if not fetchone:
+        if not usuario:
             flash('Email ou senha inválidos.')
             return render_template('login.html')
 
-        id_usuario, senha_hash = fetchone
+        id_usuario, senha_hash = usuario
 
         if not check_password_hash(senha_hash, senha):
             flash('Email ou senha inválidos.')
             return render_template('login.html')
         cursor = con.cursor()
-        cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
+        cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id_usuario,))
         empresa = cursor.fetchone()
         cursor.close()
         if empresa == None:
             flash('Termine o cadastro da sua empresa primeiro.')
-            return render_template('cadEmp.html', id=id)
+            return render_template('cadEmp.html', id=id_usuario)
         session['id_usuario'] = id_usuario
         flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('dashboard'))
     return render_template('login.html')
+
+
 
 @app.route('/conta')
 def conta():
@@ -251,7 +253,15 @@ def editar(id):
         valor     = request.form['valor']
 
         try:
-            # --- USUARIO: atualiza com OU sem senha ---
+            cursor.execute("SELECT EMAIL FROM USUARIO WHERE EMAIL = ? and id_usuario <> ? ", (email,id))
+            if cursor.fetchone():
+                flash('Email já cadastrado!')
+                return render_template('editar_Usuario.html', id=id, usuario=usuario, empresa=empresa)
+            cursor.execute("SELECT CPF FROM USUARIO WHERE CPF = ? and id_usuario <> ? ", (cpf,id))
+            if cursor.fetchone():
+                flash('CPF já cadastrado!')
+                return render_template('editar_Usuario.html', id=id, usuario=usuario, empresa=empresa)
+
             if senha:
                 senha_cripto = generate_password_hash(senha)
                 cursor.execute("""
