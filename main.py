@@ -116,26 +116,26 @@ def login():
 
         cursor = con.cursor()
         cursor.execute('SELECT u.ID_USUARIO, u.SENHA FROM USUARIO u WHERE u.EMAIL = ?', (email,))
-        usuario = cursor.fetchone()
-        
+        fetchone = cursor.fetchone()
+        id = fetchone[0]
         cursor.close()
 
-        if not usuario:
+        if not fetchone:
             flash('Email ou senha inválidos.')
             return render_template('login.html')
 
-        id_usuario, senha_hash = usuario
+        id_usuario, senha_hash = fetchone
 
         if not check_password_hash(senha_hash, senha):
             flash('Email ou senha inválidos.')
             return render_template('login.html')
         cursor = con.cursor()
-        cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id_usuario,))
+        cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
         empresa = cursor.fetchone()
         cursor.close()
         if empresa == None:
             flash('Termine o cadastro da sua empresa primeiro.')
-            return render_template('cadEmp.html', id=id_usuario)
+            return render_template('cadEmp.html', id=id)
         session['id_usuario'] = id_usuario
         flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('dashboard'))
@@ -338,7 +338,7 @@ def cad_insumo(id):
         flash("Você precisa estar logado para acessar essa página", "error")
         return redirect(url_for('login'))
     if request.method == 'POST':
-        nome = request.form['nomeInsumo']
+        nome = request.form['nomeInsumo'].capitalize()
         descricao = request.form['descricao']
         peso_unidade = request.form['peso_unidade']
         unidade_de_medida = request.form['unidade']
@@ -351,11 +351,10 @@ def cad_insumo(id):
             if cursor.fetchone():
                 flash('Insumo já cadastrado!')
                 return render_template('cad_Insumo.html', id=id)
-
             cursor.execute(
-                "INSERT INTO INSUMO (NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE, ID_USUARIO) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?)",
-                (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, id)
+            "INSERT INTO INSUMO (NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE, ID_USUARIO) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, id)
             )
             con.commit()
             flash('Insumo cadastrado com sucesso!', 'success')
@@ -366,7 +365,6 @@ def cad_insumo(id):
             return render_template('cad_Insumo.html', id=id)
         finally:
             cursor.close()
-
     return render_template('cad_Insumo.html', id=id)
 
 
@@ -420,6 +418,57 @@ def editar_insumo(id, insumo_id):
         return render_template('editar_Insumo.html', id=id, insumo_id=insumo_id, insumo=insumo)
     finally:
         cursor.close()
+
+
+@app.route('/produtos/<int:id>')
+def produtos(id):
+    if "id_usuario" not in session:
+        flash("Você precisa estar logado para acessar essa página", "error")
+        return redirect(url_for('login'))
+
+    return render_template('produtos.html', id=id)
+
+
+@app.route('/cad_produto/<int:id>')
+def cad_produto(id):
+    if "id_usuario" not in session:
+        flash("Você precisa estar logado para acessar essa página", "error")
+        return redirect(url_for('login'))
+    cursor = con.cursor()
+    try:
+        cursor.execute("SELECT ID_CATEGORIA_PRODUTOS, NOME FROM CATEGORIA_PRODUTOS WHERE ID_USUARIO = ?", (id,))
+        categorias = cursor.fetchall()
+        cursor.execute("""SELECT ID_INSUMO, NOME
+        FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
+        insumos = cursor.fetchall()
+    finally:
+        cursor.close()
+        return render_template('cad_Produto.html', id=id, categorias=categorias, insumos=insumos)
+
+@app.route('/cad_categoria/<int:id>', methods=['POST'])
+def cad_categoria(id):
+    if request.method == 'POST':
+        nome = request.form['nomeCategoria'].capitalize()
+        cursor = con.cursor()
+        try:
+            cursor.execute("SELECT NOME FROM CATEGORIA_PRODUTOS WHERE NOME = ? AND ID_USUARIO = ?", (nome, id,))
+            if cursor.fetchone():
+                flash('Categoria já cadastrado!')
+                return redirect(url_for('cad_produto', id=id))
+            cursor.execute(
+                "INSERT INTO CATEGORIA_PRODUTOS (NOME, ID_USUARIO) "
+                "VALUES (?, ?)",
+                (nome, id,)
+            )
+            con.commit()
+            flash('Categoria cadastrado com sucesso!', 'success')
+            return redirect(url_for('cad_produto', id=id))
+        except Exception as e:
+            con.rollback()
+            flash(f'Erro ao cadastrar: {e}')
+            return redirect(url_for('cad_produto', id=id))
+        finally:
+            cursor.close()
 
 @app.route('/logout')
 def logout():
