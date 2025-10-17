@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Aluno\Desktop\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -36,6 +36,10 @@ def cadastro():
             cursor.execute("SELECT EMAIL FROM USUARIO WHERE EMAIL = ?", (email,))
             if cursor.fetchone():
                 flash('Email já cadastrado!')
+                return render_template('cadastro_pessoal.html')
+            cursor.execute("SELECT CPF FROM USUARIO WHERE CPF = ?", (cpf,))
+            if cursor.fetchone():
+                flash('CPF já cadastrado!')
                 return render_template('cadastro_pessoal.html')
 
             cursor.execute(
@@ -74,6 +78,11 @@ def cadastroEmpresa():
 
         cursor = con.cursor()
         try:
+            cursor.execute("SELECT CNPJ FROM EMPRESA WHERE CNPJ = ?", (cnpj,))
+            if cursor.fetchone():
+                flash('CNPJ já cadastrado!')
+                return render_template('cadastro_empresa.html')
+
             cursor.execute("""
                 INSERT INTO EMPRESA (NOME, ENDERECO, CNPJ, TIPO, PORTE, VALOR_MAO, ID_USUARIO)
                 SELECT ?, ?, ?, ?, ?, ?, u.ID_USUARIO
@@ -89,7 +98,6 @@ def cadastroEmpresa():
             return redirect(url_for('login'))
         except Exception as e:
             con.rollback()
-            flash(f'Erro ao cadastrar: {e}')
             return render_template('cadEmp.html')
         finally:
             cursor.close()
