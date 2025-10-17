@@ -117,6 +117,7 @@ def login():
         cursor = con.cursor()
         cursor.execute('SELECT u.ID_USUARIO, u.SENHA FROM USUARIO u WHERE u.EMAIL = ?', (email,))
         fetchone = cursor.fetchone()
+        id = fetchone[0]
         cursor.close()
 
         if not fetchone:
@@ -129,7 +130,11 @@ def login():
             flash('Email ou senha inválidos.')
             return render_template('login.html')
 
-        if 'email_pendente' in session:
+        cursor = con.cursor()
+        cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
+        empresa = cursor.fetchone()
+        cursor.close()
+        if 'email_pendente' in session or empresa == '':
             flash('Termine o cadastro da sua empresa primeiro.')
             return redirect(url_for('cadastroEmpresa'))
         session['id_usuario'] = id_usuario
@@ -137,14 +142,21 @@ def login():
         return redirect(url_for('dashboard'))
     return render_template('login.html')
 
+@app.route('/conta')
+def conta():
+    # Redireciona o usuário para o local correto ao clicar em "Conta"
+    if 'id_usuario' in session:
+        return redirect(url_for('dashboard'))
+    return redirect(url_for('login'))
+
 @app.route('/dashboard')
 def dashboard():
     if 'id_usuario' not in session:
         flash('Faça login para continuar.')
         return redirect(url_for('login'))
-
+    id = session['id_usuario']
     cursor = con.cursor()
-    cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (session['id_usuario'],))
+    cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
     fetchone = cursor.fetchone()
     cursor.close()
 
@@ -155,11 +167,11 @@ def dashboard():
 
     nome = fetchone[0]
     cursor = con.cursor()
-    cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (session['id_usuario'],))
+    cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
     empresa = cursor.fetchone()
     print(empresa)
     cursor.close()
-    return render_template('dashboard.html', nome=nome, empresa=empresa)
+    return render_template('dashboard.html', nome=nome, empresa=empresa, id=id)
 
 
 @app.route("/config")
@@ -276,6 +288,77 @@ def editar(id):
     cursor.close()
     # GET: envia as TUPLAS para pré-preencher (use índices no template)
     return render_template('editar_Usuario.html', id=id, usuario=usuario, empresa=empresa)
+
+@app.route('/insumos/<int:id>')
+def insumos(id):
+    if "id_usuario" not in session:
+        flash("Você precisa estar logado para acessar essa página", "error")
+        return redirect(url_for('login'))
+
+    cursor = con.cursor()
+    cursor.execute("""SELECT NOME
+     , DESCRICAO
+     , PRECO_COMPRA
+     , CASE UNIDADE_DE_MEDIDA
+         WHEN 1 THEN 'Quilo'
+         WHEN 2 THEN 'Grama'
+         WHEN 3 THEN 'Litro'
+         WHEN 4 THEN 'Mililitro'
+         WHEN 5 THEN 'Unidade'
+        ELSE ''
+       END AS DESCRICAO_UNIDADE
+     , ESTOQUE 
+     FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
+    insumos = cursor.fetchall()
+    cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
+    fetchone = cursor.fetchone()
+    if not fetchone:
+        session.clear()
+        flash('Sessão inválida. Faça login novamente.')
+        return redirect(url_for('login'))
+    nome = fetchone[0]
+    cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
+    empresa = cursor.fetchone()
+    cursor.close()
+    return render_template('insumos.html', id=id, insumos=insumos, nome=nome, empresa=empresa)
+
+@app.route('/cad_insumo/<int:id>', methods=['GET', 'POST'])
+def cad_insumo(id):
+    if "id_usuario" not in session:
+        flash("Você precisa estar logado para acessar essa página", "error")
+        return redirect(url_for('login'))
+    if request.method == 'POST':
+        nome = request.form['nomeInsumo']
+        descricao = request.form['descricao']
+        peso_unidade = request.form['peso_unidade']
+        unidade_de_medida = request.form['unidade']
+        preco_compra = request.form['preco']
+        estoque = request.form['estoque']
+
+        cursor = con.cursor()
+        try:
+            cursor.execute("SELECT NOME FROM INSUMO WHERE NOME = ? AND ID_USUARIO = ?", (nome, id,))
+            if cursor.fetchone():
+                flash('Insumo já cadastrado!')
+                return render_template('cad_Insumo.html', id=id)
+
+            cursor.execute(
+                "INSERT INTO INSUMO (NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE, ID_USUARIO) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, id)
+            )
+            con.commit()
+            flash('Insumo cadastrado com sucesso!', 'success')
+            return redirect(url_for('insumos', id=id))
+        except Exception as e:
+            con.rollback()
+            flash(f'Erro ao cadastrar: {e}')
+            return render_template('cad_Insumo.html', id=id)
+        finally:
+            cursor.close()
+
+    return render_template('cad_Insumo.html', id=id)
+
 
 @app.route('/logout')
 def logout():

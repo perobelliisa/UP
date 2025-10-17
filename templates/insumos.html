@@ -14,10 +14,10 @@
     <!-- HEADER -->
     <div class="d-flex">
         <header class="header-usuario" id="menu-mobile-usuario">
-            <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
             <nav class="d-flex">
                 <a href="{{ url_for('dashboard') }}">DashBoard</a>
-                <a class="pagina-atual">Insumos</a>
+                <a href="{{ url_for('insumos', id=id) }}" class="pagina-atual">Insumos</a>
                 <a>Produtos</a>
                 <a>Relatórios</a>
                 <a href="{{ url_for('config') }}">Configurações</a>
@@ -36,15 +36,15 @@
                 <div class="d-flex perfil-usuario">
                     <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
                     <div>
-                        <p>Maria</p>
-                        <p>Doce Vita</p>
+                        <p>{{ nome }}</p>
+                        <p>{{ empresa }} Vita</p>
                     </div>
                 </div>
             </section>
             <section class="card-branco-sem-fundo">
                 <div class="d-flex space-between insumo">
                     <h1>Insumos</h1>
-                    <a class="btn-adicionar" href="../templates/cad_Insumo.html">+ Adicionar Novo Insumo</a>
+                    <a class="btn-adicionar" href="{{ url_for('cad_insumo', id=id) }}">+ Adicionar Novo Insumo</a>
                 </div>
             </section>
             <section class="card-branco-sem-fundo desktop">
@@ -57,15 +57,18 @@
                                 <th>Categoria</th>
                                 <th>Valor</th>
                                 <th>Unidade</th>
+                                <th>Estoque</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for insumo in insumos %}
                             <tr>
-                                <td>Chocolate Nestlé</td>
-                                <td>Chocolate</td>
-                                <td>R$83,00</td>
-                                <td>Kg</td>
+                                <td>{{ insumo[0] }}</td>
+                                <td>{{ insumo[1] }}</td>
+                                <td>{{ insumo[2] }}</td>
+                                <td>{{ insumo[3] }}</td>
+                                <td>{{ insumo[4] }}</td>
                                 <td class="d-flex space-around botao">
                                     <a href="../templates/editar_Insumo.html" class="btn-edit">Edit</a>
                                     <form action="" method="">
@@ -73,30 +76,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Farinha Nita</td>
-                                <td>Farinha</td>
-                                <td>R$5,00</td>
-                                <td>Kg</td>
-                                <td class="d-flex space-around botao">
-                                    <a href="../templates/editar_Insumo.html" class="btn-edit">Edit</a>
-                                    <form action="" method="">
-                                        <button type="submit" class="btn-del">Del</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Açúcar Refinado</td>
-                                <td>Açúcar</td>
-                                <td>R$6,00</td>
-                                <td>Kg</td>
-                                <td class="d-flex space-around botao">
-                                    <a href="../templates/editar_Insumo.html" class="btn-edit">Edit</a>
-                                    <form action="" method="">
-                                        <button type="submit" class="btn-del">Del</button>
-                                    </form>
-                                </td>
-                            </tr>
+                           {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -104,18 +84,23 @@
             <section class="mobile insumos">
                 <h2 class="h2">Lista de Insumos Cadastrados</h2>
                 <div class="d-flex cards-mobile">
+                    {% for insumo in insumos %}
                     <div class="card-insumo">
                         <div class="d-flex space-between align-center">
-                            <p class="card-insumo-titulo">Chocolate Nestlé</p>
-                            <p>R$83,00</p>
+                            <p class="card-insumo-titulo">{{ insumo[0] }}</p>
+                            <p>{{ insumo[2] }}</p>
                         </div>
                         <div class="d-flex card-insumo-imagem">
                             <img src="../static/img/icone-categoria.png" alt="Ícone de Categoria">
-                            <p>Chocolate</p>
+                            <p>{{ insumo[1] }}</p>
                         </div>
                         <div class="d-flex card-insumo-imagem">
                             <img src="../static/img/icone-medida.png" alt="Ícone">
-                            <p>Kg</p>
+                            <p>{{ insumo[3] }}</p>
+                        </div>
+                        <div class="d-flex card-insumo-imagem">
+                            <img src="../static/img/icone-medida.png" alt="Ícone">
+                            <p>{{ insumo[4] }}</p>
                         </div>
                         <div class="d-flex botao-mobile">
                             <a href="../templates/editar_Insumo.html" class="btn-edit">Editar</a>
@@ -124,46 +109,8 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card-insumo">
-                        <div class="d-flex space-between align-center">
-                            <p class="card-insumo-titulo">Farinha Nita</p>
-                            <p>R$5,00</p>
-                        </div>
-                        <div d-flex card-insumo-imagem>
-                            <img src="../static/img/icone-categoria.png" alt="Ícone de Categoria">
-                            <p>Farinha</p>
-                        </div>
-                        <div class="d-flex card-insumo-imagem">
-                            <img src="../static/img/icone-medida.png" alt="Ícone de Medida">
-                            <p>Kg</p>
-                        </div>
-                        <div class="d-flex botao-mobile">
-                            <a href="../templates/editar_Insumo.html" class="btn-edit">Editar</a>
-                            <form action="" method="">
-                                <button type="submit" class="btn-del">Deletar</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="card-insumo">
-                        <div class="d-flex space-between align-center">
-                            <p class="card-insumo-titulo">Açúcar Refinado</p>
-                            <p>R$6,00</p>
-                        </div>
-                        <div class="d-flex card-insumo-imagem">
-                            <img src="../static/img/icone-categoria.png" alt="Ícone de Categoria">
-                            <p>Açúcar</p>
-                        </div>
-                        <div class="d-flex card-insumo-imagem">
-                            <img src="../static/img/icone-medida.png" alt="Ícone de Medida">
-                            <p>Kg</p>
-                        </div>
-                        <div class="d-flex botao-mobile">
-                            <a href="../templates/editar_Insumo.html" class="btn-edit">Editar</a>
-                            <form action="" method="">
-                                <button type="submit" class="btn-del">Deletar</button>
-                            </form>
-                        </div>
-                    </div>
+                    {% endfor %}
+                </div>
             </section>
             {% with msgs = get_flashed_messages(with_categories=true) %}
             {% if msgs %}
@@ -212,13 +159,11 @@
         <div class="info-footer">
             <div class="logo-footer">
                 <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
-                <nav class="d-flex">
-                    <a href="{{ url_for('dashboard') }}">DashBoard</a>
-                    <a href="{{ url_for('insumos') }}" class="pagina-atual">Insumos</a>
-                    <a href="{{ url_for('produtos') }}">Produtos</a>
-                    <a href="{{ url_for('relatorios') }}">Relatórios</a>
-                    <a href="{{ url_for('config') }}">Configurações</a>
-                    <a href="/logout">Sair</a>
+                <nav>
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">

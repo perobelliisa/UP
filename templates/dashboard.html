@@ -16,10 +16,10 @@
 <body>
     <div class="d-flex">
         <header class="header-usuario" id="menu-mobile-usuario">
-            <img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
             <nav class="d-flex">
                 <a href="{{ url_for('dashboard') }}" class="pagina-atual">DashBoard</a>
-                <a>Insumos</a>
+                <a href="{{ url_for('insumos', id=id) }}">Insumos</a>
                 <a>Produtos</a>
                 <a>Relatórios</a>
                 <a href="{{ url_for('config') }}">Configurações</a>
@@ -148,7 +148,7 @@
                     <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
                     <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
                     <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
-                    <a href="{{ url_for('login') }}">Conta</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
                 </nav>
             </div>
             <hr class="linha-vertical">
