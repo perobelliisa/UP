@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Aluno\Desktop\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\luisa\OneDrive\Documentos\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -345,10 +345,10 @@ def cad_insumo(id):
     if request.method == 'POST':
         nome = request.form['nomeInsumo'].capitalize()
         descricao = request.form['descricao']
-        peso_unidade = request.form['peso_unidade']
-        unidade_de_medida = request.form['unidade']
-        preco_compra = request.form['preco']
-        estoque = request.form['estoque']
+        peso_unidade = float(request.form['peso_unidade'])
+        unidade_de_medida = int(request.form['unidade'])
+        preco_compra = round(float(request.form.get('preco')), 2)
+        estoque = float(request.form['estoque'])
 
         cursor = con.cursor()
         try:
@@ -356,10 +356,32 @@ def cad_insumo(id):
             if cursor.fetchone():
                 flash('Insumo já cadastrado!')
                 return render_template('cad_Insumo.html', id=id)
+            if unidade_de_medida == 1 or unidade_de_medida == 3:
+                quantidade = peso_unidade * 1000
+                preco_unidade = preco_compra / quantidade
+            else:
+                quantidade = peso_unidade
+                preco_unidade = preco_compra
+
+            estoque_total = estoque * quantidade
+
+
             cursor.execute(
-            "INSERT INTO INSUMO (NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE, ID_USUARIO) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?)",
-            (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, id)
+                """INSERT INTO INSUMO
+                   (NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE, PRECO_UNIDADE, ESTOQUE_TOTAL,
+                    ID_USUARIO)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, preco_unidade, estoque_total, id)
+            )
+            con.commit()
+
+            cursor.execute("SELECT ID_INSUMO FROM INSUMO WHERE NOME = ? AND ID_USUARIO = ?", (nome, id,))
+            id_insumo = cursor.fetchone()[0]
+            cursor.execute(
+                """INSERT INTO HISTORICO_PRECO
+                       (ID_INSUMO, PRECO_COMPRA, PRECO_UNIDADE)
+                       VALUES (?, ?, ?)""",
+                    (id_insumo, preco_compra, preco_unidade)
             )
             con.commit()
             flash('Insumo cadastrado com sucesso!', 'success')
@@ -398,20 +420,52 @@ def editar_insumo(id, insumo_id):
         if request.method == 'POST':
             nome = request.form.get('nomeInsumo')
             descricao = request.form.get('descricao')
-            peso_unidade = request.form.get('peso_unidade')
-            unidade = request.form.get('unidade')
-            preco = request.form.get('preco')
-            estoque = request.form.get('estoque')
+            peso_unidade = float(request.form.get('peso_unidade'))
+            unidade_de_medida = int(request.form.get('unidade'))
+            preco_compra = round(float(request.form.get('preco')), 2)
+            estoque = float(request.form.get('estoque'))
 
             try:
+                if unidade_de_medida == 1 or unidade_de_medida == 3:
+                    quantidade = peso_unidade * 1000
+                    preco_unidade = float(preco_compra / quantidade)
+                else:
+                    quantidade = peso_unidade
+                    preco_unidade = float(preco_compra)
+
+                estoque_total = estoque * quantidade
+
+                cursor.execute(
+                    """SELECT PRECO_COMPRA
+                    FROM HISTORICO_PRECO
+                    WHERE ID_INSUMO = ?                    
+                    """,
+                    (insumo_id,)
+                )
+                resultado = cursor.fetchone()
+
+                if resultado:
+                    preco_compra_antigo = resultado[0]
+                else:
+                    preco_compra_antigo = None
+
+                if preco_compra_antigo != preco_compra or preco_compra_antigo == None:
+                    cursor.execute(
+                        """INSERT INTO HISTORICO_PRECO
+                               (ID_INSUMO, PRECO_COMPRA, PRECO_UNIDADE)
+                           VALUES (?, ?, ?)""",
+                        (insumo_id, preco_compra, preco_unidade)
+                    )
+                    con.commit()
                 cursor.execute(
                     """
                     UPDATE INSUMO
-                       SET NOME = ?, DESCRICAO = ?, PESO_UNIDADE = ?, PRECO_COMPRA = ?, UNIDADE_DE_MEDIDA = ?, ESTOQUE = ?
+                       SET NOME = ?, DESCRICAO = ?, PESO_UNIDADE = ?, PRECO_COMPRA = ?, UNIDADE_DE_MEDIDA = ?, ESTOQUE = ?, PRECO_UNIDADE = ?, ESTOQUE_TOTAL = ?
                      WHERE ID_INSUMO = ? AND ID_USUARIO = ?
                     """,
-                    (nome, descricao, peso_unidade, preco, unidade, estoque, insumo_id, id)
+                    (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, preco_unidade, estoque_total, insumo_id, id)
                 )
+
                 con.commit()
                 flash('Insumo atualizado com sucesso!', 'success')
                 return redirect(url_for('insumos', id=id))
@@ -419,7 +473,8 @@ def editar_insumo(id, insumo_id):
                 con.rollback()
                 flash(f'Erro ao atualizar insumo: {e}', 'error')
                 return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
-
+            finally:
+                cursor.close()
         return render_template('editar_Insumo.html', id=id, insumo_id=insumo_id, insumo=insumo)
     finally:
         cursor.close()
@@ -430,7 +485,6 @@ def produtos(id):
     if "id_usuario" not in session:
         flash("Você precisa estar logado para acessar essa página", "error")
         return redirect(url_for('login'))
-
     return render_template('produtos.html', id=id)
 
 
@@ -446,10 +500,14 @@ def cad_produto(id):
         cursor.execute("""SELECT ID_INSUMO, NOME
         FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
         insumos = cursor.fetchall()
+        if 'insumos_utilizados' in session:
+            insumos_utilizados = session['insumos_utilizados']
+            session.pop('insumos_utilizados')
+        else:
+            insumos_utilizados = []
     finally:
         cursor.close()
-        return render_template('cad_Produto.html', id=id, categorias=categorias, insumos=insumos)
-
+        return render_template('cad_Produto.html', id=id, categorias=categorias, insumos=insumos, insumos_utilizados=insumos_utilizados)
 @app.route('/cad_categoria/<int:id>', methods=['POST'])
 def cad_categoria(id):
     if request.method == 'POST':
@@ -478,8 +536,32 @@ def cad_categoria(id):
 @app.route('/adicionar_insumo/<int:id>', methods=['POST'])
 def adicionar_insumo(id):
     if request.method == 'POST':
-        ingredientes = request.form("ingrediente")
-        print(ingredientes)
+        id_insumos_utilizados = request.form.getlist('insumos_utilizados')
+        insumos_utilizados = []
+
+        cursor = con.cursor()
+        for i in id_insumos_utilizados:
+            quantidade = float(request.form.get(f'quantidade_{i}'))
+            unidade_de_medida = int(request.form.get(f'unidade_de_medida_{i}'))
+            cursor.execute('SELECT NOME FROM INSUMO WHERE ID_INSUMO = ?', (i,))
+            nome = cursor.fetchone()[0]
+            cursor.execute('SELECT PRECO_UNIDADE FROM INSUMO WHERE ID_INSUMO = ?', (i,))
+            preco_unidade = float(cursor.fetchone()[0])
+            if unidade_de_medida == 1 or unidade_de_medida == 3:
+                quantidade_convertida = quantidade * 1000
+            else:
+                quantidade_convertida = quantidade
+            preco_total = float(preco_unidade * quantidade_convertida)
+            insumos_utilizados.append({
+                'id': int(i),
+                'nome': nome,
+                'quantidade': quantidade_convertida,
+                'unidade_de_medida': int(unidade_de_medida),
+                'preco_total': preco_total
+            })
+        cursor.close()
+        session['insumos_utilizados'] = insumos_utilizados
+        return redirect(url_for('cad_produto', id=id))
 @app.route('/logout')
 def logout():
     session.pop('id_usuario', None)

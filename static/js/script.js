@@ -13,8 +13,16 @@ var porcentagem = document.getElementById("lucro");
 
 if (porcentagem) {
     porcentagem.addEventListener("input", function () {
+        var precos = document.querySelectorAll("#insumo_preco");
+        let total = 0
+        precos.forEach( function(preco) {
+            total += parseFloat(preco.value);
+        }
+        )
         var lucro = document.getElementById("lucro");
+        var preco_final = total + (total * (parseFloat(lucro.value)/100));
         document.getElementById("valor").innerText = lucro.value + "%";
+        document.getElementById("preco_final").innerText = "R$" + preco_final.toFixed(2);
     });
 }
 
@@ -24,10 +32,75 @@ function adicionarInsumo() {
         document.getElementById("adicionarInsumo").style.display = 'none';
     }
     else {
-    document.getElementById("visualizarInsumo").style.display = 'none';
+        document.getElementById("visualizarInsumo").style.display = 'none';
         document.getElementById("adicionarInsumo").style.display = 'block';
+        localStorage.setItem('nomeProduto', document.getElementById('nomeProduto').value);
+        localStorage.setItem('descricao', document.getElementById('descricao').value);
+        localStorage.setItem('categoria', document.getElementById('categoria').value);
+        localStorage.setItem('rendimento', document.getElementById('rendimento').value);
+        localStorage.setItem('tempoProducao', document.getElementById('tempoProducao').value);
+        localStorage.setItem('lucro', document.getElementById('lucro').value);
+
     }
 }
+
+// Script para remover acentos e cedilha
+function removerAcentos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c");
+}
+
+//Script para recarregar o que já havia sido carregado, excluir do local storage caso não seja a página de cadastro de produto e fazer a busca nos insumos
+window.onload = function() {
+    if (window.location.pathname.includes('cad_produto')) {
+        // Preencher campos do localStorage
+        if (localStorage.getItem('nomeProduto')) document.getElementById('nomeProduto').value = localStorage.getItem('nomeProduto');
+        if (localStorage.getItem('descricao')) document.getElementById('descricao').value = localStorage.getItem('descricao');
+        if (localStorage.getItem('categoria')) document.getElementById('categoria').value = localStorage.getItem('categoria');
+        if (localStorage.getItem('rendimento')) document.getElementById('rendimento').value = localStorage.getItem('rendimento');
+        if (localStorage.getItem('tempoProducao')) document.getElementById('tempoProducao').value = localStorage.getItem('tempoProducao');
+        if (localStorage.getItem('lucro')) document.getElementById('lucro').value = localStorage.getItem('lucro');
+
+        // Mostrar quantidades dos checkboxes já marcados
+        var checkboxesMarcadas = document.querySelectorAll('input[id="insumos_utilizados"]:checked');
+        checkboxesMarcadas.forEach(function(checkbox) {
+            mostrarQuantidade(checkbox.value);
+        });
+
+        // --- Pesquisa de insumos ---
+        var pesquisa = document.getElementById('pesquisa');
+        var checkboxes = document.querySelectorAll('input[id="insumos_utilizados"]');
+
+        // Mostrar só os marcados inicialmente
+        checkboxes.forEach(function(checkbox) {
+            var divInsumo = checkbox.closest('.ingrediente');
+            divInsumo.style.display = checkbox.checked ? 'flex' : 'none';
+        });
+
+        // Filtrar conforme o usuário digita
+        pesquisa.addEventListener('input', function() {
+            var valor = removerAcentos(pesquisa.value.toLowerCase());
+            checkboxes.forEach(function(checkbox) {
+                var divInsumo = checkbox.closest('.ingrediente');
+                var label = removerAcentos(checkbox.nextElementSibling.textContent.toLowerCase());
+
+                if (valor === '') {
+                    divInsumo.style.display = 'none';
+                } else {
+                    divInsumo.style.display = (checkbox.checked || label.includes(valor)) ? 'flex' : 'none';
+                }
+            });
+        });
+
+    } else {
+        // Limpar localStorage se não estiver na página de cadastro
+        localStorage.removeItem('nomeProduto');
+        localStorage.removeItem('descricao');
+        localStorage.removeItem('categoria');
+        localStorage.removeItem('rendimento');
+        localStorage.removeItem('tempoProducao');
+        localStorage.removeItem('lucro');
+    }
+};
 
 
 // Script para mostrar/ocultar card de visualização de insumo
@@ -57,6 +130,8 @@ function mostrarQuantidade(id) {
     }
     else {
         document.getElementById(id).style.display = 'flex'
+        var quantidade = document.getElementById('quantidade' + id)
+        quantidade.required = true
     }
 }
 

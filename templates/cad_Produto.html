@@ -69,19 +69,19 @@
                         </div>
                         <div class="d-flex campo">
                             <label>Rendimento de 1 receita</label>
-                            <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required>
+                            <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required min="0.5">
                         </div>
                     </div>
 
                     <div class="d-flex campo">
-                        <label>Tempo de Produção</label>
-                        <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
+                        <label>Tempo de Produção (h)</label>
+                        <input class="input" type="number" id="tempoProducao" name="tempoProducao" required min="0.5">
                     </div>
 
                     <div class="d-flex campo range-box">
                         <div class="range-header">
                             <label for="lucro">Lucro %</label>
-                            <span>Não definido</span>
+                            <span id="preco_final">Não definido</span>
                         </div>
                         <input type="range" id="lucro" name="lucro" min="0" max="50" value="20">
                         <span id="valor">20%</span>
@@ -113,12 +113,17 @@
                     <form class="lista-ingredientes">
                         <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
                         <div class="d-flex ingrediente">
+                            <il>
+                                {% for insumo_utilizado in insumos_utilizados %}
+                                <li>{{ insumo_utilizado.nome }}</li>
+                                <input class="none" id="insumo_preco" value="{{ insumo_utilizado.preco_total }}">
+                                {% endfor %}
+                            </il>
                         </div>
                         <div>
-                             <button onclick="adicionarInsumo()" class="bnt-claroD bnt-pequeno"
-                            type="submit">Adicionar Insumos</button>
-                             <button onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno"
-                            type="submit"><a href="../templates/cad_Produto.html">Concluído</a></button>
+                             <a onclick="adicionarInsumo()" class="bnt-claroD bnt-pequeno"
+                            type="submit">Adicionar Insumos</a>
+                             <a onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno">Concluído</a>
                         </div>
                     </form>
                 </div>
@@ -128,34 +133,45 @@
                     <a href="#" onclick="adicionarInsumo()"><img src="../static/img/voltar.png" alt="Voltar"
                             class="seta"></a>
                     <h1 class="titulo-secao">Adição de Insumos</h1>
-                    <form class="lista-ingredientes" amethod="post" action="{{ url_for('adicionar_insumo', id=id) }}">
-                        <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
+                    <form class="lista-ingredientes" method="post" action="{{ url_for('adicionar_insumo', id=id) }}">
                         <div class="d-flex ingrediente">
-                            <input class="input" type="text" placeholder="Pesquisa" min="0" name="pesquisa">
+                            <input class="input" type="text" placeholder="Pesquisa" name="pesquisa" id="pesquisa">
                         </div>
+
                         {% for insumo in insumos %}
                         <div class="d-flex ingrediente">
                             <div class="d-flex checkbox">
-                                <input type="checkbox" name="ingrediente" value="{{insumo[0]}}"
-                                    onclick="mostrarQuantidade({{insumo[0]}})">
+                                <input type="checkbox" id="insumos_utilizados" name="insumos_utilizados" value="{{ insumo[0] }}" onclick="mostrarQuantidade({{ insumo[0] }})"
+                                    {% for insumo_utilizado in insumos_utilizados %}
+                                        {% if insumo_utilizado['id'] == insumo[0] %} checked {% endif %}
+                                    {% endfor %}>
                                 <label>{{ insumo[1] }}</label>
                             </div>
-                            <div class="d-flex ingrediente-un none" id={{insumo[0]}}>
-                                <input type="number" placeholder="Quantidade" min="0">
-                                <select name="categoria">
-                                    <option value="1">Quilograma</option>
-                                    <option value="2">Grama</option>
-                                    <option value="3">Litro</option>
-                                    <option value="4">Mililitro</option>
-                                    <option value="5">Unidade</option>
+
+                            <div class="d-flex ingrediente-un none" id="{{ insumo[0] }}">
+                                <input type="number" placeholder="Quantidade" min="0.1" step="0.1" name="quantidade_{{ insumo[0] }}" id="quantidade{{ insumo[0] }}"
+                                    {% for insumo_utilizado in insumos_utilizados %}
+                                        {% if insumo_utilizado['id'] == insumo[0] %}
+                                            value="{{ insumo_utilizado['quantidade'] }}"
+                                        {% endif %}
+                                    {% endfor %}
+                                >
+                                <select name="unidade_de_medida_{{ insumo[0] }}">
+                                    <option value="1" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == '1' %} selected {% endif %}{% endfor %}>Quilograma</option>
+                                    <option value="2" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == '2' %} selected {% endif %}{% endfor %}>Grama</option>
+                                    <option value="3" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == '3' %} selected {% endif %}{% endfor %}>Litro</option>
+                                    <option value="4" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == '4' %} selected {% endif %}{% endfor %}>Mililitro</option>
+                                    <option value="5" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == '5' %} selected {% endif %}{% endfor %}>Unidade</option>
                                 </select>
                             </div>
                         </div>
                         {% endfor %}
+
                         <div>
-                             <button class="bnt-claroD bnt-pequeno" type="submit">Adicionar Insumos</button>
+                            <button class="bnt-claroD bnt-pequeno" type="submit">Adicionar Insumos</button>
                         </div>
                     </form>
+
                 </div>
             </section>
             {% with msgs = get_flashed_messages(with_categories=true) %}
