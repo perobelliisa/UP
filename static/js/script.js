@@ -10,20 +10,34 @@ function mostrarResposta(id) {
 
 // Script para atualizar o valor da barra de lucro
 var porcentagem = document.getElementById("lucro");
+function calcularPrecoFinal() {
+    var lucro = document.getElementById("lucro");
+    document.getElementById("valor").innerText = lucro.value + "%";
+
+
+    var precos = document.querySelectorAll("#insumo_preco");
+    if (precos.length > 0) {
+        var total = 0
+        precos.forEach(function (preco) {
+            total += parseFloat(preco.value);
+        });
+        var tempoProducao = parseFloat(document.getElementById("tempoProducao").value) || 0 //se o input estiver vazio ou não for número, recebe 0
+        if (tempoProducao != 0) {
+            var valor_mao = parseFloat(document.getElementById("valor_mao").value)
+            total += tempoProducao * valor_mao
+        }
+        var rendimento = parseFloat(document.getElementById("rendimento").value) || 0 //se o input estiver vazio ou não for número, recebe 0
+        if (rendimento != 0) {
+            total = total / rendimento
+        }
+        var preco_final = total + (total * (parseFloat(lucro.value) / 100));
+        document.getElementById("preco_final").innerText = "R$" + preco_final.toFixed(2);
+    }
+}
 
 if (porcentagem) {
-    porcentagem.addEventListener("input", function () {
-        var precos = document.querySelectorAll("#insumo_preco");
-        let total = 0
-        precos.forEach( function(preco) {
-            total += parseFloat(preco.value);
-        }
-        )
-        var lucro = document.getElementById("lucro");
-        var preco_final = total + (total * (parseFloat(lucro.value)/100));
-        // Falta a mão de obra ainda
-        document.getElementById("valor").innerText = lucro.value + "%";
-        document.getElementById("preco_final").innerText = "R$" + preco_final.toFixed(2);
+    document.addEventListener("DOMContentLoaded", function() {
+        document.body.addEventListener("input", calcularPrecoFinal);
     });
 }
 
@@ -41,7 +55,6 @@ function adicionarInsumo() {
         localStorage.setItem('rendimento', document.getElementById('rendimento').value);
         localStorage.setItem('tempoProducao', document.getElementById('tempoProducao').value);
         localStorage.setItem('lucro', document.getElementById('lucro').value);
-
     }
 }
 
@@ -60,6 +73,7 @@ window.onload = function() {
         if (localStorage.getItem('rendimento')) document.getElementById('rendimento').value = localStorage.getItem('rendimento');
         if (localStorage.getItem('tempoProducao')) document.getElementById('tempoProducao').value = localStorage.getItem('tempoProducao');
         if (localStorage.getItem('lucro')) document.getElementById('lucro').value = localStorage.getItem('lucro');
+        calcularPrecoFinal()
 
         // Mostrar quantidades dos checkboxes já marcados
         var checkboxesMarcadas = document.querySelectorAll('input[id="insumos_utilizados"]:checked');

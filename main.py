@@ -313,7 +313,11 @@ def insumos(id):
     cursor.execute("""SELECT ID_INSUMO
      , NOME
      , DESCRICAO
-     , TRUNC(PRECO_COMPRA, 2)
+     , (
+            SELECT FIRST 1 PRECO_COMPRA 
+                      FROM HISTORICO_PRECO 
+                      WHERE HISTORICO_PRECO.ID_INSUMO = INSUMO.ID_INSUMO 
+                      ORDER BY DATA_MUDANCA DESC)
      , CASE UNIDADE_DE_MEDIDA
          WHEN 1 THEN 'Quilo'
          WHEN 2 THEN 'Grama'
@@ -322,7 +326,7 @@ def insumos(id):
          WHEN 5 THEN 'Unidade'
         ELSE ''
        END AS DESCRICAO_UNIDADE
-     , ESTOQUE 
+     , (SELECT QUANTIDADE FROM ESTOQUE WHERE ESTOQUE.ID_INSUMO = INSUMO.ID_INSUMO) 
      FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
     insumos = cursor.fetchall()
     cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
@@ -368,10 +372,9 @@ def cad_insumo(id):
 
             cursor.execute(
                 """INSERT INTO INSUMO
-                   (NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE, PRECO_UNIDADE, ESTOQUE_TOTAL,
-                    ID_USUARIO)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, preco_unidade, estoque_total, id)
+                   (NOME, DESCRICAO, PESO_UNIDADE, UNIDADE_DE_MEDIDA, ID_USUARIO)
+                   VALUES (?, ?, ?, ?, ?)""",
+                (nome, descricao, peso_unidade, unidade_de_medida, id)
             )
             con.commit()
 
@@ -384,6 +387,15 @@ def cad_insumo(id):
                     (id_insumo, preco_compra, preco_unidade)
             )
             con.commit()
+
+            cursor.execute(
+                """INSERT INTO ESTOQUE
+                       (ID_INSUMO, QUANTIDADE, QUANTIDADE_CONVERTIDA)
+                   VALUES (?, ?, ?)""",
+                (id_insumo, estoque, estoque_total)
+            )
+            con.commit()
+
             flash('Insumo cadastrado com sucesso!', 'success')
             return redirect(url_for('insumos', id=id))
         except Exception as e:
@@ -405,7 +417,11 @@ def editar_insumo(id, insumo_id):
     try:
         cursor.execute(
             """
-            SELECT ID_INSUMO, NOME, DESCRICAO, PESO_UNIDADE, PRECO_COMPRA, UNIDADE_DE_MEDIDA, ESTOQUE
+            SELECT ID_INSUMO, NOME, DESCRICAO, PESO_UNIDADE, (SELECT FIRST 1 PRECO_COMPRA 
+                      FROM HISTORICO_PRECO 
+                      WHERE HISTORICO_PRECO.ID_INSUMO = INSUMO.ID_INSUMO 
+                      ORDER BY DATA_MUDANCA DESC), UNIDADE_DE_MEDIDA
+                    , (SELECT QUANTIDADE FROM ESTOQUE WHERE ESTOQUE.ID_INSUMO = INSUMO.ID_INSUMO)
               FROM INSUMO
              WHERE ID_INSUMO = ? AND ID_USUARIO = ?
             """,
@@ -436,9 +452,10 @@ def editar_insumo(id, insumo_id):
                 estoque_total = estoque * quantidade
 
                 cursor.execute(
-                    """SELECT PRECO_COMPRA
-                    FROM HISTORICO_PRECO
-                    WHERE ID_INSUMO = ?                    
+                    """SELECT FIRST 1 PRECO_COMPRA 
+                      FROM HISTORICO_PRECO 
+                      WHERE ID_INSUMO = ? 
+                      ORDER BY DATA_MUDANCA DESC                    
                     """,
                     (insumo_id,)
                 )
@@ -460,12 +477,23 @@ def editar_insumo(id, insumo_id):
                 cursor.execute(
                     """
                     UPDATE INSUMO
-                       SET NOME = ?, DESCRICAO = ?, PESO_UNIDADE = ?, PRECO_COMPRA = ?, UNIDADE_DE_MEDIDA = ?, ESTOQUE = ?, PRECO_UNIDADE = ?, ESTOQUE_TOTAL = ?
+                       SET NOME = ?, DESCRICAO = ?, PESO_UNIDADE = ?, UNIDADE_DE_MEDIDA = ?
                      WHERE ID_INSUMO = ? AND ID_USUARIO = ?
                     """,
-                    (nome, descricao, peso_unidade, preco_compra, unidade_de_medida, estoque, preco_unidade, estoque_total, insumo_id, id)
+                    (nome, descricao, peso_unidade, unidade_de_medida, insumo_id, id)
                 )
 
+                con.commit()
+
+                cursor.execute(
+                    """
+                    UPDATE ESTOQUE
+                    SET QUANTIDADE = ?,
+                        QUANTIDADE_CONVERTIDA = ?
+                    WHERE ID_INSUMO = ?
+                    """,
+                    (estoque, estoque_total, insumo_id)
+                )
                 con.commit()
                 flash('Insumo atualizado com sucesso!', 'success')
                 return redirect(url_for('insumos', id=id))
@@ -500,6 +528,8 @@ def cad_produto(id):
         cursor.execute("""SELECT ID_INSUMO, NOME
         FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
         insumos = cursor.fetchall()
+        cursor.execute("""SELECT VALOR_MAO FROM EMPRESA WHERE ID_USUARIO = ?""", (id,))
+        valor_mao = float(cursor.fetchone()[0])
         if 'insumos_utilizados' in session:
             insumos_utilizados = session['insumos_utilizados']
             session.pop('insumos_utilizados')
@@ -507,7 +537,7 @@ def cad_produto(id):
             insumos_utilizados = []
     finally:
         cursor.close()
-        return render_template('cad_Produto.html', id=id, categorias=categorias, insumos=insumos, insumos_utilizados=insumos_utilizados)
+        return render_template('cad_Produto.html', id=id, categorias=categorias, insumos=insumos, insumos_utilizados=insumos_utilizados, valor_mao=valor_mao)
 @app.route('/cad_categoria/<int:id>', methods=['POST'])
 def cad_categoria(id):
     if request.method == 'POST':
@@ -545,7 +575,7 @@ def adicionar_insumo(id):
             unidade_de_medida = int(request.form.get(f'unidade_de_medida_{i}'))
             cursor.execute('SELECT NOME FROM INSUMO WHERE ID_INSUMO = ?', (i,))
             nome = cursor.fetchone()[0]
-            cursor.execute('SELECT PRECO_UNIDADE FROM INSUMO WHERE ID_INSUMO = ?', (i,))
+            cursor.execute('SELECT PRECO_UNIDADE FROM HISTORICO_PRECO WHERE ID_INSUMO = ? ORDER BY DATA_MUDANCA DESC', (i,))
             preco_unidade = float(cursor.fetchone()[0])
             if unidade_de_medida == 1 or unidade_de_medida == 3:
                 quantidade_convertida = quantidade * 1000
