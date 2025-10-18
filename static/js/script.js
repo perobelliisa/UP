@@ -21,6 +21,7 @@ if (porcentagem) {
         )
         var lucro = document.getElementById("lucro");
         var preco_final = total + (total * (parseFloat(lucro.value)/100));
+        // Falta a mão de obra ainda
         document.getElementById("valor").innerText = lucro.value + "%";
         document.getElementById("preco_final").innerText = "R$" + preco_final.toFixed(2);
     });
