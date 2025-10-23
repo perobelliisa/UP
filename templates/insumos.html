@@ -71,7 +71,7 @@
                                 <td>{{ insumo[5] }}</td>
                                 <td class="d-flex space-around botao">
                                     <a href="{{ url_for('editar_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Edit</a>
-                                    <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja deletar este insumo?');">
+                                    <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" class="js-delete-form">
                                         <button type="submit" class="btn-del">Del</button>
                                     </form>
                                 </td>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="d-flex botao-mobile">
                             <a href="{{ url_for('editar_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Editar</a>
-                            <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja deletar este insumo?');">
+                            <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" class="js-delete-form">
                                 <button type="submit" class="btn-del">Deletar</button>
                             </form>
                         </div>
@@ -181,6 +181,7 @@
         <hr>
         <p class="copy">© 2025 - Todos os direitos reservados.</p>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../static/js/owl-carousel/owl.carousel.js"></script>
         <script src="../static/js/script.js"></script>
     </footer>
