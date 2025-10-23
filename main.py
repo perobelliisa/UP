@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Aluno\Desktop\UP1\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -495,6 +495,44 @@ def editar_insumo(id, insumo_id):
         cursor.close()
 
 
+@app.route('/deletar_insumo/<int:id>/<int:insumo_id>', methods=['POST'])
+def deletar_insumo(id, insumo_id):
+    if "id_usuario" not in session:
+        flash("Você precisa estar logado para acessar essa página", "error")
+        return redirect(url_for('login'))
+
+    cursor = con.cursor()
+    try:
+        # Verifica se o insumo pertence ao usuário
+        cursor.execute(
+            """
+            SELECT 1 FROM INSUMO WHERE ID_INSUMO = ? AND ID_USUARIO = ?
+            """,
+            (insumo_id, id)
+        )
+        if not cursor.fetchone():
+            flash('Insumo não encontrado.', 'error')
+            return redirect(url_for('insumos', id=id))
+
+        # Remove dependências primeiro
+        cursor.execute("DELETE FROM ESTOQUE WHERE ID_INSUMO = ?", (insumo_id,))
+        cursor.execute("DELETE FROM HISTORICO_PRECO WHERE ID_INSUMO = ?", (insumo_id,))
+        con.commit()
+
+        # Remove o insumo
+        cursor.execute(
+            "DELETE FROM INSUMO WHERE ID_INSUMO = ? AND ID_USUARIO = ?",
+            (insumo_id, id)
+        )
+        con.commit()
+
+        flash('Insumo deletado com sucesso!', 'success')
+    except Exception as e:
+        con.rollback()
+        flash(f'Erro ao deletar insumo: {e}', 'error')
+    finally:
+        cursor.close()
+    return redirect(url_for('insumos', id=id))
 @app.route('/produtos/<int:id>')
 def produtos(id):
     if "id_usuario" not in session:
