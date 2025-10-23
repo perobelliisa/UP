@@ -376,3 +376,33 @@ window.document.addEventListener('DOMContentLoaded', carregarModo);
   validarSenha();
 
 
+// Confirmação de exclusão com SweetAlert2
+document.addEventListener('DOMContentLoaded', function () {
+  var deleteForms = document.querySelectorAll('form.js-delete-form');
+  if (deleteForms.length > 0) {
+    deleteForms.forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (typeof Swal === 'undefined') {
+          // Fallback caso SweetAlert2 não esteja disponível
+          if (confirm('Tem certeza que deseja deletar este insumo?')) {
+            form.submit();
+          }
+          return;
+        }
+        Swal.fire({
+          title: 'Tem certeza?',
+          text: 'Esta ação não pode ser desfeita.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sim, deletar',
+          cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            form.submit();
+          }
+        });
+      });
+    });
+  }
+});
