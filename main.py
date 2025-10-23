@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\luisa\OneDrive\Documentos\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Aluno\Desktop\UP1\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -326,7 +326,7 @@ def insumos(id):
          WHEN 5 THEN 'Unidade'
         ELSE ''
        END AS DESCRICAO_UNIDADE
-     , (SELECT QUANTIDADE FROM ESTOQUE WHERE ESTOQUE.ID_INSUMO = INSUMO.ID_INSUMO) 
+     , PESO_UNIDADE 
      FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
     insumos = cursor.fetchall()
     cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
@@ -352,7 +352,6 @@ def cad_insumo(id):
         peso_unidade = float(request.form['peso_unidade'])
         unidade_de_medida = int(request.form['unidade'])
         preco_compra = round(float(request.form.get('preco')), 2)
-        estoque = float(request.form['estoque'])
 
         cursor = con.cursor()
         try:
@@ -361,13 +360,11 @@ def cad_insumo(id):
                 flash('Insumo já cadastrado!')
                 return render_template('cad_Insumo.html', id=id)
             if unidade_de_medida == 1 or unidade_de_medida == 3:
-                quantidade = peso_unidade * 1000
-                preco_unidade = preco_compra / quantidade
+                quantidade = float(peso_unidade * 1000)
+                preco_unidade = float(preco_compra / quantidade)
             else:
-                quantidade = peso_unidade
-                preco_unidade = preco_compra
-
-            estoque_total = estoque * quantidade
+                quantidade = float(peso_unidade)
+                preco_unidade = float(preco_compra / quantidade)
 
 
             cursor.execute(
@@ -390,9 +387,9 @@ def cad_insumo(id):
 
             cursor.execute(
                 """INSERT INTO ESTOQUE
-                       (ID_INSUMO, QUANTIDADE, QUANTIDADE_CONVERTIDA)
-                   VALUES (?, ?, ?)""",
-                (id_insumo, estoque, estoque_total)
+                       (ID_INSUMO, QUANTIDADE)
+                   VALUES (?, ?)""",
+                (id_insumo, quantidade)
             )
             con.commit()
 
@@ -421,7 +418,6 @@ def editar_insumo(id, insumo_id):
                       FROM HISTORICO_PRECO 
                       WHERE HISTORICO_PRECO.ID_INSUMO = INSUMO.ID_INSUMO 
                       ORDER BY DATA_MUDANCA DESC), UNIDADE_DE_MEDIDA
-                    , (SELECT QUANTIDADE FROM ESTOQUE WHERE ESTOQUE.ID_INSUMO = INSUMO.ID_INSUMO)
               FROM INSUMO
              WHERE ID_INSUMO = ? AND ID_USUARIO = ?
             """,
@@ -439,17 +435,14 @@ def editar_insumo(id, insumo_id):
             peso_unidade = float(request.form.get('peso_unidade'))
             unidade_de_medida = int(request.form.get('unidade'))
             preco_compra = round(float(request.form.get('preco')), 2)
-            estoque = float(request.form.get('estoque'))
 
             try:
                 if unidade_de_medida == 1 or unidade_de_medida == 3:
-                    quantidade = peso_unidade * 1000
+                    quantidade = float(peso_unidade * 1000)
                     preco_unidade = float(preco_compra / quantidade)
                 else:
-                    quantidade = peso_unidade
-                    preco_unidade = float(preco_compra)
-
-                estoque_total = estoque * quantidade
+                    quantidade = float(peso_unidade)
+                    preco_unidade = float(preco_compra) / quantidade
 
                 cursor.execute(
                     """SELECT FIRST 1 PRECO_COMPRA 
@@ -459,12 +452,7 @@ def editar_insumo(id, insumo_id):
                     """,
                     (insumo_id,)
                 )
-                resultado = cursor.fetchone()
-
-                if resultado:
-                    preco_compra_antigo = resultado[0]
-                else:
-                    preco_compra_antigo = None
+                preco_compra_antigo = cursor.fetchone()
 
                 if preco_compra_antigo != preco_compra or preco_compra_antigo == None:
                     cursor.execute(
@@ -488,11 +476,10 @@ def editar_insumo(id, insumo_id):
                 cursor.execute(
                     """
                     UPDATE ESTOQUE
-                    SET QUANTIDADE = ?,
-                        QUANTIDADE_CONVERTIDA = ?
+                    SET QUANTIDADE = ?
                     WHERE ID_INSUMO = ?
                     """,
-                    (estoque, estoque_total, insumo_id)
+                    (quantidade, insumo_id)
                 )
                 con.commit()
                 flash('Insumo atualizado com sucesso!', 'success')

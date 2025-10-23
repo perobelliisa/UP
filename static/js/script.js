@@ -41,6 +41,25 @@ if (porcentagem) {
     });
 }
 
+function guardarValores() {
+    localStorage.setItem('nomeProduto', document.getElementById('nomeProduto').value);
+    localStorage.setItem('descricao', document.getElementById('descricao').value);
+    localStorage.setItem('categoria', document.getElementById('categoria').value);
+    localStorage.setItem('rendimento', document.getElementById('rendimento').value);
+    localStorage.setItem('tempoProducao', document.getElementById('tempoProducao').value);
+    localStorage.setItem('lucro', document.getElementById('lucro').value);
+}
+
+function retomarValores() {
+    if (localStorage.getItem('nomeProduto')) document.getElementById('nomeProduto').value = localStorage.getItem('nomeProduto');
+    if (localStorage.getItem('descricao')) document.getElementById('descricao').value = localStorage.getItem('descricao');
+    if (localStorage.getItem('categoria')) document.getElementById('categoria').value = localStorage.getItem('categoria');
+    if (localStorage.getItem('rendimento')) document.getElementById('rendimento').value = localStorage.getItem('rendimento');
+    if (localStorage.getItem('tempoProducao')) document.getElementById('tempoProducao').value = localStorage.getItem('tempoProducao');
+    if (localStorage.getItem('lucro')) document.getElementById('lucro').value = localStorage.getItem('lucro');
+
+}
+
 // Script para mostrar/ocultar card de adição de insumo
 function adicionarInsumo() {
     if (document.getElementById("adicionarInsumo").style.display === 'block') {
@@ -49,12 +68,7 @@ function adicionarInsumo() {
     else {
         document.getElementById("visualizarInsumo").style.display = 'none';
         document.getElementById("adicionarInsumo").style.display = 'block';
-        localStorage.setItem('nomeProduto', document.getElementById('nomeProduto').value);
-        localStorage.setItem('descricao', document.getElementById('descricao').value);
-        localStorage.setItem('categoria', document.getElementById('categoria').value);
-        localStorage.setItem('rendimento', document.getElementById('rendimento').value);
-        localStorage.setItem('tempoProducao', document.getElementById('tempoProducao').value);
-        localStorage.setItem('lucro', document.getElementById('lucro').value);
+        guardarValores()
     }
 }
 
@@ -67,12 +81,7 @@ function removerAcentos(texto) {
 window.onload = function() {
     if (window.location.pathname.includes('cad_produto')) {
         // Preencher campos do localStorage
-        if (localStorage.getItem('nomeProduto')) document.getElementById('nomeProduto').value = localStorage.getItem('nomeProduto');
-        if (localStorage.getItem('descricao')) document.getElementById('descricao').value = localStorage.getItem('descricao');
-        if (localStorage.getItem('categoria')) document.getElementById('categoria').value = localStorage.getItem('categoria');
-        if (localStorage.getItem('rendimento')) document.getElementById('rendimento').value = localStorage.getItem('rendimento');
-        if (localStorage.getItem('tempoProducao')) document.getElementById('tempoProducao').value = localStorage.getItem('tempoProducao');
-        if (localStorage.getItem('lucro')) document.getElementById('lucro').value = localStorage.getItem('lucro');
+        retomarValores()
         calcularPrecoFinal()
 
         // Mostrar quantidades dos checkboxes já marcados
@@ -132,9 +141,11 @@ function visualizarInsumo() {
 function adicionarCategoria() {
     if (document.getElementById("adicionarCategoria").style.display === 'block') {
         document.getElementById("adicionarCategoria").style.display = 'none';
+        retomarValores()
     }
     else {
         document.getElementById("adicionarCategoria").style.display = 'block';
+        guardarValores()
     }
 }
 
