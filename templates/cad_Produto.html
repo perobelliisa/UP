@@ -34,14 +34,14 @@
                 <div class="d-flex perfil-usuario">
                     <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
                     <div>
-                        <p>Maria</p>
-                        <p>Doce Vita</p>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
                     </div>
                 </div>
             </section>
             <section class="card-branco card-produto">
                 <h1 class="titulo-secao">Cadastro de Produto</h1>
-                <form class="form" action="{{ url_for('cad_produto', id=id) }}"> <!--Link da rota-->
+                <form class="form" method="POST" action="{{ url_for('cad_produto', id=id) }}"> <!--Link da rota-->
                     <div class="d-flex campo">
                         <label>Nome do Produto</label>
                         <input class="input" type="text" id="nomeProduto" name="nomeProduto" required>
@@ -88,7 +88,6 @@
                         <span id="valor"></span>
                     </div>
                     <input class="none" name="insumos_utilizados" value="{{ insumos_utilizados }}">
-
                     <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
                 </form>
             </section>

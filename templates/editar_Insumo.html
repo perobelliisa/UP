@@ -35,7 +35,8 @@
                 <div class="d-flex perfil-usuario">
                     <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="Foto de Perfil">
                     <div>
-                        <p>{{ session.get('id_usuario') }}</p>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
                     </div>
                 </div>
             </section>

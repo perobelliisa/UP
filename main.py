@@ -8,10 +8,28 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Aluno\Desktop\UP1\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
+
+def info(id):
+    cursor = con.cursor()
+    cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
+    fetchone = cursor.fetchone()
+    cursor.close()
+
+    if not fetchone:
+        session.clear()
+        flash('Sessão inválida. Faça login novamente.')
+        return redirect(url_for('login'))
+
+    nome = fetchone[0]
+    cursor = con.cursor()
+    cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
+    empresa = cursor.fetchone()
+    cursor.close()
+    return nome, empresa
 
 @app.route('/')
 def index():
@@ -161,23 +179,10 @@ def dashboard():
         flash('Faça login para continuar.')
         return redirect(url_for('login'))
     id = session['id_usuario']
-    cursor = con.cursor()
-    cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
-    fetchone = cursor.fetchone()
-    cursor.close()
 
-    if not fetchone:
-        session.clear()
-        flash('Sessão inválida. Faça login novamente.')
-        return redirect(url_for('login'))
+    nome, nome_empresa = info(id)
 
-    nome = fetchone[0]
-    cursor = con.cursor()
-    cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
-    empresa = cursor.fetchone()
-    print(empresa)
-    cursor.close()
-    return render_template('dashboard.html', nome=nome, empresa=empresa, id=id)
+    return render_template('dashboard.html', nome=nome, nome_empresa=nome_empresa, id=id)
 
 
 @app.route("/config")
@@ -191,11 +196,9 @@ def config():
         cursor = con.cursor()
         cursor.execute('SELECT NOME, SOBRENOME, EMAIL, TELEFONE, ID_USUARIO FROM USUARIO WHERE ID_USUARIO = ?', (session['id_usuario'],))
         usuario = cursor.fetchone()
-        print(usuario)
         cursor.execute('SELECT NOME, TIPO FROM EMPRESA WHERE ID_USUARIO = ?', (session['id_usuario'],))
 
         empresa = cursor.fetchone()
-        print(empresa)
         if empresa[1] == 1:
             tipo = "Confeitaria"
         elif empresa[1] == 2:
@@ -329,17 +332,10 @@ def insumos(id):
      , PESO_UNIDADE 
      FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
     insumos = cursor.fetchall()
-    cursor.execute('SELECT NOME FROM USUARIO WHERE ID_USUARIO = ?', (id,))
-    fetchone = cursor.fetchone()
-    if not fetchone:
-        session.clear()
-        flash('Sessão inválida. Faça login novamente.')
-        return redirect(url_for('login'))
-    nome = fetchone[0]
-    cursor.execute('SELECT NOME FROM EMPRESA WHERE ID_USUARIO = ?', (id,))
-    empresa = cursor.fetchone()
-    cursor.close()
-    return render_template('insumos.html', id=id, insumos=insumos, nome=nome, empresa=empresa)
+
+    nome, nome_empresa = info(id)
+
+    return render_template('insumos.html', id=id, insumos=insumos, nome=nome, nome_empresa=nome_empresa)
 
 @app.route('/cad_insumo/<int:id>', methods=['GET', 'POST'])
 def cad_insumo(id):
@@ -401,7 +397,9 @@ def cad_insumo(id):
             return render_template('cad_Insumo.html', id=id)
         finally:
             cursor.close()
-    return render_template('cad_Insumo.html', id=id)
+    nome, nome_empresa = info(id)
+
+    return render_template('cad_Insumo.html', id=id, nome=nome, nome_empresa=nome_empresa)
 
 
 @app.route('/editar_insumo/<int:id>/<int:insumo_id>', methods=['GET', 'POST'])
@@ -490,7 +488,8 @@ def editar_insumo(id, insumo_id):
                 return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
             finally:
                 cursor.close()
-        return render_template('editar_Insumo.html', id=id, insumo_id=insumo_id, insumo=insumo)
+        nome, nome_empresa = info(id)
+        return render_template('editar_Insumo.html', id=id, insumo_id=insumo_id, insumo=insumo, nome=nome, nome_empresa=nome_empresa)
     finally:
         cursor.close()
 
@@ -538,31 +537,63 @@ def produtos(id):
     if "id_usuario" not in session:
         flash("Você precisa estar logado para acessar essa página", "error")
         return redirect(url_for('login'))
-    return render_template('produtos.html', id=id)
+    nome, nome_empresa = info(id)
+
+    return render_template('produtos.html', id=id, nome=nome, nome_empresa=nome_empresa)
 
 
-@app.route('/cad_produto/<int:id>')
+@app.route('/cad_produto/<int:id>', methods=['GET', 'POST'])
 def cad_produto(id):
     if "id_usuario" not in session:
         flash("Você precisa estar logado para acessar essa página", "error")
         return redirect(url_for('login'))
+
     cursor = con.cursor()
     try:
+        if request.method == 'POST':
+            nome = request.form.get('nomeProduto')
+            descricao = request.form.get('descricao')
+            categoria = int(request.form.get('categoria'))
+            tempoProducao = float(request.form.get('tempoProducao'))
+            lucro = round(float(request.form.get('lucro')), 2)
+            insumos_utilizados = request.form.getlist('insumos_utilizados')
+
+            if len(insumos_utilizados) < 1:
+                flash("É necessário adicionar insumos", "error")
+                return redirect(url_for('produtos', id=id))
+
+            for i in insumos_utilizados:
+                cursor.execute("SELECT QUANTIDADE FROM INSUMO WHERE ID_INSUMO = ?", (i[0],))
+                quantidade = cursor.fetchone()
+                print(quantidade)
+
         cursor.execute("SELECT ID_CATEGORIA_PRODUTOS, NOME FROM CATEGORIA_PRODUTOS WHERE ID_USUARIO = ?", (id,))
         categorias = cursor.fetchall()
-        cursor.execute("""SELECT ID_INSUMO, NOME
-        FROM INSUMO WHERE ID_USUARIO = ?""", (id,))
+
+        cursor.execute("SELECT ID_INSUMO, NOME FROM INSUMO WHERE ID_USUARIO = ?", (id,))
         insumos = cursor.fetchall()
-        cursor.execute("""SELECT VALOR_MAO FROM EMPRESA WHERE ID_USUARIO = ?""", (id,))
+
+        cursor.execute("SELECT VALOR_MAO FROM EMPRESA WHERE ID_USUARIO = ?", (id,))
         valor_mao = float(cursor.fetchone()[0])
+
         if 'insumos_utilizados' in session:
             insumos_utilizados = session['insumos_utilizados']
             session.pop('insumos_utilizados')
         else:
             insumos_utilizados = []
+
     finally:
         cursor.close()
-        return render_template('cad_Produto.html', id=id, categorias=categorias, insumos=insumos, insumos_utilizados=insumos_utilizados, valor_mao=valor_mao)
+
+    nome, nome_empresa = info(id)
+
+    return render_template('cad_Produto.html',
+                           id=id,
+                           categorias=categorias,
+                           insumos=insumos,
+                           insumos_utilizados=insumos_utilizados,
+                           valor_mao=valor_mao, nome=nome, nome_empresa=nome_empresa)
+
 @app.route('/cad_categoria/<int:id>', methods=['POST'])
 def cad_categoria(id):
     if request.method == 'POST':
