@@ -558,12 +558,14 @@ def cad_produto(id):
             lucro = round(float(request.form.get('lucro')), 2)
             insumos_utilizados = request.form.getlist('insumos_utilizados')
 
+            print(insumos_utilizados)
+
             if len(insumos_utilizados) < 1:
                 flash("É necessário adicionar insumos", "error")
                 return redirect(url_for('produtos', id=id))
 
             for i in insumos_utilizados:
-                cursor.execute("SELECT QUANTIDADE FROM INSUMO WHERE ID_INSUMO = ?", (i[0],))
+                cursor.execute("SELECT QUANTIDADE FROM ESTOQUE WHERE ID_INSUMO = ?", (i[0],))
                 quantidade = cursor.fetchone()
                 print(quantidade)
 
@@ -577,11 +579,12 @@ def cad_produto(id):
         valor_mao = float(cursor.fetchone()[0])
 
         if 'insumos_utilizados' in session:
-            insumos_utilizados = session['insumos_utilizados']
+            insumos_utilizados = session.get('insumos_utilizados')
             session.pop('insumos_utilizados')
         else:
-            insumos_utilizados = []
+            insumos_utilizados = ''
 
+        print('oi', insumos_utilizados)
     finally:
         cursor.close()
 
