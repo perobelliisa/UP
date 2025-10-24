@@ -15,7 +15,7 @@ function calcularPrecoFinal() {
     document.getElementById("valor").innerText = lucro.value + "%";
 
 
-    var precos = document.querySelectorAll("#insumo_preco");
+    var precos = document.querySelectorAll(".insumo_preco");
     if (precos.length > 0) {
         var total = 0
         precos.forEach(function (preco) {
@@ -85,14 +85,14 @@ window.onload = function() {
         calcularPrecoFinal()
 
         // Mostrar quantidades dos checkboxes já marcados
-        var checkboxesMarcadas = document.querySelectorAll('input[id="insumos_utilizados"]:checked');
+        var checkboxesMarcadas = document.querySelectorAll('input[name="insumos_utilizados"]:checked');
         checkboxesMarcadas.forEach(function(checkbox) {
             mostrarQuantidade(checkbox.value);
         });
 
         // --- Pesquisa de insumos ---
         var pesquisa = document.getElementById('pesquisa');
-        var checkboxes = document.querySelectorAll('input[id="insumos_utilizados"]');
+        var checkboxes = document.querySelectorAll('input[name="insumos_utilizados"]');
 
         // Mostrar só os marcados inicialmente
         checkboxes.forEach(function(checkbox) {
