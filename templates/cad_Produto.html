@@ -114,12 +114,15 @@
                     <form class="lista-ingredientes">
                         <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
                         <div class="d-flex ingrediente">
-                            <il>
+                            <ul class="lista-selecionados" style="list-style:none; padding:0; margin:0; width:100%; display:flex; flex-direction:column; gap:10px;">
                                 {% for insumo_utilizado in insumos_utilizados %}
-                                <li>{{ insumo_utilizado.nome }}</li>
-                                <input class="none" id="insumo_preco" value="{{ insumo_utilizado.preco_total }}">
+                                <li class="d-flex space-between align-center" style="border:1px solid rgba(0,0,0,.08); border-radius:8px; padding:10px 12px;">
+                                    <span style="font-weight:600;">{{ insumo_utilizado.nome }}</span>
+                                    <span style="opacity:.9;">Subtotal: R$ {{ "%.2f"|format(insumo_utilizado.preco_total) }}</span>
+                                </li>
+                                <input class="none insumo_preco" value="{{ insumo_utilizado.preco_total }}">
                                 {% endfor %}
-                            </il>
+                            </ul>
                         </div>
                         <div>
                              <a onclick="adicionarInsumo()" class="bnt-claroD bnt-pequeno"
@@ -142,11 +145,11 @@
                         {% for insumo in insumos %}
                         <div class="d-flex ingrediente">
                             <div class="d-flex checkbox">
-                                <input type="checkbox" id="insumos_utilizados" name="insumos_utilizados" value="{{ insumo[0] }}" onclick="mostrarQuantidade({{ insumo[0] }})"
-                                    {% for insumo_utilizado in insumos_utilizados %}
-                                        {% if insumo_utilizado['id'] == insumo[0] %} checked {% endif %}
-                                    {% endfor %}>
-                                <label>{{ insumo[1] }}</label>
+                                <input type="checkbox" id="insumo_ck_{{ insumo[0] }}" name="insumos_utilizados" value="{{ insumo[0] }}" onclick="mostrarQuantidade({{ insumo[0] }})"
+                                     {% for insumo_utilizado in insumos_utilizados %}
+                                         {% if insumo_utilizado['id'] == insumo[0] %} checked {% endif %}
+                                     {% endfor %}>
+                                <label for="insumo_ck_{{ insumo[0] }}">{{ insumo[1] }}</label>
                             </div>
 
                             <div class="d-flex ingrediente-un none" id="{{ insumo[0] }}">
