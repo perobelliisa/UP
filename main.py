@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'GuiIsaLuDuda'
 
 host = 'localhost'
-database = r'C:\Users\Aluno\Desktop\UP1\BANCO.FDB' #definir o caminho do banco de dados
+database = r'C:\Users\Guilherme kawanami\Documents\GitHub\UP\BANCO.FDB' #definir o caminho do banco de dados
 user = 'SYSDBA'
 password = 'sysdba'
 con = fdb.connect(host=host, database=database, user=user, password=password)
@@ -51,6 +51,11 @@ def cadastro():
 
         cursor = con.cursor()
         try:
+            # Checagem case-insensitive de nome duplicado por usuário
+            # removido: checagem indevida de insumo duplicado
+            if False:
+                flash('Insumo jǭ cadastrado!')
+                return render_template('cad_Insumo.html', id=id)
             cursor.execute("SELECT EMAIL FROM USUARIO WHERE EMAIL = ?", (email,))
             if cursor.fetchone():
                 flash('Email já cadastrado!')
@@ -343,15 +348,41 @@ def cad_insumo(id):
         flash("Você precisa estar logado para acessar essa página", "error")
         return redirect(url_for('login'))
     if request.method == 'POST':
-        nome = request.form['nomeInsumo'].capitalize()
-        descricao = request.form['descricao']
-        peso_unidade = float(request.form['peso_unidade'])
-        unidade_de_medida = int(request.form['unidade'])
-        preco_compra = round(float(request.form.get('preco')), 2)
+        nome = request.form['nomeInsumo'].strip().capitalize()
+        descricao = request.form['descricao'].strip()
+        try:
+            peso_unidade = float(request.form['peso_unidade'])
+        except Exception:
+            flash('Quantidade inválida.')
+            return render_template('cad_Insumo.html', id=id)
+        try:
+            unidade_de_medida = int(request.form['unidade'])
+        except Exception:
+            flash('Unidade de medida inválida.')
+            return render_template('cad_Insumo.html', id=id)
+        try:
+            preco_compra = round(float(request.form.get('preco')), 2)
+        except Exception:
+            flash('Preço de compra inválido.')
+            return render_template('cad_Insumo.html', id=id)
+
+        # Validações de regra de negócio
+        if not nome:
+            flash('Nome do insumo é obrigatório.')
+            return render_template('cad_Insumo.html', id=id)
+        if unidade_de_medida not in (1, 2, 3, 4, 5):
+            flash('Unidade de medida inválida.')
+            return render_template('cad_Insumo.html', id=id)
+        if peso_unidade <= 0:
+            flash('A quantidade deve ser maior que zero.')
+            return render_template('cad_Insumo.html', id=id)
+        if preco_compra <= 0:
+            flash('O preço de compra deve ser maior que zero.')
+            return render_template('cad_Insumo.html', id=id)
 
         cursor = con.cursor()
         try:
-            cursor.execute("SELECT NOME FROM INSUMO WHERE NOME = ? AND ID_USUARIO = ?", (nome, id,))
+            cursor.execute("SELECT 1 FROM INSUMO WHERE UPPER(NOME) = UPPER(?) AND ID_USUARIO = ?", (nome, id,))
             if cursor.fetchone():
                 flash('Insumo já cadastrado!')
                 return render_template('cad_Insumo.html', id=id)
@@ -361,6 +392,10 @@ def cad_insumo(id):
             else:
                 quantidade = float(peso_unidade)
                 preco_unidade = float(preco_compra / quantidade)
+
+            if preco_unidade <= 0:
+                flash('O custo unitário deve ser maior que zero.')
+                return render_template('cad_Insumo.html', id=id)
 
 
             cursor.execute(
@@ -428,11 +463,44 @@ def editar_insumo(id, insumo_id):
             return redirect(url_for('insumos', id=id))
 
         if request.method == 'POST':
-            nome = request.form.get('nomeInsumo')
-            descricao = request.form.get('descricao')
-            peso_unidade = float(request.form.get('peso_unidade'))
-            unidade_de_medida = int(request.form.get('unidade'))
-            preco_compra = round(float(request.form.get('preco')), 2)
+            nome = (request.form.get('nomeInsumo') or '').strip()
+            descricao = (request.form.get('descricao') or '').strip()
+            try:
+                # Checagem case-insensitive de nome duplicado por usuário (exclui o próprio)
+                cursor.execute(
+                    "SELECT 1 FROM INSUMO WHERE UPPER(NOME) = UPPER(?) AND ID_USUARIO = ? AND ID_INSUMO <> ?",
+                    (nome, id, insumo_id)
+                )
+                if cursor.fetchone():
+                    flash('Insumo jǭ cadastrado!')
+                    return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+                peso_unidade = float(request.form.get('peso_unidade'))
+            except Exception:
+                flash('Quantidade inválida.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+            try:
+                unidade_de_medida = int(request.form.get('unidade'))
+            except Exception:
+                flash('Unidade de medida inválida.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+            try:
+                preco_compra = round(float(request.form.get('preco')), 2)
+            except Exception:
+                flash('Preço de compra inválido.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+
+            if not nome:
+                flash('Nome do insumo é obrigatório.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+            if unidade_de_medida not in (1, 2, 3, 4, 5):
+                flash('Unidade de medida inválida.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+            if peso_unidade <= 0:
+                flash('A quantidade deve ser maior que zero.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+            if preco_compra <= 0:
+                flash('O preço de compra deve ser maior que zero.')
+                return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
 
             try:
                 if unidade_de_medida == 1 or unidade_de_medida == 3:
@@ -442,6 +510,10 @@ def editar_insumo(id, insumo_id):
                     quantidade = float(peso_unidade)
                     preco_unidade = float(preco_compra) / quantidade
 
+                if preco_unidade <= 0:
+                    flash('O custo unitário deve ser maior que zero.')
+                    return redirect(url_for('editar_insumo', id=id, insumo_id=insumo_id))
+
                 cursor.execute(
                     """SELECT FIRST 1 PRECO_COMPRA 
                       FROM HISTORICO_PRECO 
@@ -450,9 +522,10 @@ def editar_insumo(id, insumo_id):
                     """,
                     (insumo_id,)
                 )
-                preco_compra_antigo = cursor.fetchone()
+                row_preco = cursor.fetchone()
+                preco_compra_antigo = round(float(row_preco[0]), 2) if row_preco else None
 
-                if preco_compra_antigo != preco_compra or preco_compra_antigo == None:
+                if preco_compra_antigo is None or preco_compra_antigo != preco_compra:
                     cursor.execute(
                         """INSERT INTO HISTORICO_PRECO
                                (ID_INSUMO, PRECO_COMPRA, PRECO_UNIDADE)
@@ -493,6 +566,67 @@ def editar_insumo(id, insumo_id):
     finally:
         cursor.close()
 
+
+@app.route('/historico_insumo/<int:id>/<int:insumo_id>')
+def historico_insumo(id, insumo_id):
+    if "id_usuario" not in session:
+        flash("Voc\u01e6 precisa estar logado para acessar essa p\u01edgina", "error")
+        return redirect(url_for('login'))
+
+    cursor = con.cursor()
+    try:
+        cursor.execute(
+            """
+            SELECT ID_INSUMO, NOME, DESCRICAO, UNIDADE_DE_MEDIDA, PESO_UNIDADE
+              FROM INSUMO
+             WHERE ID_INSUMO = ? AND ID_USUARIO = ?
+            """,
+            (insumo_id, id)
+        )
+        insumo = cursor.fetchone()
+        if not insumo:
+            flash('Insumo n\u01dc o encontrado.', 'error')
+            return redirect(url_for('insumos', id=id))
+
+        cursor.execute(
+            """
+            SELECT PRECO_COMPRA, PRECO_UNIDADE, DATA_MUDANCA
+              FROM HISTORICO_PRECO
+             WHERE ID_INSUMO = ?
+             ORDER BY DATA_MUDANCA DESC
+            """,
+            (insumo_id,)
+        )
+        historico = cursor.fetchall()
+    finally:
+        cursor.close()
+
+    # Mapeia unidade para r\u00f3tulo amig\u00e1vel
+    unidade = insumo[3]
+    if unidade == 1:
+        unidade_label = 'Grama (custo por g)'
+    elif unidade == 2:
+        unidade_label = 'Grama'
+    elif unidade == 3:
+        unidade_label = 'Mililitro (custo por ml)'
+    elif unidade == 4:
+        unidade_label = 'Mililitro'
+    elif unidade == 5:
+        unidade_label = 'Unidade'
+    else:
+        unidade_label = ''
+
+    nome, nome_empresa = info(id)
+    return render_template(
+        'historico_Insumo.html',
+        id=id,
+        insumo_id=insumo_id,
+        insumo=insumo,
+        unidade_label=unidade_label,
+        historico=historico,
+        nome=nome,
+        nome_empresa=nome_empresa
+    )
 
 @app.route('/deletar_insumo/<int:id>/<int:insumo_id>', methods=['POST'])
 def deletar_insumo(id, insumo_id):
@@ -658,3 +792,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
