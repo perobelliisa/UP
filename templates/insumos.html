@@ -70,6 +70,7 @@
                                 <td>{{ insumo[4] }}</td>
                                 <td>{{ insumo[5] }}</td>
                                 <td class="d-flex space-around botao">
+                                    <a href="{{ url_for('historico_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Histórico</a>
                                     <a href="{{ url_for('editar_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Edit</a>
                                     <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" class="js-delete-form">
                                         <button type="submit" class="btn-del">Del</button>
@@ -103,6 +104,7 @@
                             <p>{{ insumo[5] }}</p>
                         </div>
                         <div class="d-flex botao-mobile">
+                            <a href="{{ url_for('historico_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Histórico</a>
                             <a href="{{ url_for('editar_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Editar</a>
                             <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" class="js-delete-form">
                                 <button type="submit" class="btn-del">Deletar</button>
