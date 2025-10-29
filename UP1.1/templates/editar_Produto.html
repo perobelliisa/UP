@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <title>Edição de Produto</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="d-flex">
+        <header class="header-usuario" id="menu-mobile-usuario">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
+            <nav class="d-flex">
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a>Insumos</a>
+                <a class="pagina-atual">Produtos</a>
+                <a>Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
+                <a href="/logout">Sair</a>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <main class="main-usuario">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
+                    </div>
+                </div>
+            </section>
+            <section class="card-branco card-produto">
+                <h1 class="titulo-secao">Edição de Produto</h1>
+                <form class="form" action=""> <!--Link da rota-->
+                    <div class="d-flex campo">
+                        <label>Nome do Produto</label>
+                        <input class="input" type="text" id="nomeProduto" name="nomeProduto" required
+                            value="Brownie Tradicional">
+                    </div>
+                    <div class="d-flex campo">
+                        <label>Descrição</label>
+                        <input class="input" type="text" id="descricao" name="descricao" required
+                            value="Brownie de chocolate ao leite">
+                    </div>
+                    <div class="d-flex campo">
+                        <label for="categoria">Categoria</label>
+
+                        <select name="categoria" id="categoria" class="input">
+                            <option value="bolo">Bolo</option>
+                            <option value="torta">Torta</option>
+                            <option value="docinho">Docinho</option>
+                        </select>
+                        <a href="#" onclick="adicionarCategoria()">Adicionar Categoria</a>
+                    </div>
+
+                    <div class="form-duplo">
+                        <div class="d-flex campo">
+                            <label>Insumos</label>
+                            <input class="input input-pequeno" type="text" id="insumo" name="insumo" required
+                                value="Chocolate Nestlé">
+                            <a href="#" onclick="adicionarInsumo()">Adicionar Insumo</a>
+                        </div>
+                        <div class="d-flex campo">
+                            <label>Quantidade </label>
+                            <input class="input input-pequeno" type="number" id="quantidade" name="quantidade" required
+                                value="100g">
+                        </div>
+                    </div>
+
+                    <div class="form-duplo">
+                        <div class="d-flex campo">
+                            <label>Rendimento de 1 receita</label>
+                            <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required
+                                value="12 fatias">
+                        </div>
+                        <div class="d-flex campo">
+                            <label>Unidade de Venda </label>
+                            <input class="input input-pequeno" type="text" id="unidade" name="unidade" required
+                                value="Fatia">
+                        </div>
+                    </div>
+                    <div class="d-flex campo">
+                        <label>Tempo de Produção</label>
+                        <input class="input" type="number" id="tempoProducao" name="tempoProducao" required>
+                    </div>
+
+                    <div class="range-box">
+                        <div class="range-header d-flex campo">
+                            <label for="lucro">Lucro %</label>
+                            <span>Não definido</span>
+                        </div>
+                        <input type="range" id="lucro" name="lucro" min="0" max="50" value="20">
+                        <span id="valor">20%</span>
+                    </div>
+
+                    <button class="bnt-claroD btn-largo" type="submit"><a href="../templates/produto.html">Editar</a></button>
+                </form>
+            </section>
+            <section class="none fundo" id="adicionarCategoria">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarCategoria()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Adição de Categoria</h1>
+                    <form class="lista-ingredientes">
+                        <div class="d-flex categoria campo">
+                            <label>Nome da Categoria</label>
+                            <input class="input" type="text" id="nomeCategoria" name="nomeCategoria" required>
+                        </div>
+                        <button onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno"
+                            type="submit"><a href="../templates/editar_Produto.html">Adicionar</a></button>
+                    </form>
+                </div>
+            </section>
+            <section class="none fundo" id="adicionarInsumo">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarInsumo()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Adição de Insumo</h1>
+                    <form class="lista-ingredientes">
+                        <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="farinha"
+                                    onclick="mostrarQuantidade('ingrediente1')">
+                                <label>Farinha</label>
+                            </div>
+                            <div class="d-flex ingrediente-un none" id="ingrediente1">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="açúcar"
+                                    onclick="mostrarQuantidade('ingrediente2')">
+                                <label>Açúcar</label>
+                            </div>
+                            <div class="d-flex ingrediente-un none" id="ingrediente2">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="ovos"
+                                    onclick="mostrarQuantidade('ingrediente3')">
+                                <label>Ovos</label>
+                            </div>
+                            <div class="d-flex ingrediente-un none" id="ingrediente3">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" name="ingrediente" value="manteiga"
+                                    onclick="mostrarQuantidade('ingrediente4')">
+                                <label>Manteiga</label>
+                            </div>
+                            <div class="d-flex ingrediente-un none" id="ingrediente4">
+                                <input type="number" placeholder="Quantidade" min="0">
+                                <select name="categoria">
+                                    <option value="quilo">Quilograma</option>
+                                    <option value="grama">Grama</option>
+                                    <option value="litro">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="un">Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno"
+                            type="submit"><a href="../templates/editar_Produto.html">Adicionar</a></button>
+                    </form>
+                </div>
+            </section>
+            {% with msgs = get_flashed_messages(with_categories=true) %}
+            {% if msgs %}
+                {% for category, msg in msgs %}
+                {% set classe = 'erro' %}
+                {% if category == 'success' %}{% set classe = 'acerto' %}{% endif %}
+                {% if category == 'warning' %}{% set classe = 'aviso' %}{% endif %}
+
+                <section class="mensagem-flash" id="msgFlash">
+                    <div class="{{ classe }}">
+                    <div class="d-flex x">
+                        <a href="#" onclick="fecharMensagem('msgFlash')">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/X-erro.png') }}" alt="Fechar">
+                        </a>
+                        {% elif classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/X-acerto.png') }}" alt="Fechar">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex principal">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="ícone">
+                        {% endif %}
+                        {% if classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="ícone">
+                        {% endif %}
+                        <div class="d-flex">
+                        {% if classe == 'acerto' %}
+                        <p class="titulo-acerto">{{ msg }}</p>
+                        {% endif %}
+                        {% if classe == 'erro' %}
+                        <p class="titulo-erro">{{ msg }}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/whatsapp-icone.png" alt="Whatsapp" class="add8"> <!--imagem-->
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/email-icone-escuro.png" id="email" alt="Email" class="add9"> <!--imagem-->
+                    <p>contato@upmais.com.br</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
+    </footer>
+</body>
+
+</html>

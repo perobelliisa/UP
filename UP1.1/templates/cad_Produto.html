@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <title>Cadastro de Produto</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="d-flex">
+        <header class="header-usuario" id="menu-mobile-usuario">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
+            <nav class="d-flex">
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a href="{{ url_for('insumos', id=id) }}">Insumos</a>
+                <a href="{{ url_for('produtos', id=id) }}" class="pagina-atual">Produtos</a>
+                <a>Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
+                <a href="/logout">Sair</a>
+            </nav>
+        </header>
+        <!-- Main -->
+        <main class="main-usuario">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
+                    </div>
+                </div>
+            </section>
+            <section class="card-branco card-produto">
+                <h1 class="titulo-secao">Cadastro de Produto</h1>
+                <form class="form" method="POST" action="{{ url_for('cad_produto', id=id) }}"> <!--Link da rota-->
+                    <div class="d-flex campo">
+                        <label>Nome do Produto</label>
+                        <input class="input" type="text" id="nomeProduto" name="nomeProduto" required>
+                    </div>
+                    <div class="d-flex campo">
+                        <label>Descrição</label>
+                        <input class="input" type="text" id="descricao" name="descricao" required>
+                    </div>
+                    <div class="d-flex campo">
+                        <label for="categoria">Categoria</label>
+                        <select name="categoria" id="categoria" class="input">
+                            <option value="0">Sem categoria</option>
+                            {% for categoria in categorias %}
+                                <option value="{{ categoria[0] }}">{{ categoria[1] }}</option>
+                            {% endfor %}
+                        </select>
+                        <a class="laranja" href="#" onclick="adicionarCategoria()">Adicionar Categoria</a>
+                        <!-- Perguntar para o Igor qual a melhor forma de fazer esse lugar de criar categoria -->
+                    </div>
+
+                    <div class="form-duplo">
+                        <div class="d-flex campo">
+                            <a onclick="visualizarInsumo()" class="bnt-claroD">Visualizar Insumos</a>
+                            <!-- Perguntar para o Igor qual a melhor forma de fazer esse a/botão -->
+                        </div>
+                        <div class="d-flex campo">
+                            <label>Rendimento de 1 receita</label>
+                            <input class="input input-pequeno" type="number" id="rendimento" name="rendimento" required min="1" step="1">
+                        </div>
+                    </div>
+
+                    <div class="d-flex campo">
+                        <label >Tempo de Produção (h)</label>
+                        <input class="none" id="valor_mao" value="{{ valor_mao }}">
+                        <input class="input" type="number" id="tempoProducao" name="tempoProducao" required min="0.5" step="0.5">
+                    </div>
+
+                    <div class="d-flex campo range-box">
+                        <div class="range-header">
+                            <label for="lucro">Lucro %</label>
+                            <span id="preco_final">Não definido</span>
+                        </div>
+                        <input type="range" id="lucro" name="lucro" min="0" max="50" value="20" step="0.1">
+                        <span id="valor"></span>
+                    </div>
+                    <input class="none" name="insumos_utilizados" value="{{ insumos_utilizados }}">
+                    <button class="bnt-claroD btn-largo" type="submit">Cadastrar</button>
+                </form>
+            </section>
+            <section class="none fundo" id="adicionarCategoria">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarCategoria()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Adição de Categoria</h1>
+                    <form class="lista-ingredientes" method="post" action="{{ url_for('cad_categoria', id=id) }}">
+                        <div class="d-flex categoria campo">
+                            <label>Nome da Categoria</label>
+                            <input class="input" type="text" id="nomeCategoria" name="nomeCategoria" required>
+                        </div>
+                        <button onclick="adicionarCategoria()" class="bnt-claroD bnt-pequeno"
+                            type="submit">Adicionar</button>
+                    </form>
+                </div>
+            </section>
+            <section class="none fundo" id="visualizarInsumo">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="visualizarInsumo()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Visualização de Insumos</h1>
+                    <form class="lista-ingredientes">
+                        <!--Caixa para selecionar os itens de adição de insumo ou seja ingredientes -->
+                        <div class="d-flex ingrediente">
+                            <ul class="lista-selecionados" style="list-style:none; padding:0; margin:0; width:100%; display:flex; flex-direction:column; gap:10px;">
+                                {% for insumo_utilizado in insumos_utilizados %}
+                                <li class="d-flex space-between align-center" style="border:1px solid rgba(0,0,0,.08); border-radius:8px; padding:10px 12px;">
+                                    <span style="font-weight:600;">{{ insumo_utilizado.nome }}</span>
+                                    <span style="opacity:.9;">Subtotal: R$ {{ "%.2f"|format(insumo_utilizado.preco_total) }}</span>
+                                </li>
+                                <input class="none insumo_preco" value="{{ insumo_utilizado.preco_total }}">
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div>
+                             <a onclick="adicionarInsumo()" class="bnt-claroD bnt-pequeno"
+                            type="submit">Adicionar/Editar Insumos</a>
+                             <a onclick="visualizarInsumo()" class="bnt-claroD bnt-pequeno">Concluído</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="none fundo" id="adicionarInsumo">
+                <div class="absolute card-branco card-produto">
+                    <a href="#" onclick="adicionarInsumo()"><img src="../static/img/voltar.png" alt="Voltar"
+                            class="seta"></a>
+                    <h1 class="titulo-secao">Adição de Insumos</h1>
+                    <form class="lista-ingredientes" method="post" action="{{ url_for('adicionar_insumo', id=id) }}">
+                        <div class="d-flex ingrediente">
+                            <input class="input" type="text" placeholder="Pesquisa" name="pesquisa" id="pesquisa">
+                        </div>
+
+                        {% for insumo in insumos %}
+                        <div class="d-flex ingrediente">
+                            <div class="d-flex checkbox">
+                                <input type="checkbox" id="insumo_ck_{{ insumo[0] }}" name="insumos_utilizados" value="{{ insumo[0] }}" onclick="mostrarQuantidade({{ insumo[0] }})"
+                                     {% for insumo_utilizado in insumos_utilizados %}
+                                         {% if insumo_utilizado['id'] == insumo[0] %} checked {% endif %}
+                                     {% endfor %}>
+                                <label for="insumo_ck_{{ insumo[0] }}">{{ insumo[1] }}</label>
+                            </div>
+
+                            <div class="d-flex ingrediente-un none" id="{{ insumo[0] }}">
+                                <input type="number" placeholder="Quantidade" min="0.1" step="0.1" name="quantidade_{{ insumo[0] }}" id="quantidade{{ insumo[0] }}"
+                                    {% for insumo_utilizado in insumos_utilizados %}
+                                        {% if insumo_utilizado['id'] == insumo[0] %}
+                                            value="{{ insumo_utilizado['quantidade'] }}"
+                                        {% endif %}
+                                    {% endfor %}
+                                >
+                                <select name="unidade_de_medida_{{ insumo[0] }}">
+                                    <option value="1" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == 1 %} selected {% endif %}{% endfor %}>Quilograma</option>
+                                    <option value="2" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == 2 %} selected {% endif %}{% endfor %}>Grama</option>
+                                    <option value="3" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == 3 %} selected {% endif %}{% endfor %}>Litro</option>
+                                    <option value="4" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == 4 %} selected {% endif %}{% endfor %}>Mililitro</option>
+                                    <option value="5" {% for insumo_utilizado in insumos_utilizados %}{% if insumo_utilizado['id'] == insumo[0] and insumo_utilizado['unidade_de_medida'] == 5 %} selected {% endif %}{% endfor %}>Unidade</option>
+                                </select>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <div>
+                            <button class="bnt-claroD bnt-pequeno" type="submit">Adicionar/Editar Insumos</button>
+                        </div>
+                    </form>
+
+                </div>
+            </section>
+            {% with msgs = get_flashed_messages(with_categories=true) %}
+            {% if msgs %}
+                {% for category, msg in msgs %}
+                {% set classe = 'erro' %}
+                {% if category == 'success' %}{% set classe = 'acerto' %}{% endif %}
+                {% if category == 'warning' %}{% set classe = 'aviso' %}{% endif %}
+
+                <section class="mensagem-flash" id="msgFlash">
+                    <div class="{{ classe }}">
+                    <div class="d-flex x">
+                        <a href="#" onclick="fecharMensagem('msgFlash')">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/X-erro.png') }}" alt="Fechar">
+                        </a>
+                        {% elif classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/X-acerto.png') }}" alt="Fechar">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex principal">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="ícone">
+                        {% endif %}
+                        {% if classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="ícone">
+                        {% endif %}
+                        <div class="d-flex">
+                        {% if classe == 'acerto' %}
+                        <p class="titulo-acerto">{{ msg }}</p>
+                        {% endif %}
+                        {% if classe == 'erro' %}
+                        <p class="titulo-erro">{{ msg }}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/whatsapp-icone.png" alt="Whatsapp" class="add8"> <!--imagem-->
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/email-icone-escuro.png" id="email" alt="Email" class="add9"> <!--imagem-->
+                    <p>contato@upmais.com.br</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
+    </footer>
+</body>
+
+</html>

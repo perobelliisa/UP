@@ -1,0 +1,408 @@
+// Script para mostrar/ocultar respostas no FAQ
+function mostrarResposta(id) {
+    if (document.getElementById(id).style.display === 'block') {
+        document.getElementById(id).style.display = 'none'
+    }
+    else {
+        document.getElementById(id).style.display = 'block'
+    }
+}
+
+// Script para atualizar o valor da barra de lucro
+var porcentagem = document.getElementById("lucro");
+function calcularPrecoFinal() {
+    var lucro = document.getElementById("lucro");
+    document.getElementById("valor").innerText = lucro.value + "%";
+
+
+    var precos = document.querySelectorAll(".insumo_preco");
+    if (precos.length > 0) {
+        var total = 0
+        precos.forEach(function (preco) {
+            total += parseFloat(preco.value);
+        });
+        var tempoProducao = parseFloat(document.getElementById("tempoProducao").value) || 0 //se o input estiver vazio ou não for número, recebe 0
+        if (tempoProducao != 0) {
+            var valor_mao = parseFloat(document.getElementById("valor_mao").value)
+            total += tempoProducao * valor_mao
+        }
+        var rendimento = parseFloat(document.getElementById("rendimento").value) || 0 //se o input estiver vazio ou não for número, recebe 0
+        if (rendimento != 0) {
+            total = total / rendimento
+        }
+        var preco_final = total + (total * (parseFloat(lucro.value) / 100));
+        document.getElementById("preco_final").innerText = "R$" + preco_final.toFixed(2);
+    }
+}
+
+if (porcentagem) {
+    document.addEventListener("DOMContentLoaded", function() {
+        document.body.addEventListener("input", calcularPrecoFinal);
+    });
+}
+
+function guardarValores() {
+    localStorage.setItem('nomeProduto', document.getElementById('nomeProduto').value);
+    localStorage.setItem('descricao', document.getElementById('descricao').value);
+    localStorage.setItem('categoria', document.getElementById('categoria').value);
+    localStorage.setItem('rendimento', document.getElementById('rendimento').value);
+    localStorage.setItem('tempoProducao', document.getElementById('tempoProducao').value);
+    localStorage.setItem('lucro', document.getElementById('lucro').value);
+}
+
+function retomarValores() {
+    if (localStorage.getItem('nomeProduto')) document.getElementById('nomeProduto').value = localStorage.getItem('nomeProduto');
+    if (localStorage.getItem('descricao')) document.getElementById('descricao').value = localStorage.getItem('descricao');
+    if (localStorage.getItem('categoria')) document.getElementById('categoria').value = localStorage.getItem('categoria');
+    if (localStorage.getItem('rendimento')) document.getElementById('rendimento').value = localStorage.getItem('rendimento');
+    if (localStorage.getItem('tempoProducao')) document.getElementById('tempoProducao').value = localStorage.getItem('tempoProducao');
+    if (localStorage.getItem('lucro')) document.getElementById('lucro').value = localStorage.getItem('lucro');
+
+}
+
+// Script para mostrar/ocultar card de adição de insumo
+function adicionarInsumo() {
+    if (document.getElementById("adicionarInsumo").style.display === 'block') {
+        document.getElementById("adicionarInsumo").style.display = 'none';
+    }
+    else {
+        document.getElementById("visualizarInsumo").style.display = 'none';
+        document.getElementById("adicionarInsumo").style.display = 'block';
+        guardarValores()
+    }
+}
+
+// Script para remover acentos e cedilha
+function removerAcentos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c");
+}
+
+//Script para recarregar o que já havia sido carregado, excluir do local storage caso não seja a página de cadastro de produto e fazer a busca nos insumos
+window.onload = function() {
+    if (window.location.pathname.includes('cad_produto')) {
+        // Preencher campos do localStorage
+        retomarValores()
+        calcularPrecoFinal()
+
+        // Mostrar quantidades dos checkboxes já marcados
+        var checkboxesMarcadas = document.querySelectorAll('input[name="insumos_utilizados"]:checked');
+        checkboxesMarcadas.forEach(function(checkbox) {
+            mostrarQuantidade(checkbox.value);
+        });
+
+        // --- Pesquisa de insumos ---
+        var pesquisa = document.getElementById('pesquisa');
+        var checkboxes = document.querySelectorAll('input[name="insumos_utilizados"]');
+
+        // Mostrar só os marcados inicialmente
+        checkboxes.forEach(function(checkbox) {
+            var divInsumo = checkbox.closest('.ingrediente');
+            divInsumo.style.display = checkbox.checked ? 'flex' : 'none';
+        });
+
+        // Filtrar conforme o usuário digita
+        pesquisa.addEventListener('input', function() {
+            var valor = removerAcentos(pesquisa.value.toLowerCase());
+            checkboxes.forEach(function(checkbox) {
+                var divInsumo = checkbox.closest('.ingrediente');
+                var label = removerAcentos(checkbox.nextElementSibling.textContent.toLowerCase());
+
+                if (valor === '') {
+                    divInsumo.style.display = 'none';
+                } else {
+                    divInsumo.style.display = (checkbox.checked || label.includes(valor)) ? 'flex' : 'none';
+                }
+            });
+        });
+
+    } else {
+        // Limpar localStorage se não estiver na página de cadastro
+        localStorage.removeItem('nomeProduto');
+        localStorage.removeItem('descricao');
+        localStorage.removeItem('categoria');
+        localStorage.removeItem('rendimento');
+        localStorage.removeItem('tempoProducao');
+        localStorage.removeItem('lucro');
+    }
+};
+
+
+// Script para mostrar/ocultar card de visualização de insumo
+function visualizarInsumo() {
+    if (document.getElementById("visualizarInsumo").style.display === 'block') {
+        document.getElementById("visualizarInsumo").style.display = 'none';
+    }
+    else {
+        document.getElementById("visualizarInsumo").style.display = 'block';
+    }
+}
+
+// Script para mostrar/ocultar card de adição de categoria
+function adicionarCategoria() {
+    if (document.getElementById("adicionarCategoria").style.display === 'block') {
+        document.getElementById("adicionarCategoria").style.display = 'none';
+        retomarValores()
+    }
+    else {
+        document.getElementById("adicionarCategoria").style.display = 'block';
+        guardarValores()
+    }
+}
+
+// Script para mostrar/ocultar campos de quantidade dos ingredientes
+function mostrarQuantidade(id) {
+    if (document.getElementById(id).style.display === 'flex') {
+        document.getElementById(id).style.display = 'none'
+    }
+    else {
+        document.getElementById(id).style.display = 'flex'
+        var quantidade = document.getElementById('quantidade' + id)
+        quantidade.required = true
+    }
+}
+
+// Script para mostrar/ocultar menu mobile
+function mostrarMenu(id) {
+    if (document.getElementById(id).style.display === 'flex') {
+        document.getElementById(id).style.display = 'none';
+    }
+    else {
+        document.getElementById(id).style.display = 'flex';
+    }
+}
+
+// Script para mostrar/ocultar senha
+function mostrarSenha(id, olho) {
+    const modo = localStorage.getItem('modo'); /*Constante, não variável, ou seja, não pode ser alterada*/
+    if (document.getElementById(id).type === 'password') {
+        document.getElementById(id).type = 'text';
+        if (modo === 'escuro') {
+            document.getElementById(olho).src = "../static/img/olho-aberto-claro.png";
+        }
+        else {
+            document.getElementById(olho).src = "../static/img/olho-aberto-escuro.png";
+        }
+    }
+    else {
+        document.getElementById(id).type = 'password';
+        if (modo === 'escuro') {
+            document.getElementById(olho).src = "../static/img/olho-fechado-claro.png";
+        }
+        else {
+            document.getElementById(olho).src = "../static/img/olho-fechado-escuro.png";
+        }
+    }
+}
+
+// Script para fechar mensagens
+function fecharMensagem(id) {
+    document.getElementById(id).style.display = 'none'
+
+};
+
+// Script para trocar o modo
+function toggleModo() {
+    /*toggleModo é ativado quando o usuário clica no checkbox e assim é ativada a verificação se esse checkbox está checked ou não
+    Caso esteja, é armazenado que o modo é o escuro no localStorage e, caso não, é armazenado que o modo é o claro*/
+    const checkbox = document.querySelector('.switch input');
+
+    if (checkbox.checked) {
+        // modo escuro
+        localStorage.setItem('modo', 'escuro'); /*armazer na localstorege que o modo é o escuro*/
+        document.getElementById('modo').innerText = 'Escuro'; /*verificar se está no modo escuro , para ficar escrito escuro do lado do botão*/
+    } else {
+        // modo claro
+        localStorage.setItem('modo', 'claro');
+        document.getElementById('modo').innerText = 'Claro'; /*verificar se está no modo claro, para ficar escrito claro do lado do botão*/
+    }
+
+    carregarModo();
+}
+
+
+function carregarModo() /* so aqui vai  fazer a verificação do modo para mudar as variaveis  do modo claro para o modo escuro*/ {
+    const root = document.documentElement; /* root pega tudo que esta no html*/
+    const modo = localStorage.getItem('modo'); /*estou procurando o que eu salvei como modo no meu localstorege*/
+    const checkbox = document.querySelector('.switch input');
+
+    if (modo === 'escuro') /*modificar as variaveis de cor do modo claro para o modo escuro*/ {
+        // modo escuro
+        root.style.setProperty('--claro-fundo', '#1A1A1A');
+        root.style.setProperty('--claro-texto', '#EDEDED');
+        root.style.setProperty('--claro-menu', '#2D2D2D');
+        root.style.setProperty('--claro-botoes', '#FF906E')
+        root.style.setProperty('--claro-hover', '#FF5C39');
+        root.style.setProperty('--claro-cartoes', '#262626');
+        root.style.setProperty('--claro-depoimentos', '#6C6C6C');
+        root.style.setProperty('--fundo-acerto', '#246024');
+        root.style.setProperty('--fundo-erro', '#832B28');
+        root.style.setProperty('--linha', '#4C2F26');
+        root.setAttribute('data-modo', 'escuro');
+        document.getElementById('email').src = "../static/img/email-icone-claro.png"; /*aqui estou dizendo que tem email em todas as paginas(rodape) icone, para mudar quando estiver no mdo escuro para o icone claro*/
+        if (document.getElementById('banner')) {
+            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoescuro.png')"; /* vai verificar o banner, pois nao é o mesmo banner para o modo claro e modo escuro, estnao aqui vai mudar para o banner do modo escuro*/
+        }
+        /* IF VERIFICA SE O ID QUE VC QUER MEXER EXISTE NAQUELA PÁGINA PARA O JAVA SCRIPTH NÃO TRAVAR*/
+
+        if (document.getElementById('faq')) {
+            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoescuro.png')"; /* pq o fundo aqui tambem é no modo escuro, pois não é o mesmo para o modo claro e o modo escuro*/
+        }
+
+        if (document.getElementById('olho')) {
+            document.getElementById('olho').src = "../static/img/olho-fechado-claro.png";
+        }
+        /*PARA VERFICAR SE O ELEMENTO QUE EU VOU MEXER  EXISTE NAQUELA PÁGINA*/
+
+        if (document.getElementById('olhoC')) {
+            document.getElementById('olhoC').src = "../static/img/olho-fechado-claro.png";
+        }
+        /*NÃO PODE TER DOIS ELEMENTOS COM A MESMA ID, TEM EM ALGUMAS PAGINA QUE SO TENHA SENHA OU SO CONFIRMAR SENHA, POR ISSO É SEPARADO*/
+
+        if (checkbox) {
+            checkbox.checked = true;
+            document.getElementById('modo').innerText = 'Escuro';
+        }
+        /*PARA GARANTIR QUE A CHECKBOX VAI FICAR MARCADA*/
+
+    } else {
+        // modo claro (MUDANCA DAS VARIAVEIS DO MODO ESCURO PARA O MODO CLARO)
+        root.style.setProperty('--claro-fundo', '#FEFBF0');
+        root.style.setProperty('--claro-texto', '#2D2D2D');
+        root.style.setProperty('--claro-menu', '#FEDFCD');
+        root.style.setProperty('--claro-botoes', '#FF906E');
+        root.style.setProperty('--claro-hover', '#FF5C39');
+        root.style.setProperty('--claro-cartoes', '#FFFFFF');
+        root.style.setProperty('--claro-depoimentos', '#6C6C6C');
+        root.style.setProperty('--fundo-acerto', '#B9FFB9');
+        root.style.setProperty('--fundo-erro', '#FFBFBD');
+        root.style.setProperty('--linha', '#FEDFCD');
+        root.setAttribute('data-modo', 'claro');
+        document.getElementById('email').src = "../static/img/email-icone-escuro.png";
+        /*O EMAIL NÃO TEM O IF PQ TODAS AS PAGINAS TEM FOOTER, ICONE*/
+        if (document.getElementById('banner')) {
+            document.getElementById('banner').style.backgroundImage = "url('../static/img/fundoclaro.png')"; /* vai verificar o banner, pois nao é o mesmo banner para o modo claro e modo escuro, estão aqui vai mudar para o banner do modo claro*/
+        }
+
+        if (document.getElementById('faq')) {
+            document.getElementById('faq').style.backgroundImage = "url('../static/img/fundoclaro.png')"; /* pq o fundo aqui tambem é no modo claro, pois não é o mesmo para o modo claro e o modo escuro*/
+        }
+
+        if (document.getElementById('olho')) {
+            document.getElementById('olho').src = "../static/img/olho-fechado-escuro.png";
+        }
+        /*PARA VERFICAR SE O ELEMENTO QUE EU VOU MEXER  EXISTE NAQUELA PÁGINA*/
+
+        if (document.getElementById('olhoC')) {
+            document.getElementById('olhoC').src = "../static/img/olho-fechado-escuro.png";
+        }
+        /*NÃO PODE TER DOIS ELEMENTOS COM A MESMA ID, TEM EM ALGUMAS PAGINA QUE SO TENHA SENHA OU SO CONFIRMAR SENHA, POR ISSO É SEPARADO, pois se não  vai travar*/
+
+        if (checkbox) {
+            checkbox.checked = false;
+            document.getElementById('modo').innerText = 'Claro';
+        }
+        /*PARA GARANTIR QUE A CHECKBOX VAI FICAR MARCADA, mesmo que eu sair do site vai ficar selecionado aquela opcção que eu marquei*/
+    }
+}
+
+window.document.addEventListener('DOMContentLoaded', carregarModo); 
+
+
+  var form     = document.querySelector('#form-senha');
+  var senhaErro  = document.getElementById('senha');
+  var csenhaErro = document.getElementById('Csenha');
+
+
+  function getAvisoEl() {
+    var erro = document.getElementById('aviso');
+    if (!erro) {
+      erro = document.createElement('div');
+      erro.id = 'aviso';
+      var senhas = csenhaErro || senhaErro;
+      if (senhas && senhas.parentNode) {
+        senhas.parentNode.appendChild(erro);
+      } else {
+        document.body.appendChild(erro);
+      }
+    }
+    return erro;
+  }
+  // avisoEl será obtido sob demanda dentro da função de validação
+
+  function validarSenha() {
+    var senhaErro  = document.getElementById('senha');
+    var csenhaErro = document.getElementById('Csenha');
+    var verificador =  (senhaErro && senhaErro.dataset) ? senhaErro.dataset.tipo : ''
+
+    if (!senhaErro) return true;
+
+    var senha  = senhaErro ? senhaErro.value : '';
+    var csenha = csenhaErro ? csenhaErro.value : '';
+    var msg = '';
+
+    if (verificador === 'nao') {
+
+        var totalCaract = (typeof senha === 'string') ? senha.length : 0
+
+        if (totalCaract !== 0) {
+            if (totalCaract < 8 || totalCaract > 12)        msg = 'Senha: 8 a 12 caracteres.';
+            else if (senha.toLowerCase() === senha)           msg = 'Inclua 1 letra MAIÚSCULA.';
+            else if (senha.toUpperCase() === senha)           msg = 'Inclua 1 letra minúscula.';
+            else if (!/[0-9]/.test(senha))                    msg = 'Inclua 1 número.';
+            else if (/^[A-Za-z0-9]*$/.test(senha))            msg = 'Inclua 1 caractere especial.';
+            else if (csenha && senha !== csenha)              msg = 'As senhas não coincidem.';
+        }
+    }
+
+    if (verificador === 'sim') {
+        if (senha.length < 8 || senha.length > 12)        msg = 'Senha: 8 a 12 caracteres.';
+        else if (senha.toLowerCase() === senha)           msg = 'Inclua 1 letra MAIÚSCULA.';
+        else if (senha.toUpperCase() === senha)           msg = 'Inclua 1 letra minúscula.';
+        else if (!/[0-9]/.test(senha))                    msg = 'Inclua 1 número.';
+        else if (/^[A-Za-z0-9]*$/.test(senha))            msg = 'Inclua 1 caractere especial.';
+        else if (csenha && senha !== csenha)              msg = 'As senhas não coincidem.';
+    }
+    var avisoEl = getAvisoEl();
+    if (avisoEl) avisoEl.textContent = msg;
+    return msg === '';
+  }
+  if (senhaErro)  senhaErro.addEventListener('input', validarSenha);
+  if (csenhaErro) csenhaErro.addEventListener('input', validarSenha);
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      if (!validarSenha()) e.preventDefault();
+    });
+  }
+  validarSenha();
+
+
+// Confirmação de exclusão com SweetAlert2
+document.addEventListener('DOMContentLoaded', function () {
+  var deleteForms = document.querySelectorAll('form.js-delete-form');
+  if (deleteForms.length > 0) {
+    deleteForms.forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (typeof Swal === 'undefined') {
+          // Fallback caso SweetAlert2 não esteja disponível
+          if (confirm('Tem certeza que deseja deletar este insumo?')) {
+            form.submit();
+          }
+          return;
+        }
+        Swal.fire({
+          title: 'Tem certeza?',
+          text: 'Esta ação não pode ser desfeita.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sim, deletar',
+          cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            form.submit();
+          }
+        });
+      });
+    });
+  }
+});

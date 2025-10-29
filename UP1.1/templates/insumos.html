@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insumo</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="d-flex">
+        <header class="header-usuario" id="menu-mobile-usuario">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
+            <nav class="d-flex">
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a href="{{ url_for('insumos', id=id) }}" class="pagina-atual">Insumos</a>
+                <a href="{{ url_for('produtos', id=id) }}">Produtos</a>
+                <a>Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
+                <a href="/logout">Sair</a>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <main class="main-usuario">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
+                    </div>
+                </div>
+            </section>
+            <section class="card-branco-sem-fundo">
+                <div class="d-flex space-between insumo">
+                    <h1>Insumos</h1>
+                    <a class="btn-adicionar" href="{{ url_for('cad_insumo', id=id) }}">+ Adicionar Novo Insumo</a>
+                </div>
+            </section>
+            <section class="card-branco-sem-fundo desktop">
+                <div class="tabela-insumos d-flex flex-column">
+                    <h2>Lista de Insumos Cadastrados</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th>Unidade</th>
+                                <th>Estoque</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for insumo in insumos %}
+                            <tr>
+                                <td>{{ insumo[1] }}</td>
+                                <td>{{ insumo[2] }}</td>
+                                <td>R$ {{ "%.2f"|format(insumo[3]) }}</td>
+                                <td>{{ insumo[4] }}</td>
+                                <td>{{ insumo[5] }}</td>
+                                <td class="d-flex space-around botao">
+                                    <a href="{{ url_for('historico_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Histórico</a>
+                                    <a href="{{ url_for('editar_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Edit</a>
+                                    <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" class="js-delete-form">
+                                        <button type="submit" class="btn-del">Del</button>
+                                    </form>
+                                </td>
+                            </tr>
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="mobile insumos">
+                <h2 class="h2">Lista de Insumos Cadastrados</h2>
+                <div class="d-flex cards-mobile">
+                    {% for insumo in insumos %}
+                    <div class="card-insumo">
+                        <div class="d-flex space-between align-center">
+                            <p class="card-insumo-titulo">{{ insumo[1] }}</p>
+                            <p>{{ insumo[3] }}</p>
+                        </div>
+                        <div class="d-flex card-insumo-imagem">
+                            <img src="../static/img/icone-categoria.png" alt="Ícone de Categoria">
+                            <p>{{ insumo[2] }}</p>
+                        </div>
+                        <div class="d-flex card-insumo-imagem">
+                            <img src="../static/img/icone-medida.png" alt="Ícone">
+                            <p>{{ insumo[4] }}</p>
+                        </div>
+                        <div class="d-flex card-insumo-imagem">
+                            <img src="../static/img/icone-medida.png" alt="Ícone">
+                            <p>{{ insumo[5] }}</p>
+                        </div>
+                        <div class="d-flex botao-mobile">
+                            <a href="{{ url_for('historico_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Histórico</a>
+                            <a href="{{ url_for('editar_insumo', id=id, insumo_id=insumo[0]) }}" class="btn-edit">Editar</a>
+                            <form action="{{ url_for('deletar_insumo', id=id, insumo_id=insumo[0]) }}" method="post" class="js-delete-form">
+                                <button type="submit" class="btn-del">Deletar</button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% with msgs = get_flashed_messages(with_categories=true) %}
+            {% if msgs %}
+                {% for category, msg in msgs %}
+                {% set classe = 'erro' %}
+                {% if category == 'success' %}{% set classe = 'acerto' %}{% endif %}
+                {% if category == 'warning' %}{% set classe = 'aviso' %}{% endif %}
+
+                <section class="mensagem-flash" id="msgFlash">
+                    <div class="{{ classe }}">
+                    <div class="d-flex x">
+                        <a href="#" onclick="fecharMensagem('msgFlash')">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/X-erro.png') }}" alt="Fechar">
+                        </a>
+                        {% elif classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/X-acerto.png') }}" alt="Fechar">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex principal">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="Ícone">
+                        {% endif %}
+                        {% if classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="Ícone">
+                        {% endif %}
+                        <div class="d-flex">
+                        {% if classe == 'acerto' %}
+                        <p class="titulo-acerto">{{ msg }}</p>
+                        {% endif %}
+                        {% if classe == 'erro' %}
+                        <p class="titulo-erro">{{ msg }}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </main>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/whatsapp-icone.png" alt="Whatsapp" class="add8"> <!--imagem-->
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/email-icone-escuro.png" id="email" alt="Email" class="add9"> <!--imagem-->
+                    <p>contato@upmais.com.br</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
+    </footer>
+
+</body>
+
+</html>

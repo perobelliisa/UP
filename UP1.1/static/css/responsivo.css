@@ -1,0 +1,1785 @@
+/* 4K */
+@media (min-width: 2559px) {
+    .header-home {
+        padding: 40px;
+    }
+
+    .header-home img {
+        height: 72px;
+    }
+
+    .header-home nav a {
+        font-size: 40px;
+    }
+
+    .banner h1 {
+        font-size: 70px;
+
+    }
+
+    .banner h3 {
+        font-size: 35px;
+    }
+
+    .bnt-claroD {
+        font-size: 35px;
+    }
+
+    .sobre {
+        padding: 150px 60px;
+        height: 950px;
+    }
+
+    .sobre h3 {
+        font-size: 35px;
+    }
+
+    .icones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 160px;
+        margin-bottom: 100px;
+    }
+
+    .icone-texto {
+        width: 560px;
+        height: 580px;
+    }
+
+    .icone-texto p {
+        font-size: 30px;
+    }
+
+    .icone-texto img {
+        width: 221px;
+        height: 221px;
+    }
+
+    hr {
+        height: 39px;
+    }
+
+    .funcionalidades {
+        padding: 330px 20px;
+        text-align: center;
+        height: 650px;
+    }
+
+    .funcionalidades h3 {
+        font-size: 45px;
+    }
+
+    .icone-redondo {
+        width: 400px;
+        height: 410px;
+    }
+
+    .icone-redondo p {
+        font-size: 32px;
+    }
+
+    .depoimentos {
+        padding: 350px 20px;
+    }
+
+    .depoimentos h3 {
+        font-size: 45px;
+    }
+
+    .icone-retangulo {
+        width: 800px;
+        height: 230px;
+    }
+
+    .icone-retangulo p {
+        font-size: 32px;
+    }
+
+    .icone-retangulo .p-depoimento {
+        font-size: 27px;
+    }
+
+    .icone-retangulo img {
+        width: 150px;
+        height: 150px;
+        padding: 80px 20px;
+    }
+
+    .box-faq {
+        width: 1300px;
+        margin: 0 auto 22px auto;
+        gap: 50px;
+        padding-bottom: 14px;
+        border-bottom: var(--claro-hover) 8px solid;
+    }
+
+    .box-faq p {
+        font-size: 35px;
+    }
+
+    .box-faq img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .box-faq p {
+        font-size: 30px;
+        padding: 120px 40px;
+    }
+
+    .contatos {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 1200px;
+        margin-left: 140px;
+    }
+
+    .contato {
+        margin-left: 40px;
+        gap: 25px;
+    }
+
+    .contato p {
+        font-size: 45px;
+    }
+
+    .mapa iframe {
+        margin-left: 40px;
+        width: 900px;
+        height: 500px;
+    }
+
+    .FaleConosco h2 {
+        margin-bottom: 25px;
+    }
+
+    /* Cadastro Pessoal */
+    .cadastro_pessoal {
+        width: 715px;
+        height: 750px;
+        margin: 40px auto;
+    }
+
+    .formnovo {
+        padding: 20px;
+        height: 650px;
+    }
+
+    .formnovo input {
+        width: 65px;
+        height: 75px;
+    }
+
+    .formnovo label {
+        font-size: 50px;
+    }
+
+    .header-usuario nav {
+        gap: 1vw;
+        padding-bottom: 2vw;
+    }
+
+    .header-usuario img {
+        width: 10vw;
+        padding: 2vw;
+    }
+
+    .header-usuario nav a {
+        font-size: 40px;
+        padding-left: 2vw;
+    }
+
+    .titulo-secao{
+        font-size: 70px;
+    }
+
+    .main-usuario label {
+        font-size: 35px;
+    }
+
+    .input {
+        height: 3vw;
+        width: 35vw;
+        font-size: 35px;
+    }
+
+    .input-pequeno {
+        width: 16vw;
+    }
+
+    .form-duplo {
+        width: 35vw;
+    }
+
+    .campo a {
+        font-size: 35px;
+    }
+
+    .range-box {
+        width: 35vw;
+    }
+
+    .range-header {
+        font-size: 35px;
+        width: 35vw;
+    }
+
+    .range-box span {
+        font-size: 35px;
+    }
+
+    #valor {
+        font-size: 35px;
+    }
+
+    .login {
+        width: 1000px;
+        height: 750px;
+    }
+
+    /*Perguntar para o Igor como aumenta essa barra da range*/
+
+    .cadastro_pessoal {
+        width: 50vw;
+        height: 70vh;
+        margin: 40px auto;
+    }
+
+    .form label {
+        font-size: 35px;
+    }
+
+    .input-senha img {
+        height: 40px;
+    }
+
+    .input-senha input {
+        font-size: 35px;
+        height: 2.6vw;
+        width: 12vw;
+        top: 4%;
+        left: -5%;
+
+    }
+
+    .card-branco-sem-fundo h1 {
+        font-size: 50px;
+    }
+
+    .card-branco-sem-fundo p {
+        font-size: 30px;
+    }
+
+    .modo {
+        width: 15vw;
+    }
+
+    .switch {
+        width: 4.5vw;
+        height: 2.1vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(2.5vw);
+    }
+
+    .imagem-info {
+        gap: 5vw;
+    }
+
+    .info-usuario {
+        width: 25vw;
+    }
+
+    .info-linha p {
+        font-size: 35px;
+    }
+
+    .bnt-claroDQ {
+        font-size: 32px;
+        padding: 30px 100px;
+    }
+
+    
+}
+
+/* Laptop */
+@media (max-width: 1025px) {
+    .header-home {
+        padding-left: 20px;
+    }
+
+    .header-usuario {
+        width: 18vw;
+    }
+
+    .card-produto {
+        max-width: 60vw;
+    }
+
+    .campo {
+        width: 50vw;
+    }
+
+    .input {
+        width: 50vw;
+    }
+
+    .input-pequeno {
+        width: 23vw;
+    }
+
+    .form-duplo {
+        width: 50vw;
+        gap: 4vw;
+    }
+
+    .range-header {
+        width: 100%;
+    }
+
+    .input-senha input {
+        font-size: 35px;
+        width: 14.2vw;
+    }
+
+    .card-branco-sem-fundo {
+        width: 70vw;
+        padding: 3vw 2vw;
+    }
+
+    .img-card-branco {
+        width: 16vw;
+        height: 16vw;
+    }
+
+    .bnt-claroDQ {
+        padding: 2vw 1vw;
+        margin: 0 auto;
+    }
+
+    .info-usuario {
+        width: 30vw;
+    }
+
+    .card-edicao {
+        align-items: center;
+        gap: 5vw;
+    }
+
+    .imagem-info {
+        gap: 2vw;
+    }
+    
+    .info-footer nav a {
+        font-size: 19px;
+    }
+    
+    .add5{
+        width: 110px;
+        height: 72px;
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 15px;
+    }
+
+    .linha-vertical {
+        width: 1px;
+        height: 80px;
+        border: none;
+    }
+
+    .copy {
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .info-footer nav a {
+        font-size: 19px;
+    }
+    
+    .add5{
+        width: 110px;
+        height: 72px;
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 15px;
+    }
+
+    .linha-vertical {
+        width: 1px;
+        height: 80px;
+        border: none;
+    }
+
+    .copy {
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .box-faq {
+        width: 925px;
+    }
+
+    .add2 {
+        width: 150px;
+        height: auto;
+    }
+
+    .contatos {
+        width: 40vw;
+    }
+
+    .mapa iframe {
+        width: 40vw;
+    }
+
+    .info {
+        gap: 7vw;
+    }
+
+    .FaleConosco {
+        width: 40vw;
+        padding: 40px 20px;
+        height: auto;
+    }
+
+    .campo-pequeno {
+        width: 35vw;
+    }
+
+    .input2 {
+        width: 35vw;
+    }
+
+    .campo textarea {
+        height: 10vw;
+        padding-top: 1vw;
+    }
+
+    .funcionalidades {
+        padding: 53px 20px;
+        height: auto;
+    }
+
+    .funcionalidades h3, .icones {
+        margin-bottom: 40px;
+    }
+
+    .icone-redondo {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    .icone-redondo p {
+        max-width: 19vw;
+    }
+
+    .texto-depoimento {
+        width: 22vw;
+    }
+
+    .faq {
+        height: auto;
+    }
+
+    .faq h2 {
+        margin-bottom: 60px;
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 769px) {
+
+    .header-usuario {
+        width: 22vw;
+    }
+
+    .header-usuario img {
+        width: 11vw;
+        padding: 3vw 2vw;
+    }
+
+    .header-usuario nav a {
+        font-size: 18px;
+        padding-left: 2vw;
+    }
+
+    .titulo-secao {
+        font-size: 30px;
+    }
+
+    .main-usuario label {
+        font-size: 16px;
+    }
+
+    .campo {
+        width: 54vw;
+    }
+
+    .input {
+        height: 5vw;
+        width: 52vw;
+        font-size: 16px;
+    }
+
+    .input-pequeno {
+        width: 24vw;
+    }
+
+    .form-duplo {
+        width: 54vw;
+        gap: 2vw;
+    }
+
+    .bnt-claroD {
+        font-size: 18px;
+        padding: 15px 100px;
+    }
+
+    .contato {
+        margin-top: 20px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .cadastro_pessoal {
+        width: 60vw;
+        height: auto;
+    }
+
+    .input-senha input {
+        font-size: 18px;
+        top: 1%;
+        height: 4.5vw;
+    }
+
+    .input-senha img {
+        height: 22px;
+    }
+
+    .card-branco-sem-fundo {
+        width: 70vw;
+        padding: 4vw 3vw;
+    }
+
+    .card-edicao {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-usuario {
+        width: 40vw;
+    }
+
+    .bnt-claroDQ {
+        display: block;
+    }
+
+    .switch {
+        width: 6vw;
+        height: 3vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(3vw);
+    }
+
+    .slider:before {
+        height: 2.3vw;     
+        width: 2.3vw;
+        left: 0.25vw;      
+        bottom: 0.40vw;
+    }
+
+
+    
+    .info-footer nav a {
+        font-size: 14px;
+    }
+    
+    .info-footer{
+        height: 25px;
+    }
+
+    .add5{
+        width: 75px;
+        height: 55px;
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 12px;
+    }
+
+    .linha-vertical {
+        margin-top: -13px;
+        width: 1px;
+        height: 60px;
+        border: none;
+    }
+
+    .copy {
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .contato{
+        margin-top: -19px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .range-box{
+        width: 385px;
+    }
+
+    .login.card-form {
+        width: 500px;
+        padding: 50px 20px;
+    }
+
+    .form-button {
+        margin-top: 10px;
+       
+    }    
+
+    .bnt-confirmar{
+        width: 50px;
+        text-align: center;
+ 
+    }
+
+   .titulo-confirmar{
+        font-family: var(--titulo-fonte);
+        font-size: 45px;
+   } 
+
+   .card {
+        width: 18vw;
+    }
+
+    .card-branco-sem-fundo p {
+        font-size: 15px;
+    }
+
+    .bnt-claroDQ {
+        font-size: 15px;
+        width: 18vw;
+    }
+
+    .card-branco {
+        width: 65vw;
+    }
+
+    .card-branco h2 {
+        font-size: 35px;
+    }
+
+    .tabela-insumos {
+        margin-top: 20px;
+        width: 65vw;
+    }
+
+    .botao {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    th {
+        max-width: 7vw;
+        gap: 1vw;
+    }
+
+    td {
+        max-width: 7vw;
+        gap: 1vw;
+    }
+
+    .btn-del {
+        width: 7vw;
+    }
+
+    .btn-edit a {
+        width: 7vw;
+    }
+
+    .absolute {
+        left: 28%;
+    }
+
+     /*FOOTER*/
+
+
+    .info-footer nav a {
+        font-size: 14px;
+    }
+    
+    .info-footer{
+        height: 25px;
+    }
+
+    .add5{
+        width: 75px;
+        height: 46px;
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 12px;
+    }
+
+    .linha-vertical {
+        margin-top: -13px;
+        width: 1px;
+        height: 60px;
+        border: none;
+    }
+
+    .copy {
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .contato{
+        margin-top: -19px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .range-box{
+        width: 54vw;
+    }
+
+    .checkbox{
+        width: 20vw;
+        height: 20px;
+    }
+
+    .ingrediente input[type="number"] {
+        width: 15vw;
+        font-size: 14px;
+    }
+
+    .ingrediente select {
+        width: 15vw;
+        font-size: 14px;
+    }
+
+    .input-senha {
+        width: 26vw;
+    }
+
+    .input-senha-grande input {
+        height: 4vw;
+    }
+
+    .cards-relatorio {
+        width: 75vw;;
+    }
+
+    .relatorio {
+        width: 32vw;
+        height: 37vw;
+    }
+
+    .relatorio p {
+        font-size: 20px;
+        max-width: 25vw;
+    }
+
+    .box-faq {
+        width: 90vw;
+    }
+
+    .banner {
+        padding: 50px 20px;
+        height: auto;
+    }
+
+    .banner h1 {
+        font-size: 35px;
+        margin-bottom: 0px;
+    }
+
+    .banner h3 {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .banner .bnt-claroD {
+        padding: 15px 20px;
+    }
+
+    .sobre {
+        padding: 50px 20px;
+        height: auto;
+    }
+
+    .sobre h3 {
+        font-size: 18px;
+        width: 85vw;
+        margin-bottom: 5vw;
+    }
+
+    .icone-texto {
+        width: auto;
+        height: auto;
+        padding: 4vw 2vw;
+    }
+
+    .icone-texto img {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .icone-texto p {
+        font-size: 16px;
+        width: 25vw;
+    }
+
+    .funcionalidades h3 {
+        font-size: 18px;
+        width: 85vw;
+        margin-bottom: 5vw;
+    }
+
+    .icone-redondo p {
+        font-size: 16px;
+    }
+
+    .depoimentos h3 {
+        font-size: 18px;
+        width: 85vw;
+        margin-bottom: 5vw;
+    }
+
+    .depoimentos-flex {
+        margin-bottom: 6vw;
+    }
+
+    .icone-retangulo-home {
+        padding: 1vw 2vw;
+    }
+
+    .texto-depoimento {
+        padding: 1vw;
+    }
+
+    .nome-depoimento {
+        font-size: 18px
+    }
+
+    .p-depoimento {
+        font-size: 16px;
+    }
+
+    .campo {
+        width: 35vw;
+    }
+
+    .input2 {
+        width: 35vw;
+    }
+
+    .erro {
+        width: 52vw;
+        left: 35vw;
+    }
+
+    .erro p {
+        width: 44vw;
+    }
+
+    .campo-login {
+        width: 50vw;
+    }
+
+    .login button {
+        padding: 15px 100px;
+    }
+
+    .acerto {
+        width: 52vw;
+        left: 35vw;
+    }
+
+    .acerto p {
+        width: 44vw;
+    }
+
+
+
+} 
+
+
+
+/* Mobile */
+@media (max-width: 426px) {
+    .mobile {
+        display: flex;
+    }
+    
+    .header-usuario {
+        display: none;
+        background-color: var(--claro-cartoes);
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+        z-index: 9;
+    }
+
+    .menu-toggle {
+        display: flex
+    }
+
+    .main-usuario {
+        width: 100vw;
+    }
+
+    .card-produto {
+        max-width: 70vw;
+    }
+
+    .titulo-secao {
+        font-size: 28px;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .form {
+        margin-top: 10vw;
+    }
+
+    .campo {
+        width: 60vw;
+    }
+
+    .campo label {
+        font-size: 16px;
+    }
+
+    .input {
+        height: 10vw;
+        width: 60vw;
+        font-size: 16px;
+    }
+
+    .form-duplo {
+        width: 60vw;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .bnt-claroD {
+        font-size: 18px;
+        padding: 12px 80px;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .header-usuario {
+        position: absolute;
+        height: 100%;
+        /*Perguntar para o Igor se temos que ajustar a altura para cada página ou se tem um jeito mais fácil*/
+        width: 50vw;
+        top: 14%;
+        background-color: var(--claro-cartoes);
+    }
+
+    .header-usuario nav a {
+        font-size: 27px;
+        padding-left: 5vw;
+    }
+
+    
+
+    .header-home {
+        display: none;
+        position: absolute;
+        top: 10%;
+        left: 43%;
+        width: 50vw;
+        justify-content: start;
+        box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
+        z-index: 9;
+    }
+
+    .header-home nav {
+        display: flex;
+        gap: 10vw;
+        flex-direction: column;
+        padding-bottom: 10vw;
+    }
+
+    .header-home nav a {
+        font-size: 27px;
+    }
+
+    .input-senha input {
+        font-size: 16px;
+        width: 35vw;
+        height: 9vw;
+        top: 0%;
+        left: -9%;
+    }
+
+    .cadastro_pessoal {
+        padding: 8vw 4vw;
+    }
+
+    .form button {
+        margin-top: 0vw;
+        padding: 12px 60px;
+    }
+
+    .card-branco-sem-fundo {
+        width: 80vw;
+        padding: 6vw 4vw;
+    }
+
+    .card-branco-sem-fundo p {
+        font-size: 20px;
+    }
+
+    .switch {
+        width: 14vw;
+        height: 7vw;
+    }
+
+    .slider {
+        border-radius: 7vw;
+    }
+
+    .slider:before {
+        height: 5vw;     
+        width: 5vw;
+        left: 0.60vw;      
+        bottom: 1vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(7.5vw);
+    }
+
+    .info-usuario {
+        font-size: 20px;
+        flex-direction: column;
+        gap: 5vw;
+        width: 70vw;
+        align-items: start;
+    }
+
+    .card-edicao {
+        flex-direction: column;
+        align-items: center;
+        gap: 10vw;
+    }
+
+    .card-edicao img {
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .imagem-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 5vw;
+    }
+
+    .info-linha {
+        flex-direction: column;
+        gap: 1vw;
+    }
+
+    .dashboard {
+        gap: 5vw;
+    }
+
+    /*Perguntar para o Igor como deixa o carrossel responsivo*/
+
+    .botoes {
+        margin-top: 6vw;
+        flex-direction: column;
+        gap: 6vw;
+    }
+
+    .botoes a {
+        width: 50vw;
+        font-size: 20px
+    }
+
+    .h2 {
+        font-size: 30px;
+        text-align: center;
+        width: 80vw;
+        margin: 0 auto;
+        margin-bottom: 5vw;
+    }
+
+    .insumos {
+        display: block;
+        margin-top: 10vw;
+    }
+
+    .card-branco {
+        width: 80vw;
+    }
+
+    .insumo {
+        flex-direction: column;
+        gap: 5vw;
+    }
+
+    .btn-adicionar {
+        width: 65vw;
+    }
+
+    .absolute {
+        left: 7%;
+        padding: 20px 20px 40px;
+    }
+
+    .absolute img {
+        padding: 0px;
+        position: static;
+    }
+
+
+    .bnt-pequeno {
+        width: 55vw;
+        padding: 2vw 0;
+    }
+
+    .lista-ingredientes {
+        gap: 7vw;
+    }
+
+    .card {
+        width: 80vw;
+        margin: 0 auto;
+        padding: 10vw 5vw;
+    }
+
+    .btn-del {
+        width: 96.55px;
+        height: 32.8px;
+    }
+
+    .btn-edit {
+        padding: 8px 30px;
+    }
+
+    /*FOOTER*/
+
+    .logo-footer {
+        display: block;
+    }
+    
+
+    .info-footer nav{
+        flex-direction: column;
+        padding-bottom: 20px;
+        margin-top: 15px
+    }
+
+    .info-footer nav a {
+        font-size: 15px;
+        flex-wrap: wrap;
+
+    }
+    
+    .info-footer {
+        height: 130px;
+        flex-wrap: wrap;}
+
+
+    .add5{
+        width: 61px;
+        height: 37px;
+        display: block;
+        margin: 0 auto;
+        
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+        font-size: 15px;
+    }
+
+    .linha-vertical {
+        margin-top: -13px;
+        width: 1px;
+        height: 60px;
+        border: none;
+    }
+
+    .copy {
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .contato{
+        margin-top: -17px;
+        font-size: 18px;
+        margin-bottom: 21px;
+        
+    }
+
+    .linha-vertical {
+        display: none;
+    }
+
+
+    .range-box{
+        width: 385px;
+    }
+
+    .add8{
+        width: 27px;
+        height: 27px;
+    }
+
+    .add9{
+        width: 27px;
+        height: 27px;
+    }
+
+    .range-box {
+        width: 60vw;
+    }
+
+    .ingrediente {
+        flex-direction: column;
+        gap: 1vw;
+        width: 60vw;
+        align-items: start;
+    }
+
+    .checkbox {
+        padding: 0px;
+    }
+
+    .ingrediente-un {
+        position: static;
+        gap: 1vw;
+    }
+
+    .ingrediente input[type="number"] {
+        width: 30vw;
+        font-size: 16px;
+    }
+
+    .ingrediente select {
+        width: 30vw;
+        font-size: 16px;
+    }
+
+    .checkbox {
+        width: 50vw;
+    }
+
+    .checkbox input {
+        width: 15px;
+        height: 15px;
+    }
+
+    .login.card-form {
+        width: 80vw;
+    }
+
+    .input-senha-grande input {
+        width: 36vw;
+    }
+
+    .form .bnt-claroD {
+        padding: 12px 40px;
+    }
+
+    .form .bnt-claroD a {
+        font-size: 20px;
+    }
+
+    .opcoes-login {
+        margin-top: 7vw;
+    }
+
+    .cards-relatorio {
+        flex-direction: column;
+        gap: 5vw;
+        margin-bottom: 10vw;
+    }
+
+    .relatorio {
+        width: 55vw;
+        height: 60vw;
+    }
+
+    .relatorio p {
+        max-width: 45vw;
+    }
+
+    .relatorio .bnt-claroDQ {
+        width: 30vw;
+        padding: 3vw 3vw;
+        font-size: 18px;
+    }
+
+    .banner div {
+        gap: 40px;
+    }
+
+    .banner .bnt-claroD {
+        width: 30vw;
+    }
+
+    .icones {
+        flex-direction: column;
+        gap: 5vw;
+    }
+
+    .icone-texto img {
+        width: 20vw;
+        height: auto;
+    }
+
+    .icone-texto {
+        width: 60vw;
+    }
+
+    .icone-texto p {
+        width: 50vw;
+    }
+
+    .icone-redondo {
+        height: 45vw;
+        width: 45vw;
+        text-align: center;
+        padding: 0px;
+    }
+
+    .icone-redondo p {
+        width: 40vw;
+        text-align: center;
+    }
+
+    .texto-depoimento {
+        width: 50vw;
+    }
+
+    .depoimentos-flex {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10vw;
+        margin-bottom: 10vw;
+    }
+
+    .info {
+        flex-direction: column;
+        padding: 0 1vw 10vw;
+        justify-content: center;
+    }
+
+    .contatos {
+        width: 80vw;
+    }
+
+    .mapa {
+        width: 100vw;
+    }
+
+    .mapa iframe {
+        margin-left: 10vw;
+        width: 80vw;
+    }
+
+    .add2 {
+        margin-left: 25vw;
+    }
+
+    .FaleConosco {
+        width: 70vw;
+        margin-left: 10vw;
+    }
+
+    .box-faq p {
+        font-size: 16px;
+    }
+
+    .contato {
+        font-size: 18px;
+    }
+
+    .card-config {
+        flex-direction: column;
+    }
+
+    .card-edicao .bnt-claroDQ {
+        padding: 12px 40px;
+        font-size: 18px;
+        width: auto;
+    }
+
+    .erro {
+        width: 85vw;
+        left: 5vw;
+        top: 5vw;
+        padding-bottom: 5vw;
+    }
+
+    .erro p {
+        width: 68vw;
+    }
+
+    .principal {
+        gap: 2vw;
+    }
+
+    .principal img {
+        width: 10vw;
+        height: auto;
+    }
+
+    .acerto {
+        width: 85vw;
+        left: 5vw;
+        top: 5vw;
+        padding-bottom: 5vw;
+    }
+
+    .acerto p {
+        width: 68vw;
+    }
+
+    .x {
+        margin-top: 1vw;
+        margin-right: 1vw;
+    }
+
+    .paragrafo-acerto{
+        font-size: 18px;
+    }
+
+    .info-footer {
+        justify-content: center;
+    }
+
+    .info-footer nav {
+        flex-direction: column;
+        padding-bottom: 20px;
+        margin-top: 15px;
+        display: flex;
+    }
+
+    .info-footer nav a {
+        font-size: 24px;
+    }
+
+    .info-footer {
+        height: auto;
+        padding: 20px;
+    }
+
+    footer .contato p {
+        font-size: 18px;
+    }
+}
+
+/* Mobile M */
+@media (max-width: 376px) {
+    .cadastro_pessoal {
+        width: 80vw;
+    }
+
+    .campo {
+        width: 70vw;
+    }
+
+    .input {
+        width: 70vw;
+    }
+
+    .form-duplo {
+        width: 70vw;
+    }
+
+    .input-senha input {
+        width: 43vw;
+    }
+
+    .header-home {
+        width: 60vw;
+        top: 9.5%;
+        left: 32%;
+    }
+
+    .header-usuario {
+        width: 60vw;
+        top: 13%;
+    }
+
+    .modo {
+        width: 32vw;
+    }
+
+    /*FOOTER*/
+
+    .logo-footer {
+        display: block;
+        margin: 0 auto;
+    }
+    
+
+    .info-footer nav {
+        flex-direction: column;
+        padding-bottom: 20px;
+        margin-top: 15px
+    }
+
+    .info-footer nav a {
+        display: block;
+        padding-bottom: 6px;
+    }
+    
+    .info-footer {
+        flex-wrap: wrap;}
+
+
+    .add5{
+        width: 61px;
+        height: 37px;
+        display: block;
+        margin: 0 auto;
+        
+    }
+
+    footer .contato p {
+        font-weight: var(--regular);
+    }
+
+    .linha-vertical {
+        margin-top: -13px;
+        width: 1px;
+        height: 60px;
+        border: none;
+    }
+
+    .copy {
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+
+    .contato{
+        margin-top: -21px;
+        font-size: 18px;
+        margin-bottom: 21px;
+        margin-left: 65px;
+        
+    }
+
+    .linha-vertical {
+        display: none;
+    }
+
+
+    .range-box{
+        width: 385px;
+    }
+
+    .add8{
+        width: 22px;
+        height: 22px;
+    }
+
+    .add9{
+        width: 22px;
+        height: 22px;
+    }
+
+    .ingrediente-un input[type="number"] {
+        width: 31vw;
+        font-size: 14px;
+    }
+
+    .ingrediente-un select {
+        width: 31vw;
+        font-size: 14px;
+    }
+
+    .range-box {
+        width: 70vw;
+    }
+
+    .btn-adicionar {
+        width: 70vw;
+    }
+
+    .relatorio {
+        width: 65vw;
+        height: 70vw;
+    }
+
+    .relatorio p {
+        max-width: 60vw;
+    }
+
+    .relatorio .bnt-claroDQ {
+        width: 40vw;
+    }
+
+    .titulo-acerto{
+        font-size: 18px;
+    }
+
+
+    .x a {
+        margin-right: 3vw;
+    }
+
+}
+
+/* Mobile S */
+@media (max-width: 321px) {
+    .input-senha input {
+        width: 40vw;
+        height: 8vw;
+    }
+
+    .header-home {
+        width: 65vw;
+        top: 9%;
+        left: 25%;
+    }
+
+    .header-usuario {
+        width: 65vw;
+        top: 12.4%;
+    }
+
+    .card-branco-sem-fundo h1 {
+        font-size: 40px;
+    }
+
+    .slider:before {
+        bottom: 0.80vw;
+    }
+
+    .modo div {
+        flex-direction: column-reverse;
+        gap: 2vw;
+    }
+
+    /* Perguntar para o Igor o que ele acha desse switch*/
+
+    .ingrediente-un {
+        margin-left: -4vw;
+    }
+
+    .ingrediente-un input[type="number"] {
+        width: 34vw;
+        font-size: 12px;
+    }
+
+    .ingrediente-un select {
+        width: 34vw;
+        font-size: 12px;
+
+    }
+
+    .btn-adicionar {
+        width: 70vw;
+    }
+
+    .btn-adicionar a {
+        font-size: 15px;
+    }
+
+    .campo .input {
+        height: 12vw;
+    }
+
+    .input-senha input {
+        height: 8vw;
+    }
+
+    .relatorio.card {
+        height: 75vw;
+    }
+
+    .relatorio h3 {
+        font-size: 28px;
+    }
+
+    .banner div {
+        flex-direction: column;
+    }
+
+    .banner .bnt-claroD {
+        width: 45vw;
+    }
+
+    .sobre .bnt-claroD {
+        padding: 12px 53px;
+    }
+
+    .icone-redondo {
+        height: 60vw;
+        width: 60vw;
+    }
+
+    .icone-redondo p {
+        margin-left: -10vw;
+        text-align: center;
+        width: 50vw;
+    }
+
+    .funcionalidades .bnt-claroD {
+        padding: 12px 30px;
+    }
+
+    .depoimentos .bnt-claroD {
+        padding: 12px 30px;
+    }
+
+    .contato {
+        font-size: 16px;
+        margin-left: 26px;
+    }
+
+    .contatos {
+        width: 100vw;
+    }
+
+    .add2 {
+        margin-left: 7vw;
+    }
+
+    .principal {
+        gap: 4vw;
+        margin-left: 2vw;
+    }
+
+    .principal img {
+        width: 15vw;
+    }
+
+    .principal p {
+        width: 60vw;
+    }
+
+    .card {
+        height: 30vw;
+    }
+
+}

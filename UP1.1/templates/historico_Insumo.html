@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsivo.css') }}">
+    <title>Histórico de Compra</title>
+</head>
+
+<body>
+    <div class="d-flex">
+        <header class="header-usuario" id="menu-mobile-usuario">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/logo2.png') }}" alt="Logo da UP+" class="desktop"></a>
+            <nav class="d-flex">
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a href="{{ url_for('insumos', id=id) }}" class="pagina-atual">Insumos</a>
+                <a href="{{ url_for('produtos', id=id) }}">Produtos</a>
+                <a>Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
+                <a href="/logout">Sair</a>
+            </nav>
+        </header>
+
+        <main class="main-usuario">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="Foto de Perfil">
+                    <div>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-branco card-produto">
+                <div class="d-flex space-between align-center">
+                    <h1 class="titulo-secao">Histórico de Compra</h1>
+                    <a class="btn-adicionar" href="{{ url_for('insumos', id=id) }}">Voltar para Insumos</a>
+                </div>
+                <div class="d-flex flex-column" style="gap: 8px; margin-top: 10px;">
+                    <div class="d-flex" style="gap: 16px; align-items: center;">
+                        <img src="{{ url_for('static', filename='img/icone-custo.png') }}" alt="icone" style="width:32px;height:32px;">
+                        <div>
+                            <p style="font-weight:600;">{{ insumo[1] }}</p>
+                            <p style="opacity: .8;">{{ insumo[2] }} • {{ unidade_label }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop table -->
+                <div class="tabela-insumos d-flex flex-column desktop" style="margin-top: 20px;">
+                    <h2>Variações de Preço</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data da Mudança</th>
+                                <th>Preço de Compra</th>
+                                <th>Custo Unitário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if historico and historico|length > 0 %}
+                                {% for h in historico %}
+                                <tr>
+                                    <td>{% if h[2] %}{{ h[2].strftime('%d/%m/%Y %H:%M') if h[2].strftime is defined else h[2] }}{% endif %}</td>
+                                    <td>R$ {{ "%.2f"|format(h[0]) }}</td>
+                                    <td>R$ {{ "%.6f"|format(h[1]) }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">Sem histórico para este insumo.</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile cards -->
+                <section class="mobile insumos" style="margin-top: 10px;">
+                    <h2 class="h2">Variações de Preço</h2>
+                    <div class="d-flex cards-mobile">
+                        {% for h in historico %}
+                        <div class="card-insumo">
+                            <div class="d-flex space-between align-center">
+                                <p class="card-insumo-titulo">{{ insumo[1] }}</p>
+                                <p>{% if h[2] %}{{ h[2].strftime('%d/%m/%Y %H:%M') if h[2].strftime is defined else h[2] }}{% endif %}</p>
+                            </div>
+                            <div class="d-flex card-insumo-imagem">
+                                <img src="{{ url_for('static', filename='img/icone-custo.png') }}" alt="Preço">
+                                <p>Compra: R$ {{ "%.2f"|format(h[0]) }}</p>
+                            </div>
+                            <div class="d-flex card-insumo-imagem">
+                                <img src="{{ url_for('static', filename='img/icone-medida.png') }}" alt="Custo">
+                                <p>Unitário: R$ {{ "%.6f"|format(h[1]) }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% if not historico or historico|length == 0 %}
+                        <div class="card-insumo">
+                            <p>Sem histórico para este insumo.</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </section>
+            </section>
+
+            {% with msgs = get_flashed_messages(with_categories=true) %}
+            {% if msgs %}
+                {% for category, msg in msgs %}
+                {% set classe = 'erro' %}
+                {% if category == 'success' %}{% set classe = 'acerto' %}{% endif %}
+                {% if category == 'warning' %}{% set classe = 'aviso' %}{% endif %}
+
+                <section class="mensagem-flash" id="msgFlash">
+                    <div class="{{ classe }}">
+                    <div class="d-flex x">
+                        <a href="#" onclick="fecharMensagem('msgFlash')">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/X-erro.png') }}" alt="Fechar">
+                        </a>
+                        {% elif classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/X-acerto.png') }}" alt="Fechar">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex principal">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="Ícone">
+                        {% endif %}
+                        {% if classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="Ícone">
+                        {% endif %}
+                        <div class="d-flex">
+                        {% if classe == 'acerto' %}
+                        <p class="titulo-acerto">{{ msg }}</p>
+                        {% endif %}
+                        {% if classe == 'erro' %}
+                        <p class="titulo-erro">{{ msg }}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </main>
+    </div>
+
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img class="add5" src="{{ url_for('static', filename='img/logo2.png') }}" alt="Logo da UP">
+                <nav>
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                    <a href="{{ url_for('index') }}">Sobre Nós</a>
+                    <a href="{{ url_for('index') }}">Funcionalidade</a>
+                    <a href="{{ url_for('conta') }}">Conta</a>
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="{{ url_for('static', filename='img/whatsapp-icone.png') }}" alt="Whatsapp" class="add8">
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contato" class="add6">
+                    <img src="{{ url_for('static', filename='img/email-icone-escuro.png') }}" id="email" alt="Email" class="add9">
+                    <p>contato@upmais.com.br</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/owl-carousel/owl.carousel.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </footer>
+</body>
+
+</html>
+

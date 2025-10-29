@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <title>Relatórios</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="d-flex">
+        <header class="header-usuario" id="menu-mobile-usuario">
+            <a href="{{ url_for('index') }}"><img src="../static/img/logo2.png" alt="Logo da UP+" class="desktop"></a>
+            <nav class="d-flex">
+                <a href="{{ url_for('dashboard') }}">DashBoard</a>
+                <a>Insumos</a>
+                <a>Produtos</a>
+                <a class="pagina-atual">Relatórios</a>
+                <a href="{{ url_for('config') }}">Configurações</a>
+                <a href="/logout">Sair</a>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <main class="main-usuario">
+            <section class="space-between topo-usuario mobile">
+                <div class="menu-toggle" id="menu-btn" onclick="mostrarMenu('menu-mobile-usuario')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="d-flex perfil-usuario">
+                    <img src="../static/img/perfil.png" alt="Foto de Perfil"> <!--imagem-->
+                    <div>
+                        <p>{{ nome }}</p>
+                        <p>{{ nome_empresa }}</p>
+                    </div>
+                </div>
+            </section>
+            <section class="card-branco-sem-fundo d-flex">
+                <div class="d-flex flex-column space-between">
+                    <h1>Relatórios</h1>
+                </div>
+            </section>
+            <section class="d-flex space-between cards cards-relatorio">
+                <div class="relatorio card d-flex flex-column align-center space-around">
+                    <h3>Relatório de Custos</h3>
+                    <p>Analise seu custo de produção</p>
+                    <a href="" class="bnt-claroDQ">Gerar relatório</a>
+                </div>
+                <div class="relatorio card d-flex flex-column align-center space-around">
+                    <h3>Relatório de Lucros</h3>
+                    <p>Veja seus produtos mais e menos lucrativo</p>
+                    <a href="" class="bnt-claroDQ">Gerar relatório</a>
+                </div>
+            </section>
+            {% with msgs = get_flashed_messages(with_categories=true) %}
+            {% if msgs %}
+                {% for category, msg in msgs %}
+                {% set classe = 'erro' %}
+                {% if category == 'success' %}{% set classe = 'acerto' %}{% endif %}
+                {% if category == 'warning' %}{% set classe = 'aviso' %}{% endif %}
+
+                <section class="mensagem-flash" id="msgFlash">
+                    <div class="{{ classe }}">
+                    <div class="d-flex x">
+                        <a href="#" onclick="fecharMensagem('msgFlash')">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/X-erro.png') }}" alt="Fechar">
+                        </a>
+                        {% elif classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/X-acerto.png') }}" alt="Fechar">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex principal">
+                        {% if classe == 'erro' %}
+                        <img src="{{ url_for('static', filename='img/icone-erro.png') }}" alt="ícone">
+                        {% endif %}
+                        {% if classe == 'acerto' %}
+                        <img src="{{ url_for('static', filename='img/icone-acerto.png') }}" alt="ícone">
+                        {% endif %}
+                        <div class="d-flex">
+                        {% if classe == 'acerto' %}
+                        <p class="titulo-acerto">{{ msg }}</p>
+                        {% endif %}
+                        {% if classe == 'erro' %}
+                        <p class="titulo-erro">{{ msg }}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="info-footer">
+            <div class="logo-footer">
+                <img class="add5" src="../static/img/logo2.png" alt="Logo da UP"> <!--imagem-->
+                <nav>
+                    <a href="{{ url_for('index') }}">Inicio</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Sobre Nós</a> <!--Link da rota-->
+                    <a href="{{ url_for('index') }}">Funcionalidade</a> <!--Link da rota-->
+                    <a href="{{ url_for('conta') }}">Conta</a> <!--Link da rota-->
+                </nav>
+            </div>
+            <hr class="linha-vertical">
+            <div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/whatsapp-icone.png" alt="Whatsapp" class="add8"> <!--imagem-->
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contato" class="add6">
+                    <img src="../static/img/email-icone-escuro.png" id="email" alt="Email" class="add9"> <!--imagem-->
+                    <p>contato@upmais.com.br</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy">© 2025 - Todos os direitos reservados.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/js/owl-carousel/owl.carousel.js"></script>
+        <script src="../static/js/script.js"></script>
+    </footer>
+</body>
+
+</html>
